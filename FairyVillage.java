@@ -103,6 +103,7 @@ public class FairyVillage extends Quest{
         return true;
     }
     public void villageSquare(){
+  
         if(!this.complete){
             System.out.println("It looks like the village is preparing for a festival and need your help!");
             System.out.println("Will you help them by collecting a few items?");
