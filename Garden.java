@@ -2,18 +2,25 @@ import java.util.Scanner;
 
 public class Garden{
   FairyVillage fairyVillage;
-  Bumblebee user = null;
+  Bumblebee user_bee = null;
+  Butterfly user_fly = null;
+  //Ladybug user_lady = null;
   int upper_bound;
   int right_bound;
 
-  public Garden(String name, String type){
+  public Garden(Bumblebee user){
     this.upper_bound = 3;
     this.right_bound = 3;
-    this.fairyVillage = new FairyVillage("Fairy Village");
-    if(type.equals("BUMBLEBEE")){
-      this.user = new Bumblebee(name);
+    this.fairyVillage = new FairyVillage("Fairy Village", user);
+    this.user_bee = user;
     }
-  }
+
+  public Garden(Butterfly user){
+    this.upper_bound = 3;
+    this.right_bound = 3;
+    this.fairyVillage = new FairyVillage("Fairy Village", user);
+    this.user_fly = user;
+    }
 
   public void checkLoc(){
 
@@ -24,60 +31,27 @@ public class Garden{
     //options of input
   }
 
-  public boolean finishFairyVillage(){
-    int temp = 0;
-    for(int i = 0; i<fairyVillage.recipe.size(); i++){
-      for(int j = 0; j<user.basket.size(); j++){
-        if(fairyVillage.recipe.get(i).equals(user.basket.get(j))){
-          temp += 1;
-        }
-      }
-    }
-    if(temp == fairyVillage.recipe.size()){
-      fairyVillage.complete = true;
-      fairyVillage.started = false;
-      for(int i = 0; i<fairyVillage.recipe.size(); i++){
-        user.basket.remove(fairyVillage.recipe.get(i));
-      System.out.println("Thank you for collecting all the items!");
-      return true;
-      }
-    }
-    else{
-      System.out.println("You don't have all the necessary items to complete this quest:(");
-      return false;
-    }
-  return false;
-  }
-
-  public boolean play(){
+  public boolean play(Bumblebee user){
     Scanner in = new Scanner(System.in);
     String input = in.nextLine();
    
     if(user.user_pos_x == fairyVillage.loc_x & user.user_pos_y == fairyVillage.loc_y){
-      while(true){
-        if(fairyVillage.started){
-          this.finishFairyVillage();
-        }
-        boolean temp = false;
-        temp = fairyVillage.play();
-        if(!temp){
-          break;
-        }
+        fairyVillage.play();
       }
-    }
     //create if/if else statement for each user option
-    
     return true;
   }
 
   public static void main(String[] args) {
     System.out.println("intro");
-    Garden myGarden = new Garden("Chloe", "BUMBLEBEE" );
+    Bumblebee user1 = new Bumblebee("Chloe");
+    Garden myGarden = new Garden(user1);
     //user input for what kind of character
     
     while(true){
-      myGarden.play();
-      if(!myGarden.play()){
+      Boolean temp = false;
+      myGarden.play(user1);
+      if(!temp){
         break;}
       }
     }

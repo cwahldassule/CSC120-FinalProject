@@ -23,4 +23,8 @@ public class Quest{
         System.out.println("\t+"+recipe.get(i));
       }
     }
+    public static void main(String[] args) {
+      Quest myQuest = new Quest("wow!", 3);
+      myQuest.printRecipe();
   }
+}
