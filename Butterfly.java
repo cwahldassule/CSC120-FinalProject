@@ -1,5 +1,8 @@
 public class Butterfly extends Character {
 
+    int flight_power;
+    int flight_cap;
+    int basket_cap;
 
 
     public Butterfly(String name) {
