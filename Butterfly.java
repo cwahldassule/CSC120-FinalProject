@@ -4,9 +4,9 @@ public class Butterfly extends Character {
 
     public Butterfly(String Name) {
         super(name);
-        flight_power = 20;
-        flight_cap = 20;
-        basket_cap = 15;
+        this.flight_power = 20;
+        this.flight_cap = 20;
+        this.basket_cap = 15;
         
 
 
