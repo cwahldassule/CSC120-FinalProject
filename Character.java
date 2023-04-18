@@ -9,6 +9,8 @@ class Character{
   int basket_cap;
   ArrayList<String> basket;
   int size;
+  int user_pos_x;
+  int user_pos_y;
   
   public Character(String name){
     this.name = name;
@@ -17,6 +19,8 @@ class Character{
     this.basket_cap = 15;
     this.basket = new ArrayList<String>();
     this.size = 1;
+    this.user_pos_x = 0;
+    this.user_pos_y = 0;
   }
 
   public void openBag(){
@@ -31,6 +35,7 @@ class Character{
         }
     System.out.println("");}
 
+//fix to include changes in user position
   public boolean walk(String direction) {
     //if user_import
     if(flight_power >= 2){
@@ -41,6 +46,27 @@ class Character{
         throw new RuntimeException("You are too tired to do that...");
     }
     return true;
+}
+
+//fix fly to include changes in user position
+//make so examine and shrink are not called
+public boolean fly(int x, int y) {
+  if(flight_power >= 2){
+  System.out.println("Flying to ("+x+","+y+")...");
+  flight_power -= 2;
+  Integer temp = index.nextInt(20);
+  if(temp%3 == 0){
+      this.shrink();
+  }
+  else{
+      this.examine(randFlower());
+      this.examine(randFlower());}}
+  else{
+      throw new RuntimeException("You are too tired to do that...");
+  }
+  return true;
+  
+  
 }
 
   public void examine(String item) {
@@ -69,7 +95,8 @@ class Character{
         throw new RuntimeException("Your basket is full >_<");
     }
     }
-  public String drop(String item) {
+  
+    public String drop(String item) {
         System.out.println(this.name + " has dropped: "+item+"\n");
         return item;
     }

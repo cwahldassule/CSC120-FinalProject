@@ -23,31 +23,31 @@ public class Item{
     location = new String[]{"a toadstool circle", "a mossy stump", "an acorn stash", "a berry bush", "a lilypad cluster"};
       }
 
-  public static int randNum(){
-    Integer num = index.nextInt(4);
+  public static int randNum(int num1){
+    Integer num = index.nextInt(num1);
     return num;
   }
   public static String randFlower(){
-    return flowers[randNum()];
+    return flowers[randNum(4)];
   }
   public static String randShroom(){
-    return poison_shroom[randNum()];
+    return poison_shroom[randNum(4)];
   }
   
   public static String randRust(){
-    return rusty_object[randNum()];
+    return rusty_object[randNum(4)];
   }
   public static String randFruit(){
-    return fruits[randNum()];
+    return fruits[randNum(4)];
   }
   public static String randGem(){
-    return gems[randNum()];
+    return gems[randNum(4)];
   }
     public static String randToxicFlower(){
-    return toxic_flowers[randNum()];
+    return toxic_flowers[randNum(4)];
   }
     public static String location(){
-    return location[randNum()];
+    return location[randNum(4)];
   }
 
    public ArrayList<String> recipe(){

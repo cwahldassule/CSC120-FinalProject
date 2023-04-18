@@ -1,11 +1,17 @@
+import java.util.ArrayList;
+
 public class Quest{
-    String [] recipe;
     String name;
+    ArrayList<String> recipe;
+    int loc_x;
+    int loc_y;
     //completed quest
-    //location
   
     public Quest(String name){
-      //call recipe() to initialize
+      this.name = name;
+      Item myItem = new Item();
+      this.recipe = myItem.recipe();
+      this.loc_x = Item.randNum
       //call randnum twice for x and y
       
     }
