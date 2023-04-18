@@ -58,6 +58,7 @@ public class FairyVillage extends Quest{
         }
         else if(where_x == 0 & where_y == 2){
             System.out.println("Welcome to the Potions Shop!");
+            this.potionsShop();
             //mix gems for sunflowers
         }
         else if(where_x == 1 & where_y == 0){
@@ -103,9 +104,14 @@ public class FairyVillage extends Quest{
         return true;
     }
     public void villageSquare(){
-  
-        if(!this.complete){
-            System.out.println("It looks like the village is preparing for a festival and need your help!");
+        if(this.started){
+            System.out.println("Welcome back!");
+        }
+        else if(this.complete){
+            System.out.println("Thank you for all your help! The festival is in full swing!");
+        }
+        else if(!this.complete & !this.started){
+            System.out.println("It looks like the village is preparing for a festival and needs your help!");
             System.out.println("Will you help them by collecting a few items?");
             String input = in.nextLine();
             if(input.equals("yes")){
@@ -117,9 +123,9 @@ public class FairyVillage extends Quest{
                 System.out.println("Okay :(");
             }
         }
-        else if(this.complete){
-            System.out.println("Thank you for all your help! The festival is in full swing!");
-        }
+    
+    }
+    public void potionsShop(){
 
     }
     public void intro(){

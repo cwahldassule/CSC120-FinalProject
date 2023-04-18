@@ -35,6 +35,7 @@ public class Garden{
     }
     if(temp == fairyVillage.recipe.size()){
       fairyVillage.complete = true;
+      fairyVillage.started = false;
       for(int i = 0; i<fairyVillage.recipe.size(); i++){
         user.basket.remove(fairyVillage.recipe.get(i));
       System.out.println("Thank you for collecting all the items!");
