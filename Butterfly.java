@@ -2,7 +2,7 @@ public class Butterfly extends Character {
 
 
 
-    public Butterfly(String Name) {
+    public Butterfly(String name) {
         super(name);
         this.flight_power = 20;
         this.flight_cap = 20;
