@@ -49,9 +49,9 @@ public class Item{
     return location[randNum(4)];
   }
 
-   public ArrayList<String> recipe(){
+   public ArrayList<String> recipe(int size){
      ArrayList<String> recipe = new ArrayList<>();
-     for(int i = 0; i<3; i++){
+     for(int i = 0; i<size; i++){
         Integer num = index.nextInt(2);
        if (num == 0){
          recipe.add(randFlower());
@@ -69,7 +69,7 @@ public class Item{
 
 public static void main(String[] args) {
   Item myItem = new Item();
-  ArrayList<String> recipe1 = myItem.recipe();
+  ArrayList<String> recipe1 = myItem.recipe(2);
   for(int i = 0; i <recipe1.size(); i++){
     System.out.println(recipe1.get(i));
   }

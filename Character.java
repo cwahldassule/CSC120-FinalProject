@@ -31,12 +31,17 @@ class Character{
 
 //fix to include changes in user position
   public void walk(String direction) {
-    System.out.println("What direction do you want to walk in?");
-    Scanner in = new Scanner(System.in);
-    String input = in.nextLine();
-    if(input.equals("N")){
-      if 
-      user_pos_x += 1
+    if(direction.equals("N")){
+      user_pos_y += 1;
+    }
+    else if(direction.equals("S")){
+      user_pos_y -= 1;
+    }
+    else if(direction.equals("E")){
+      user_pos_x -= 1;
+    }
+    else if(direction.equals("W")){
+      user_pos_y += 1;
     }
 
   }
@@ -67,16 +72,12 @@ public void fly(int x, int y) {
           }
 
   public void grab(String item) {
-    if(basket.size() <basket_cap){
-        this.basket.add(item);
-        System.out.println("Bumblebee " + this.name + " has picked up: "+item+"\n");}
-    else{
-        throw new RuntimeException("Your basket is full >_<");
-    }
-    }
-  
-    public String drop(String item) {
+      this.basket.add(item);
+      System.out.println("Bumblebee " + this.name + " has picked up: "+item+"\n");
+  }
+    
+
+    public void drop(String item) {
         System.out.println(this.name + " has dropped: "+item+"\n");
-        return item;
     }
 }

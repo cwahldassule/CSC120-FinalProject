@@ -9,7 +9,7 @@ public class FairyVillage extends Quest{
     int upper_bound;
 
     public FairyVillage(String name){
-        super("Fairy Village");
+        super("Fairy Village", 2);
         this.in = new Scanner(System.in);
         this.where_x = 0;
         this.where_y = 0;
@@ -55,7 +55,6 @@ public class FairyVillage extends Quest{
         else if(where_x == 0 & where_y == 1){
             System.out.println("Welcome to the Village Square!");
             this.villageSquare();
-            //will get quest here
         }
         else if(where_x == 0 & where_y == 2){
             System.out.println("Welcome to the Potions Shop!");
@@ -105,16 +104,20 @@ public class FairyVillage extends Quest{
     }
     public void villageSquare(){
         if(!this.complete){
-            System.out.println("It looks like village is preparing for a festival and need your help!");
+            System.out.println("It looks like the village is preparing for a festival and need your help!");
             System.out.println("Will you help them by collecting a few items?");
             String input = in.nextLine();
             if(input.equals("yes")){
                 System.out.println("Wonderful! Heres the list of items they need:");
                 this.printRecipe();
+                this.started = true;
             }
             else{
-            System.out.println("No worries!");
+                System.out.println("Okay :(");
             }
+        }
+        else if(this.complete){
+            System.out.println("Thank you for all your help! The festival is in full swing!");
         }
 
     }

@@ -24,8 +24,6 @@ public class Garden{
     //options of input
   }
 
-
-
   public boolean play(){
     Scanner in = new Scanner(System.in);
     String input = in.nextLine();
