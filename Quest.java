@@ -6,6 +6,7 @@ public class Quest{
     int loc_x;
     int loc_y;
     boolean complete;
+    boolean started;
   
     public Quest(String name){
       this.name = name;
@@ -16,6 +17,12 @@ public class Quest{
       this.complete = false;
     }
   
+    public void printRecipe(){
+      System.out.println("Quest items:");
+      for(int i = 0; i<recipe.size(); i++){
+        System.out.println("\t+"+recipe.get(i));
+      }
+    }
     //completed quest check
    
   
