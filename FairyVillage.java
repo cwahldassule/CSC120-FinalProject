@@ -7,8 +7,20 @@ public class FairyVillage extends Quest{
     int left_bound;
     int right_bound;
     int upper_bound;
+    Bumblebee user1 = null;
+    Butterfly user2 = null;
 
-    public FairyVillage(String name){
+    public FairyVillage(String name, Bumblebee user){
+        super("Fairy Village", 3);
+        this.in = new Scanner(System.in);
+        this.where_x = 0;
+        this.where_y = 0;
+        this.left_bound = -2;
+        this.right_bound = 2;
+        this.upper_bound = 2;
+        this.user1 = user;
+    }
+    public FairyVillage(String name, Butterfly user){
         super("Fairy Village", 2);
         this.in = new Scanner(System.in);
         this.where_x = 0;
@@ -16,8 +28,68 @@ public class FairyVillage extends Quest{
         this.left_bound = -2;
         this.right_bound = 2;
         this.upper_bound = 2;
+        this.user2 = user;
     }
 
+    public void potionsShop(){
+        System.out.println("The potion master needs help brewing potions...");
+        System.out.println("Hi friend! I just ran out of "+Item.randGem()+"s");
+        System.out.println("Will you help me?");
+
+    }
+    public void intro(){
+        System.out.println("Welcome to the Fairy Village!");
+        System.out.println("Walk around to explore the village");
+        System.out.println("(Walking in the fairy village does not use flight power)");
+    }
+
+    public Boolean finishQuest(Bumblebee user){
+        int temp = 0;
+        for(int i = 0; i<this.recipe.size(); i++){
+          for(int j = 0; j<user.basket.size(); j++){
+            if(this.recipe.get(i).equals(user.basket.get(j))){
+              temp += 1;}}}
+
+        if(temp == this.recipe.size()){
+          this.complete = true;
+          this.started = false;
+          for(int i = 0; i<this.recipe.size(); i++){
+            user.basket.remove(this.recipe.get(i));
+          System.out.println("Thank you for collecting all the items!");
+          return true;
+          }
+        }
+        else{
+          System.out.println("You don't have all the necessary items to complete this quest:(");
+          return false;
+        }
+      return false;
+      }
+    
+      public void villageSquare(){
+        if(this.started){
+            System.out.println("Welcome back to the Village Square!");
+            this.finishQuest(user1);
+        }
+        else if(this.complete){
+            System.out.println("Thank you for all your help! The festival is in full swing!");
+        }
+        else if(!this.complete & !this.started){
+            System.out.println("It looks like the village is preparing for a festival and needs your help!");
+            System.out.println("Will you help them by collecting a few items?");
+            String input = in.nextLine();
+            if(input.equals("yes")){
+                System.out.println("Wonderful! Heres the list of items they need:");
+                this.printRecipe();
+                this.started = true;
+            }
+            else{
+                System.out.println("Okay :(");
+            }
+        }
+    
+    }
+    
     public boolean play(){
         System.out.println("What direction would you like to walk in? (N/S/E/W)");
         String input = in.nextLine();
@@ -103,34 +175,11 @@ public class FairyVillage extends Quest{
         }
         return true;
     }
-    public void villageSquare(){
-        if(this.started){
-            System.out.println("Welcome back!");
-        }
-        else if(this.complete){
-            System.out.println("Thank you for all your help! The festival is in full swing!");
-        }
-        else if(!this.complete & !this.started){
-            System.out.println("It looks like the village is preparing for a festival and needs your help!");
-            System.out.println("Will you help them by collecting a few items?");
-            String input = in.nextLine();
-            if(input.equals("yes")){
-                System.out.println("Wonderful! Heres the list of items they need:");
-                this.printRecipe();
-                this.started = true;
-            }
-            else{
-                System.out.println("Okay :(");
-            }
-        }
     
-    }
-    public void potionsShop(){
-
-    }
-    public void intro(){
-        System.out.println("Welcome to the Fairy Village!");
-        System.out.println("Walk around to explore the village");
-        System.out.println("(Walking in the fairy village does not use flight power)");
+    public static void main(String[] args) {
+        Bumblebee me = new Bumblebee("Chloe");
+        FairyVillage myVillage = new FairyVillage("Fairy Village", me);
+        while(true){
+            myVillage.play();}
     }
 }
