@@ -4,9 +4,6 @@ import java.util.Scanner;
 
 class Character{
   String name;
-  int flight_power;
-  int flight_cap;
-  int basket_cap;
   ArrayList<String> basket;
   int size;
   int user_pos_x;
@@ -14,9 +11,6 @@ class Character{
   
   public Character(String name){
     this.name = name;
-    this.flight_power = 20;
-    this.flight_cap = 20;
-    this.basket_cap = 15;
     this.basket = new ArrayList<String>();
     this.size = 1;
     this.user_pos_x = 0;
@@ -36,37 +30,22 @@ class Character{
     System.out.println("");}
 
 //fix to include changes in user position
-  public boolean walk(String direction) {
-    //if user_import
-    if(flight_power >= 2){
-    System.out.println("Walking to "+direction+"...");
-    flight_power -= 2;
-    this.examine(Item.randFlower());}
-    else{
-        throw new RuntimeException("You are too tired to do that...");
+  public void walk(String direction) {
+    System.out.println("What direction do you want to walk in?");
+    Scanner in = new Scanner(System.in);
+    String input = in.nextLine();
+    if(input.equals("N")){
+      if 
+      user_pos_x += 1
     }
-    return true;
-}
+
+  }
 
 //fix fly to include changes in user position
 //make so examine and shrink are not called
-public boolean fly(int x, int y) {
-  if(flight_power >= 2){
-  System.out.println("Flying to ("+x+","+y+")...");
-  flight_power -= 2;
-  Integer temp = index.nextInt(20);
-  if(temp%3 == 0){
-      this.shrink();
-  }
-  else{
-      this.examine(randFlower());
-      this.examine(randFlower());}}
-  else{
-      throw new RuntimeException("You are too tired to do that...");
-  }
-  return true;
-  
-  
+public void fly(int x, int y) {
+  user_pos_x = x;
+  user_pos_y = y;
 }
 
   public void examine(String item) {
