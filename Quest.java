@@ -5,15 +5,15 @@ public class Quest{
     ArrayList<String> recipe;
     int loc_x;
     int loc_y;
-    //completed quest
+    boolean complete;
   
     public Quest(String name){
       this.name = name;
       Item myItem = new Item();
       this.recipe = myItem.recipe();
-      this.loc_x = Item.randNum
-      //call randnum twice for x and y
-      
+      this.loc_x = Item.randNum(2);
+      this.loc_y = Item.randNum(2); 
+      this.complete = false;
     }
   
     //completed quest check
