@@ -18,7 +18,7 @@ public class Item{
     gems = new String[] {"Amethyst", "Pearl", "Emerald", "Sapphire", "Ruby"};
     toxic_flowers = new String[]{"Deadly Nightshade", "Foxglove","The Devil's Lettuce", "Angel's Trumpet", "Wolf’s Bane"};
     rusty_object = new String []{"thing 1", "thing 2", "thing 3", "thing 4", "thing 5"};
-    poison_shroom = new String[]{"Death Cap", "False Parasol", "Fool's Mushroom", "Webcaps", "Destroying Angel"};
+    poison_shroom = new String[]{"Death Cap", "False Parasol", "Fool's Mushroom", "Webcap", "Destroying Angel"};
     location = new String[]{"a toadstool circle", "a mossy stump", "an acorn stash", "a berry bush", "a lilypad cluster"};
       }
 
