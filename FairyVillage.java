@@ -20,6 +20,56 @@ public class FairyVillage<T extends Character> extends Quest{
         this.user = user;
     }
 
+    public void angelfountain(){
+        int num = Item.randNum(4);
+        if(num == 0){
+            user.flight_power += 1;
+        }
+    }
+
+    public void blaze(){
+        System.out.println("Hey! Do you want to play a game?");
+        String input = in.nextLine().toUpperCase();
+        if(input.equals("NO")){
+            System.out.println("No I think you do...");
+        }
+        System.out.println("At this moment in time whatith stuckith up my rectumith");
+        String input1 = in.nextLine().toUpperCase();
+        System.out.println("Sorry "+input1+" wrong :(");
+        user.flight_power -= 2;
+        System.out.println("\t-2 Flight power");
+
+    }
+
+    public void musicCorner(){
+        String[] notes = new String[]{"A", "B", "C", "D", "E", "F", "G"};
+        String note = notes[Item.randNum(7)];
+        System.out.println("*You see the town bard looking ditressed...*");
+        System.out.println("Please help me! I forgot the next natural note in my song T-T");
+        System.out.println("\t+Yes\n\t+No");
+        String input = in.nextLine().toUpperCase();
+        if(input.equals("YES")){
+            System.out.println("What note do you think it is?");
+            input = in.nextLine().toUpperCase();
+            if(input.equals(note)){
+                System.out.println("Thank goodness! Let me play you a lively tune and increase your flight power");
+                System.out.println("la la la lee la");
+                user.flight_power += 1;
+                System.out.println("\t+1 FLight power");
+            }
+            else{
+                System.out.println("Nooooooo that doesn't sound right");
+                System.out.println("*The bard smashes their guitar and scramble away*");
+            }
+        }
+        else if(input.equals("NO")){
+            System.out.println("Okay T-T");
+        }
+        else{
+            throw new RuntimeException("Not a valid option >_<");
+        }
+    }
+
     public void dressShop(){
         String flower = Item.randFlower();
         System.out.println("The dress maker needs your help...");
@@ -31,6 +81,7 @@ public class FairyVillage<T extends Character> extends Quest{
                 user.basket.remove(flower);
                 System.out.println("Thank you so much for your help. Have a Strawberry");
                 user.basket.add("Strawberry");
+                System.out.println("\t+Strawberry");
             }
             else{
                 throw new RuntimeException("You don't have that item >_<");
@@ -46,11 +97,12 @@ public class FairyVillage<T extends Character> extends Quest{
         System.out.println("The baker needs your help making cakes...");
         System.out.println("Hey There! Could you help me out? I need a "+fruit+" to finish baking this cake");
         System.out.println("\t+Yes\n\t+No");
-        String input = in.nextLine().toUpperCase(null);
+        String input = in.nextLine().toUpperCase();
         if(input.equals("YES")){
             if(user.basket.contains(fruit)){
                 user.basket.remove(fruit);
                 System.out.println("Thanks! Have a Pearl!");
+                System.out.println("\t+Pearl");
                 user.basket.add("Pearl");
             }
             else{
@@ -79,6 +131,7 @@ public class FairyVillage<T extends Character> extends Quest{
                 System.out.println("Thank you so much for your help!");
                 System.out.println("Here's a Sunflower to show my gratitude :)");
                 user.basket.add("Sunflower");
+                System.out.println("\t+Sunflower");
             }
             else{
                 throw new RuntimeException("You don't have a "+gem+ " in your basket :/");
@@ -218,17 +271,18 @@ public class FairyVillage<T extends Character> extends Quest{
         }
         else if(where_x == -1 & where_y == 1){
             System.out.println("Welcome to the Mirabel's Cottage!");
-
+            //useless chat bot
         }
         else if(where_x == -2 & where_y == 1){
             System.out.println("Welcome to the Music Corner!");
-            //guess the next note for +0.25 flight power
+            this.musicCorner();
         }
         else if(where_x == 1 & where_y == 1){
             System.out.println("Awww theres a cat napping in some flowers");
         }
         else if(where_x == 2 & where_y == 1){
             System.out.println("Welcome to the Angel Fountain");
+            this.angelfountain();
             //chat bot
             //randomly gives 0.5 flight power
         }
@@ -237,7 +291,7 @@ public class FairyVillage<T extends Character> extends Quest{
         }
         else if(where_x == -2 & where_y == 2){
             System.out.println("Welcome to Blaze's Cottage!");
-            //game of chance
+            this.blaze();
         }
         else if(where_x == 1 & where_y == 2){
             System.out.println("Welcome to the Fairydust Inn!");

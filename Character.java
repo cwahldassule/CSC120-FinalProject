@@ -9,11 +9,13 @@ class Character{
   int user_pos_x;
   int user_pos_y;
   int quest_complete;
+  int flight_power;
   
   public Character(String name){
     this.name = name;
     this.basket = new ArrayList<String>();
     this.size = 1;
+    this.flight_power = 20;
     this.user_pos_x = 0;
     this.user_pos_y = 0;
     this.quest_complete = 0;
