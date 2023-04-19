@@ -45,14 +45,14 @@ public class Item{
     public static String randToxicFlower(){
     return toxic_flowers[randNum(4)];
   }
-    public static String location(){
+    public static String randLocation(){
     return location[randNum(4)];
   }
 
    public ArrayList<String> recipe(int size){
      ArrayList<String> recipe = new ArrayList<>();
      for(int i = 0; i<size; i++){
-        Integer num = index.nextInt(2);
+        Integer num = index.nextInt(3);
        if (num == 0){
          recipe.add(randFlower());
        }

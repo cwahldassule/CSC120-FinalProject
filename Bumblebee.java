@@ -88,7 +88,7 @@ public class Bumblebee extends Character {
         System.out.println("\tSize: "+this.size);
         System.out.println("\tFlower bag size: "+basket_cap);
         System.out.println("\tNumber of flowers: "+basket.size());
-        System.out.println("\tPosition: ("+user_pos_x+","+user_pos_y+")");
+        System.out.println("\tPosition: ("+pos_x+","+pos_y+")");
         System.out.println("\tNumber of Quests complete: "+quest_complete+"/3");
     }
 
