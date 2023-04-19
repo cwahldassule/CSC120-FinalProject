@@ -8,6 +8,7 @@ class Character{
   int size;
   int user_pos_x;
   int user_pos_y;
+  int quest_complete;
   
   public Character(String name){
     this.name = name;
@@ -15,10 +16,28 @@ class Character{
     this.size = 1;
     this.user_pos_x = 0;
     this.user_pos_y = 0;
+    this.quest_complete = 0;
   }
 
-public String getName(){
-  return this.name;
+  public void grow(){
+    throw new RuntimeException("Not set up yet");
+  }
+
+  public void shake(){
+    throw new RuntimeException("Not set up yet");
+  }
+
+  public void stats(){
+    System.out.println("Character stats:");
+    System.out.println("\tName: "+name);
+    System.out.println("\tNumber of items: "+basket.size());
+    System.out.println("\tSize: "+size);
+    System.out.println("\tPosition: ("+user_pos_x+","+user_pos_y+")");
+    System.out.println("\tNumber of Quests complete: "+quest_complete+"/3");
+  }
+
+  public String getName(){
+    return this.name;
 }
   public void openBag(){
     System.out.println("Opening basket...");
@@ -51,7 +70,7 @@ public String getName(){
 
 //fix fly to include changes in user position
 //make so examine and shrink are not called
-public void fly(int x, int y) {
+  public void fly(int x, int y) {
   user_pos_x = x;
   user_pos_y = y;
 }

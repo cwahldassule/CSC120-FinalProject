@@ -1,6 +1,6 @@
 import java.util.Scanner;
 
-public class Garden<T extends Character>{
+public class Garden<T extends Character>{ //made abstract class so that any child class of character can be used without specifying which
   FairyVillage<T> fairyVillage;
   T user;
   int upper_bound;
@@ -27,9 +27,10 @@ public class Garden<T extends Character>{
     String input = in.nextLine();
    
     if(user.user_pos_x == fairyVillage.loc_x & user.user_pos_y == fairyVillage.loc_y){
+        fairyVillage.intro();
         fairyVillage.play();
       }
-    //create if/if else statement for each user option
+    //create if else statement for each user option
     return true;
   }
 

@@ -20,6 +20,51 @@ public class FairyVillage<T extends Character> extends Quest{
         this.user = user;
     }
 
+    public void dressShop(){
+        String flower = Item.randFlower();
+        System.out.println("The dress maker needs your help...");
+        System.out.println("Oh Hi! I desperately need a "+flower+" to finish this dress.\nDo you happen to have one?");
+        System.out.println("\t+Yes\n\t+No");
+        String input = in.nextLine().toUpperCase();
+        if(input.equals("YES")){
+            if(user.basket.contains(flower)){
+                user.basket.remove(flower);
+                System.out.println("Thank you so much for your help. Have a Strawberry");
+                user.basket.add("Strawberry");
+            }
+            else{
+                throw new RuntimeException("You don't have that item >_<");
+            }
+        }
+        else{
+            throw new RuntimeException("Okay T-T");
+        }
+    }
+
+    public void bakery(){
+        String fruit = Item.randFruit();
+        System.out.println("The baker needs your help making cakes...");
+        System.out.println("Hey There! Could you help me out? I need a "+fruit+" to finish baking this cake");
+        System.out.println("\t+Yes\n\t+No");
+        String input = in.nextLine().toUpperCase(null);
+        if(input.equals("YES")){
+            if(user.basket.contains(fruit)){
+                user.basket.remove(fruit);
+                System.out.println("Thanks! Have a Pearl!");
+                user.basket.add("Pearl");
+            }
+            else{
+                throw new RuntimeException("You don't havae the right fruit");
+            }
+        }
+        else if(input.equals("NO")){
+            System.out.println("Okay T-T");
+        }
+        else{
+            throw new RuntimeException("Not a valid option >_<");
+        }
+    }
+
     public void potionsShop(){
         String gem = Item.randGem();
         System.out.println("The potion master needs help brewing potions...");
@@ -30,7 +75,10 @@ public class FairyVillage<T extends Character> extends Quest{
         input = input.toUpperCase();
         if(input.equals("YES")){
             if(user.basket.contains(gem)){
-             user.basket.remove(gem);
+                user.basket.remove(gem);
+                System.out.println("Thank you so much for your help!");
+                System.out.println("Here's a Sunflower to show my gratitude :)");
+                user.basket.add("Sunflower");
             }
             else{
                 throw new RuntimeException("You don't have a "+gem+ " in your basket :/");
@@ -39,41 +87,47 @@ public class FairyVillage<T extends Character> extends Quest{
         else if(input.equals("NO")){
             System.out.println("Okay T-T");
         }
+        else{
+            throw new RuntimeException("Not a valid option >_<");
+        }
     }
 
     public void intro(){
-        System.out.println("Welcome to the Fairy Village!" + user.name);
+        System.out.println("Welcome to the Fairy Village!");
         System.out.println("Walk around to explore the village");
         System.out.println("(Walking in the fairy village does not use flight power)");
     }
 
     public Boolean finishQuest(T user){
-         int temp = 0;
-         for(int i = 0; i<this.recipe.size(); i++){
-           for(int j = 0; j<user.basket.size(); j++){
-         if(this.recipe.get(i).equals(user.basket.get(j))){
-               temp += 1;}}}
-
-         if(temp == this.recipe.size()){
+        if(this.started){
+            for(int i = 0; i<this.recipe.size(); i++){
+                for(int j = 0; j<user.basket.size(); j++){
+                    if(this.recipe.get(i).equals(user.basket.get(j))){
+                        this.recipe.remove(recipe.get(i));
+                        user.basket.remove(recipe.get(i));
+                    }
+                }
+            }
+            if(recipe.size() == 0){
+            System.out.println("Thank you for collecting all the items!");
             this.complete = true;
             this.started = false;
-            for(int i = 0; i<this.recipe.size(); i++){
-                user.basket.remove(this.recipe.get(i));
-          System.out.println("Thank you for collecting all the items!");
-          return true;
-          }
+            user.size += 1;
+            user.quest_complete += 1;
+            return true;
+            }
+            else{
+            System.out.println("You don't have all the necessary items to complete this quest:(");
+            return false;
+            }
         }
-        else{
-          System.out.println("You don't have all the necessary items to complete this quest:(");
-          return false;
-        }
-      return false;
-      }
+        return false;
+    }
     
       public void villageSquare(){
         if(this.started){
             System.out.println("Welcome back to the Village Square!");
-            //this.finishQuest(user);
+            this.finishQuest(user);
         }
         else if(this.complete){
             System.out.println("Thank you for all your help! The festival is in full swing!");
@@ -81,22 +135,25 @@ public class FairyVillage<T extends Character> extends Quest{
         else if(!this.complete & !this.started){
             System.out.println("It looks like the village is preparing for a festival and needs your help!");
             System.out.println("Will you help them by collecting a few items?");
-            String input = in.nextLine();
-            if(input.equals("yes")){
+            String input = in.nextLine().toUpperCase(null);
+            if(input.equals("YES")){
                 System.out.println("Wonderful! Heres the list of items they need:");
                 this.printRecipe();
                 this.started = true;
             }
-            else{
+            else if(input.equals("NO")){
                 System.out.println("Okay :(");
+            }
+            else{
+                throw new RuntimeException("Not a valid option >_<");
             }
         }
     
     }
     
     public boolean play(){
-        System.out.println("What direction would you like to walk in? (N/S/E/W)");
-        String input = in.nextLine();
+        System.out.println("Where would you like to go/do?");
+        String input = in.nextLine().toUpperCase();
         if(input.equals("N")){
             where_y += 1;
         }
@@ -109,8 +166,14 @@ public class FairyVillage<T extends Character> extends Quest{
         else if(input.equals("W")){
             where_x -= 1;
         }
+        else if(input.equals("STATS")){
+            user.stats();
+        }
+        else if(input.equals("SLEEP")){
+            //user.sleep();
+        }
         else{
-            throw new RuntimeException("That's not a direction you can walk in :/");
+            throw new RuntimeException("That's not a valid option :/");
         }
         if(where_x == 0 & where_y ==0){
             System.out.println("You are at the front gate!");
@@ -142,10 +205,12 @@ public class FairyVillage<T extends Character> extends Quest{
         }
         else if(where_x == 2 & where_y == 0){
             System.out.println("Welcome to the Bakery!");
+            this.bakery();
             //mix fruits for pearl
         }
         else if(where_x == -1 & where_y == 0){
             System.out.println("Welcome to the Dress Shop!");
+            this.dressShop();
             //mix flowers for strawberry
         }
         else if(where_x == -2 & where_y == 0){
@@ -153,16 +218,19 @@ public class FairyVillage<T extends Character> extends Quest{
         }
         else if(where_x == -1 & where_y == 1){
             System.out.println("Welcome to the Mirabel's Cottage!");
+
         }
         else if(where_x == -2 & where_y == 1){
             System.out.println("Welcome to the Music Corner!");
             //guess the next note for +0.25 flight power
         }
         else if(where_x == 1 & where_y == 1){
-            System.out.println("Awww theres a cute cat napping in some flowers");
+            System.out.println("Awww theres a cat napping in some flowers");
         }
         else if(where_x == 2 & where_y == 1){
             System.out.println("Welcome to the Angel Fountain");
+            //chat bot
+            //randomly gives 0.5 flight power
         }
         else if(where_x == -1 & where_y == 2){
             System.out.println("A soft breeze is making some nearby windchimes play beautiful melody!");
@@ -173,6 +241,7 @@ public class FairyVillage<T extends Character> extends Quest{
         }
         else if(where_x == 1 & where_y == 2){
             System.out.println("Welcome to the Fairydust Inn!");
+            //fast sleep
         }
         else if(where_x == 2 & where_y == 2){
             System.out.println("Welcome to Elida's Cottage!");
@@ -185,6 +254,10 @@ public class FairyVillage<T extends Character> extends Quest{
         FairyVillage<Bumblebee> myVillage = new FairyVillage<Bumblebee>("Fairy Village", me);
 
         while(true){
-            myVillage.play();}
+            try{myVillage.play();}
+            catch(Exception e){
+                System.out.println(e.getMessage());
+            }
+        }
     }
 }
