@@ -21,39 +21,54 @@ public class FairyVillage<T extends Character> extends Quest{
     }
 
     public void potionsShop(){
+        String gem = Item.randGem();
         System.out.println("The potion master needs help brewing potions...");
-        System.out.println("Hi friend! I just ran out of "+Item.randGem()+"s");
+        System.out.println("Hi friend! I just ran out of "+gem+"s");
         System.out.println("Will you help me?");
-
+        System.out.println("\t+Yes\n\t+No");
+        String input = in.nextLine();
+        input = input.toUpperCase();
+        if(input.equals("YES")){
+            if(user.basket.contains(gem)){
+             user.basket.remove(gem);
+            }
+            else{
+                throw new RuntimeException("You don't have a "+gem+ " in your basket :/");
+            }
+        }
+        else if(input.equals("NO")){
+            System.out.println("Okay T-T");
+        }
     }
+
     public void intro(){
         System.out.println("Welcome to the Fairy Village!" + user.name);
         System.out.println("Walk around to explore the village");
         System.out.println("(Walking in the fairy village does not use flight power)");
     }
 
-    // public Boolean finishQuest(T user){
-    //     int temp = 0;
-    //     for(int i = 0; i<this.recipe.size(); i++){
-    //       for(int j = 0; j<user.basket.size(); j++){
-    //         if(this.recipe.get(i).equals(user.basket.get(j))){
-    //           temp += 1;}}}
+    public Boolean finishQuest(T user){
+         int temp = 0;
+         for(int i = 0; i<this.recipe.size(); i++){
+           for(int j = 0; j<user.basket.size(); j++){
+         if(this.recipe.get(i).equals(user.basket.get(j))){
+               temp += 1;}}}
 
-    //     if(temp == this.recipe.size()){
-    //       this.complete = true;
-    //       this.started = false;
-    //       for(int i = 0; i<this.recipe.size(); i++){
-    //         user.basket.remove(this.recipe.get(i));
-    //       System.out.println("Thank you for collecting all the items!");
-    //       return true;
-    //       }
-    //     }
-    //     else{
-    //       System.out.println("You don't have all the necessary items to complete this quest:(");
-    //       return false;
-    //     }
-    //   return false;
-    //   }
+         if(temp == this.recipe.size()){
+            this.complete = true;
+            this.started = false;
+            for(int i = 0; i<this.recipe.size(); i++){
+                user.basket.remove(this.recipe.get(i));
+          System.out.println("Thank you for collecting all the items!");
+          return true;
+          }
+        }
+        else{
+          System.out.println("You don't have all the necessary items to complete this quest:(");
+          return false;
+        }
+      return false;
+      }
     
       public void villageSquare(){
         if(this.started){
@@ -168,6 +183,7 @@ public class FairyVillage<T extends Character> extends Quest{
     public static void main(String[] args) {
         Bumblebee me = new Bumblebee("Chloe");
         FairyVillage<Bumblebee> myVillage = new FairyVillage<Bumblebee>("Fairy Village", me);
+
         while(true){
             myVillage.play();}
     }

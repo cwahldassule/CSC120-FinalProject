@@ -1,25 +1,16 @@
 import java.util.Scanner;
 
-public class Garden{
-  FairyVillage fairyVillage;
-  Bumblebee user_bee = null;
-  Butterfly user_fly = null;
-  //Ladybug user_lady = null;
+public class Garden<T extends Character>{
+  FairyVillage<T> fairyVillage;
+  T user;
   int upper_bound;
   int right_bound;
 
-  public Garden(Bumblebee user){
+  public Garden(T user){
     this.upper_bound = 3;
     this.right_bound = 3;
-    this.fairyVillage = new FairyVillage("Fairy Village", user);
-    this.user_bee = user;
-    }
-
-  public Garden(Butterfly user){
-    this.upper_bound = 3;
-    this.right_bound = 3;
-    this.fairyVillage = new FairyVillage("Fairy Village", user);
-    this.user_fly = user;
+    this.fairyVillage = new FairyVillage<T>("Fairy Village", user);
+    this.user = user;
     }
 
   public void checkLoc(){
@@ -31,7 +22,7 @@ public class Garden{
     //options of input
   }
 
-  public boolean play(Bumblebee user){
+  public boolean play(T user){
     Scanner in = new Scanner(System.in);
     String input = in.nextLine();
    
@@ -44,13 +35,13 @@ public class Garden{
 
   public static void main(String[] args) {
     System.out.println("intro");
-    Bumblebee user1 = new Bumblebee("Chloe");
-    Garden myGarden = new Garden(user1);
+    Bumblebee user = new Bumblebee("Chloe");
+    Garden<Bumblebee> myGarden = new Garden<>(user);
     //user input for what kind of character
     
     while(true){
       Boolean temp = false;
-      myGarden.play(user1);
+      myGarden.play(user);
       if(!temp){
         break;}
       }
