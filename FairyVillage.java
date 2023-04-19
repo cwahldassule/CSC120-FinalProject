@@ -1,6 +1,6 @@
 import java.util.Scanner;
 
-public class FairyVillage<T> extends Quest{
+public class FairyVillage<T extends Character> extends Quest{
     Scanner in;
     int where_x;
     int where_y;
@@ -168,7 +168,6 @@ public class FairyVillage<T> extends Quest{
     public static void main(String[] args) {
         Bumblebee me = new Bumblebee("Chloe");
         FairyVillage<Bumblebee> myVillage = new FairyVillage<Bumblebee>("Fairy Village", me);
-
         while(true){
             myVillage.play();}
     }

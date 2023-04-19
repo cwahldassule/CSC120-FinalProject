@@ -17,6 +17,9 @@ class Character{
     this.user_pos_y = 0;
   }
 
+public String getName(){
+  return this.name;
+}
   public void openBag(){
     System.out.println("Opening basket...");
     basket.sort(Comparator.naturalOrder());
