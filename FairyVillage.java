@@ -208,6 +208,8 @@ public class FairyVillage<T extends Character> extends Quest{
     }
     
     public boolean play(){
+        int og_x = where_x;
+        int og_y = where_y;
         System.out.println("Where would you like to go/do?");
         String input = in.nextLine().toUpperCase();
         if(input.equals("N")){
@@ -237,78 +239,80 @@ public class FairyVillage<T extends Character> extends Quest{
         else{
             throw new RuntimeException("That's not a valid option :/");
         }
-        if(where_x == 0 & where_y ==0){
-            System.out.println("You are at the front gate!");
-            System.out.println("Would you like to leave the Fairy Village?");
-            input = in.nextLine().toUpperCase();
-            if(input.equals("YES")){
-                return false;
+        if(og_x != where_x | og_y != where_y){
+            if(where_x == 0 & where_y ==0){
+                System.out.println("You are at the front gate!");
+                System.out.println("Would you like to leave the Fairy Village?");
+                input = in.nextLine().toUpperCase();
+                if(input.equals("YES")){
+                    return false;
+                }
+            }
+            else if(where_y <0 | where_x < left_bound | where_x > right_bound | where_y > upper_bound){
+                System.out.println("There's nothing here :0");
+                System.out.println("Would you like to leave the Fairy Village?");
+                input = in.nextLine().toUpperCase();
+                if(input.equals("YES")){
+                    return false;
+                }
+            }
+            else if(where_x == 0 & where_y == 1){
+                this.villageSquare();
+            }
+            else if(where_x == 0 & where_y == 2){
+                System.out.println("Welcome to the Potions Shop!");
+                this.potionsShop();
+                //mix gems for sunflowers
+            }
+            else if(where_x == 1 & where_y == 0){
+                System.out.println("Wow this is a nice cobblestone street!");
+            }
+            else if(where_x == 2 & where_y == 0){
+                System.out.println("Welcome to the Bakery!");
+                this.bakery();
+                //mix fruits for pearl
+            }
+            else if(where_x == -1 & where_y == 0){
+                System.out.println("Welcome to the Dress Shop!");
+                this.dressShop();
+                //mix flowers for strawberry
+            }
+            else if(where_x == -2 & where_y == 0){
+                System.out.println("Gosh this is a great view of the sunset!");
+            }
+            else if(where_x == -1 & where_y == 1){
+                System.out.println("Welcome to the Mirabel's Cottage!");
+                //useless chat bot
+            }
+            else if(where_x == -2 & where_y == 1){
+                System.out.println("Welcome to the Music Corner!");
+                this.musicCorner();
+            }
+            else if(where_x == 1 & where_y == 1){
+                System.out.println("Awww theres a cat napping in some flowers");
+            }
+            else if(where_x == 2 & where_y == 1){
+                System.out.println("Welcome to the Angel Fountain");
+                this.angelfountain();
+                //chat bot
+                //randomly gives 0.5 flight power
+            }
+            else if(where_x == -1 & where_y == 2){
+                System.out.println("A soft breeze is making some nearby windchimes play beautiful melody!");
+            }
+            else if(where_x == -2 & where_y == 2){
+                System.out.println("Welcome to Blaze's Cottage!");
+                this.blaze();
+            }
+            else if(where_x == 1 & where_y == 2){
+                System.out.println("Welcome to the Fairydust Inn!");
+                //fast sleep
+            }
+            else if(where_x == 2 & where_y == 2){
+                System.out.println("Welcome to Elida's Cottage!");
             }
         }
-        else if(where_y <0 | where_x < left_bound | where_x > right_bound | where_y > upper_bound){
-            System.out.println("There's nothing here :0");
-            System.out.println("Would you like to leave the Fairy Village?");
-            input = in.nextLine().toUpperCase();
-            if(input.equals("YES")){
-                return false;
-            }
-        }
-        else if(where_x == 0 & where_y == 1){
-            this.villageSquare();
-        }
-        else if(where_x == 0 & where_y == 2){
-            System.out.println("Welcome to the Potions Shop!");
-            this.potionsShop();
-            //mix gems for sunflowers
-        }
-        else if(where_x == 1 & where_y == 0){
-            System.out.println("Wow this is a nice cobblestone street!");
-        }
-        else if(where_x == 2 & where_y == 0){
-            System.out.println("Welcome to the Bakery!");
-            this.bakery();
-            //mix fruits for pearl
-        }
-        else if(where_x == -1 & where_y == 0){
-            System.out.println("Welcome to the Dress Shop!");
-            this.dressShop();
-            //mix flowers for strawberry
-        }
-        else if(where_x == -2 & where_y == 0){
-            System.out.println("Gosh this is a great view of the sunset!");
-        }
-        else if(where_x == -1 & where_y == 1){
-            System.out.println("Welcome to the Mirabel's Cottage!");
-            //useless chat bot
-        }
-        else if(where_x == -2 & where_y == 1){
-            System.out.println("Welcome to the Music Corner!");
-            this.musicCorner();
-        }
-        else if(where_x == 1 & where_y == 1){
-            System.out.println("Awww theres a cat napping in some flowers");
-        }
-        else if(where_x == 2 & where_y == 1){
-            System.out.println("Welcome to the Angel Fountain");
-            this.angelfountain();
-            //chat bot
-            //randomly gives 0.5 flight power
-        }
-        else if(where_x == -1 & where_y == 2){
-            System.out.println("A soft breeze is making some nearby windchimes play beautiful melody!");
-        }
-        else if(where_x == -2 & where_y == 2){
-            System.out.println("Welcome to Blaze's Cottage!");
-            this.blaze();
-        }
-        else if(where_x == 1 & where_y == 2){
-            System.out.println("Welcome to the Fairydust Inn!");
-            //fast sleep
-        }
-        else if(where_x == 2 & where_y == 2){
-            System.out.println("Welcome to Elida's Cottage!");
-        }
-        return true;
+        return true; 
     }
     
     public static void main(String[] args) {

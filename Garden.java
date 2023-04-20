@@ -41,7 +41,9 @@ public class Garden<T extends Character>{ //made abstract class so that any chil
     else if(input.equals("STATS")){
       user.stats();
     }
-
+    else if(input.equals("OPEN BASKET")){
+      user.openBag();
+    }
 
     if(og_x != user.pos_x | og_y != user.pos_y){
       if(user.pos_x < 0 | user.pos_y <0 | user.pos_x > right_bound | user.pos_y > upper_bound){
@@ -76,7 +78,7 @@ public class Garden<T extends Character>{ //made abstract class so that any chil
 
   public static void main(String[] args) {
     System.out.println("intro");
-    Bumblebee user = new Bumblebee("Chloe");
+    Bumblebee user = new Bumblebee("Bettie");
     Garden<Bumblebee> myGarden = new Garden<>(user);
     //user input for what kind of character
 
