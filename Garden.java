@@ -2,7 +2,7 @@ import java.util.Scanner;
 import java.util.ArrayList;
 
 public class Garden<T extends Character>{ //made abstract class so that any child class of character can be used without specifying which
-  FairyVillage<T> fairyVillage;
+  FairyVillage fairyVillage;
   T user;
   int upper_bound;
   int right_bound;
@@ -12,7 +12,7 @@ public class Garden<T extends Character>{ //made abstract class so that any chil
   public Garden(T user){
     this.upper_bound = 3;
     this.right_bound = 3;
-    this.fairyVillage = new FairyVillage<T>("Fairy Village", user);
+    this.fairyVillage = new FairyVillage("Fairy Village", user);
     this.user = user;
     }
 

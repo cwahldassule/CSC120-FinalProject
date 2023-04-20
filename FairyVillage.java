@@ -1,15 +1,15 @@
 import java.util.Scanner;
 
-public class FairyVillage<T extends Character> extends Quest{
+public class FairyVillage extends Quest{
     Scanner in;
     int where_x;
     int where_y;
     int left_bound;
     int right_bound;
     int upper_bound;
-    T user;
+    Character user;
 
-    public FairyVillage(String name, T user){
+    public FairyVillage(String name, Character user){
         super("Fairy Village", 3);
         this.in = new Scanner(System.in);
         this.where_x = 0;
@@ -152,7 +152,7 @@ public class FairyVillage<T extends Character> extends Quest{
         System.out.println("(Walking in the fairy village does not use flight power)");
     }
 
-    public Boolean finishQuest(T user){
+    public Boolean finishQuest(Character user){
         for(int i = 0; i<this.recipe.size(); i++){
             String item = this.recipe.get(i);
             for(int j = 0; j<user.basket.size(); j++){
@@ -317,7 +317,7 @@ public class FairyVillage<T extends Character> extends Quest{
     
     public static void main(String[] args) {
         Bumblebee me = new Bumblebee("Chloe");
-        FairyVillage<Bumblebee> myVillage = new FairyVillage<Bumblebee>("Fairy Village", me);
+        FairyVillage myVillage = new FairyVillage("Fairy Village", me);
 
         while(true){
             try{myVillage.play();}
