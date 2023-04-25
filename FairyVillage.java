@@ -34,7 +34,7 @@ public class FairyVillage extends Quest{
         if(input.equals("NO")){
             System.out.println("No I think you do...");
         }
-        System.out.println("At this moment in time whatith stuckith up my anusith");
+        System.out.println("If you have 82 diced watermelons and are moving at a velocity of 12.3 bluebirds per week, what is the circumfrence of the sun? ");
         String input1 = in.nextLine().toUpperCase();
         System.out.println("Sorry "+input1+" wrong :(");
         user.flight_power -= 2;
