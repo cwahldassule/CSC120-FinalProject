@@ -32,9 +32,9 @@ public class Garden{ //made abstract class so that any child class of character 
     System.out.println("\nWhat would you like to do?");
     String input = in.nextLine().toUpperCase();
     if(input.equals("FLY")){
-      System.out.println("What x coord would you like to fly to? (int only)");
+      System.out.println("x coord? (int only)");
       int x = in2.nextInt();
-      System.out.println("What y coord would you like to fly to? (int only)");
+      System.out.println("y coord? (int only)");
       int y = in2.nextInt();
       user.fly(x, y);
     }
@@ -42,7 +42,7 @@ public class Garden{ //made abstract class so that any child class of character 
       user.stats();
     }
     else if(input.equals("OPEN BASKET")){
-      user.openBag();
+      user.openBasket();
     }
     else if(input.equals("RECIPE")){
       if(fairyVillage.started){
@@ -63,6 +63,8 @@ public class Garden{ //made abstract class so that any child class of character 
     if(og_x != user.pos_x | og_y != user.pos_y){
       if(user.pos_x < 0 | user.pos_y <0 | user.pos_x > right_bound | user.pos_y > upper_bound){
         System.out.println("\nThere's nothing here :0 Sending you back... ");
+        user.pos_x = og_x;
+        user.pos_y = og_y;
       }
       else{
         if(user.pos_x == fairyVillage.loc_x & user.pos_y == fairyVillage.loc_y){

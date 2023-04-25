@@ -1,8 +1,9 @@
 
+import java.util.Scanner;
+
 public class Bumblebee extends Character {
-    private int flight_power;
-    private int flight_cap;
     private int basket_cap;
+    Scanner in = new Scanner(System.in);
 
     public Bumblebee(String name){
         super(name);
@@ -34,7 +35,6 @@ public class Bumblebee extends Character {
     public void fly(int x, int y) {
         float distance1 = (float)Math.pow(Math.pow(x, 2) + Math.pow(y, 2), 0.5);
         int distance = Math.round(distance1);
-        System.out.println(distance);
         if(flight_power >= distance){
             flight_power -= distance;
             this.pos_x = x;
@@ -48,8 +48,19 @@ public class Bumblebee extends Character {
             throw new RuntimeException("You are too tired to do that...");
         }
     }
+
+    public void grab(String item) {
+        if(basket.size() != basket_cap){
+            this.basket.add(item);
+            System.out.println( this.name + " has picked up: "+item+"\n");
+        }
+        else{
+            throw new RuntimeException("Basket is full :0");
+        }
+    }
+
     public void shake(){
-    System.out.println("You bumped into a tree and dropped a few items...");
+    System.out.println("\nYou bumped into a tree and dropped a few items...");
         Integer temp = Item.randNum(4) +1 ;
         if(basket.size() >= (temp)){
             for(int i = 0; i < temp; i++){
@@ -64,10 +75,14 @@ public class Bumblebee extends Character {
         }
     }
 
-    public void snack(String item) {
-        System.out.println("Munching on a yummy "+item+"...");
-        if(basket.contains(item)){
-            basket.remove(item);
+    public void snack() {
+        System.out.println("What would you like to snack on?");
+        this.openBasket();
+        String input = in.nextLine();
+        input = input.substring(0, 1).toUpperCase() + input.substring(1);
+        System.out.println("Munching on a yummy "+input+"...");
+        if(basket.contains(input)){
+            basket.remove(input);
             if(flight_power <= flight_cap){
                 flight_power += 3;}
             else{
@@ -93,7 +108,7 @@ public class Bumblebee extends Character {
     }
 
     public void empty() {
-        System.out.println("Emptying bag...");
+        System.out.println("\nEmptying bag...");
         basket.clear();
         this.print_stats();
     }

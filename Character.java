@@ -66,8 +66,8 @@ class Character{
   public String getName(){
     return this.name;
 }
-  public void openBag(){
-    System.out.println("Opening basket...");
+  public void openBasket(){
+    System.out.println("\nOpening basket...");
     basket.sort(Comparator.naturalOrder());
     if(!basket.isEmpty()){
     for(int i = 0; i<basket.size(); i++){
