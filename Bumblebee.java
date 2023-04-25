@@ -13,28 +13,45 @@ public class Bumblebee extends Character {
     }
     public void help(){
         System.out.println("Fly:");
-        System.out.println("\t+Choose the coords of where you want to go\n\t+possibility of loosing 1-4 items or flight power\n\t+loose 2 flight power");
+        System.out.println("\t+Choose the coords of where you want to go\n\t+possibility of loosing 1-4 items or flight power\n\t+loose flight power based on coords");
         System.out.println("Walk:");
         System.out.println("\t+Choose where you want to go\n\t+Lose 1 flight power");
         System.out.println("Snack:");
         System.out.println("\t+Eat 1 item to gain 3 flight power");
         System.out.println("Sleep:");
-        System.out.println("\t+Sleep for 20 seconds to reset flight power");
+        System.out.println("\t+Sleep for 10 seconds to reset flight power");
         System.out.println("Grow:");
         System.out.println("\t+Increase your size when you have completed a quest");
         System.out.println("\t+for each size up, flight cap increases by 10 and bag size is increased by 5");
-        System.out.println("Open Flower Bag:");
-        System.out.println("\t+Opens flower bag");
-        System.out.println("Empty Flower Bag:");
-        System.out.println("\t+Empties flower bag");
+        System.out.println("Open basket:");
+        System.out.println("\t+Opens basket");
+        System.out.println("Empty basket:");
+        System.out.println("\t+Empties basaket");
         System.out.println("Stats:");
         System.out.println("\tDisplays important character info");
     }
+
+    public void fly(int x, int y) {
+        float distance1 = (float)Math.pow(Math.pow(x, 2) + Math.pow(y, 2), 0.5);
+        int distance = Math.round(distance1);
+        System.out.println(distance);
+        if(flight_power >= distance){
+            flight_power -= distance;
+            this.pos_x = x;
+            this.pos_y = y;
+            Integer temp = Item.randNum(7);
+            if(temp == 0){
+                this.shake();
+            }
+        }
+        else{
+            throw new RuntimeException("You are too tired to do that...");
+        }
+    }
     public void shake(){
-    System.out.println("You bumped into a tree...");
+    System.out.println("You bumped into a tree and dropped a few items...");
         Integer temp = Item.randNum(4) +1 ;
         if(basket.size() >= (temp)){
-            System.out.println("Uh oh...dropping items...");
             for(int i = 0; i < temp; i++){
                 Integer temp1 = Item.randNum(basket.size());
                 System.out.println("You dropped "+basket.get(temp1));

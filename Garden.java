@@ -1,15 +1,15 @@
 import java.util.Scanner;
 import java.util.ArrayList;
 
-public class Garden<T extends Character>{ //made abstract class so that any child class of character can be used without specifying which
+public class Garden{ //made abstract class so that any child class of character can be used without specifying which
   FairyVillage fairyVillage;
-  T user;
+  Character user;
   int upper_bound;
   int right_bound;
   Scanner in = new Scanner(System.in);
   Scanner in2 = new Scanner(System.in);
 
-  public Garden(T user){
+  public Garden(Character user){
     this.upper_bound = 3;
     this.right_bound = 3;
     this.fairyVillage = new FairyVillage("Fairy Village", user);
@@ -25,8 +25,8 @@ public class Garden<T extends Character>{ //made abstract class so that any chil
     //options of input
   }
 
-  public boolean play(T user){
-    System.out.println("Fairy Village "+fairyVillage.loc_x+fairyVillage.loc_y);
+  public boolean play(Character user){
+    System.out.println("Fairy Village "+fairyVillage.loc_x+fairyVillage.loc_y); //testing
     int og_x = user.pos_x;
     int og_y = user.pos_y;
     System.out.println("\nWhat would you like to do?");
@@ -43,6 +43,21 @@ public class Garden<T extends Character>{ //made abstract class so that any chil
     }
     else if(input.equals("OPEN BASKET")){
       user.openBag();
+    }
+    else if(input.equals("RECIPE")){
+      if(fairyVillage.started){
+        fairyVillage.printRecipe();
+      }
+    }
+    else if(input.equals("SNACK")){
+      user.snack();
+    }
+    
+    else if(input.equals("HELP")){
+      user.help();
+    }
+    else if(input.equals("SLEEP")){
+      user.sleep(10000);
     }
 
     if(og_x != user.pos_x | og_y != user.pos_y){
@@ -79,11 +94,16 @@ public class Garden<T extends Character>{ //made abstract class so that any chil
   public static void main(String[] args) {
     System.out.println("intro");
     Bumblebee user = new Bumblebee("Bettie");
-    Garden<Bumblebee> myGarden = new Garden<>(user);
+    Garden myGarden = new Garden(user);
     //user input for what kind of character
 
     while(true){
-      myGarden.play(user);
+      try{
+        myGarden.play(user);
+      }catch(Exception e){
+        System.out.println(e.getMessage());
+      }
+      
       System.out.println("----------------------------------------------------------");
       }
     }

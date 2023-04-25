@@ -20,23 +20,70 @@ public class FairyVillage extends Quest{
         this.user = user;
     }
 
-
-    public void angelfountain(){
+    public void elida(){
+        Chatbot elida = new Chatbot("Elida");
+        String[] elida_talk = new String[]{"I have to clean up this mess!", "So many pots and pans everywhere", 
+        "I can't remember where I put my teapot", "It's spring cleaning time", "ahh I lost my crystal ball again",
+        "Avert your eyes!! my house is so messy", "One day this house will be clean..."};
+        elida.play(elida_talk);
         int num = Item.randNum(4);
         if(num == 0){
+            System.out.println("Elida: wait before you go have some of this old chocolate to boost your energy");
+            System.out.println("\t+1 flight power");
             user.flight_power += 1;
         }
     }
 
+    public void fairyInn(){
+        System.out.println("If you're feeling tired you can sleep here in our cozy rooms");
+        System.out.println("Would you like to sleep?\n\t+Yes\n\t+No");
+        String input = in.nextLine().toUpperCase();
+        if(input.equals("YES")){
+            user.sleep(5000);
+        }
+        else if(input.equals("NO")){
+            System.out.println("Okay :(");
+        }
+        else{
+            throw new RuntimeException("Not a valid option :/");
+        }
+    }
+
+    public void angelfountain(){
+        String[] gossip = new String[]{"Did you hear about Nadia??",
+        "I heard they found him three days later", "I wonder what they're going to do now", "Well I think he deserved it",
+        "Crazy that something like that would happen here", "I wonder how long it had been going on", "Did they ever find it?", 
+        "Well life is certainly going to be different now"};
+        int num = Item.randNum(4);
+        int num2 = Item.randNum(gossip.length);
+        while(true){
+            int num3 = Item.randNum(gossip.length);
+            if(num3 != num2){
+                break;
+            }
+        }
+        System.out.println("Fountain Fiaries: "+gossip[num]);
+        System.out.println("Fountain Fiaries: "+gossip[num2]);
+        System.out.println("\nThe fairies at the fountain notice you listening...");
+        if(num == 0){
+            System.out.println("Fountain fairies: Hello! You seem like a nice young bug, have some caramels for energy");
+            System.out.println("\t+1 Flight power");
+            user.flight_power += 1;
+        }
+        else{
+            System.out.println("Fountain fairies: Shoo it's not nice to eavesdrop");
+        }
+    }
+
     public void blaze(){
-        System.out.println("Hey! Do you want to play a game?");
+        System.out.println("Blaze: Hey! Do you want to play a game?");
         String input = in.nextLine().toUpperCase();
         if(input.equals("NO")){
-            System.out.println("No I think you do...");
+            System.out.println("Blaze: No I think you do...");
         }
-        System.out.println("If you have 82 diced watermelons and are moving at a velocity of 12.3 bluebirds per week, what is the circumfrence of the sun? ");
+        System.out.println("Blaze: If you have 82 diced watermelons and are moving at a velocity of 12.3 bluebirds per week, what is the circumfrence of the sun? ");
         String input1 = in.nextLine().toUpperCase();
-        System.out.println("Sorry "+input1+" wrong :(");
+        System.out.println("Blaze: Sorry '"+input1+"' wrong :(");
         user.flight_power -= 2;
         System.out.println("\t-2 Flight power");
 
@@ -180,7 +227,7 @@ public class FairyVillage extends Quest{
     }
     
       public void villageSquare(){
-        if(this.started){
+        if(this.started | this.complete){
             System.out.println("\nWelcome back to the Village Square!");
             this.finishQuest(user);
         
@@ -228,13 +275,16 @@ public class FairyVillage extends Quest{
             user.stats();
         }
         else if(input.equals("SLEEP")){
-            //user.sleep();
+            user.sleep(10000);
         }
         else if(input.equals("QUEST")){
             this.printRecipe();
         }
         else if(input.equals("OPEN BASKET")){
             user.openBag();
+        }
+        else if(input.equals("SNACK")){
+            user.snack();
         }
         else{
             throw new RuntimeException("That's not a valid option :/");
@@ -250,11 +300,9 @@ public class FairyVillage extends Quest{
             }
             else if(where_y <0 | where_x < left_bound | where_x > right_bound | where_y > upper_bound){
                 System.out.println("There's nothing here :0");
-                System.out.println("Would you like to leave the Fairy Village?");
-                input = in.nextLine().toUpperCase();
-                if(input.equals("YES")){
-                    return false;
-                }
+                System.out.println("Sending you back...");
+                where_x = og_x;
+                where_y = og_y;
             }
             else if(where_x == 0 & where_y == 1){
                 this.villageSquare();
@@ -282,7 +330,7 @@ public class FairyVillage extends Quest{
             }
             else if(where_x == -1 & where_y == 1){
                 System.out.println("Welcome to the Mirabel's Cottage!");
-                String [] Mirabel = new String[]{"OOps, my muffins are burning", "I like flowers  :p", "Oh dear :0", "You have really shiny hair"};
+                String [] Mirabel = new String[]{"OOps, my muffins are burning", "I like flowers  :p", "Oh dear :0", "You have really shiny hair", "thats...interesting..."};
                 Chatbot myBot = new Chatbot("Mirabel");
                 myBot.play(Mirabel);
             }
@@ -296,11 +344,10 @@ public class FairyVillage extends Quest{
             else if(where_x == 2 & where_y == 1){
                 System.out.println("Welcome to the Angel Fountain");
                 this.angelfountain();
-                //chat bot
                 //randomly gives 0.5 flight power
             }
             else if(where_x == -1 & where_y == 2){
-                System.out.println("A soft breeze is making some nearby windchimes play beautiful melody!");
+                System.out.println("A soft breeze is making some nearby windchimes play a beautiful melody!");
             }
             else if(where_x == -2 & where_y == 2){
                 System.out.println("Welcome to Blaze's Cottage!");
@@ -308,10 +355,12 @@ public class FairyVillage extends Quest{
             }
             else if(where_x == 1 & where_y == 2){
                 System.out.println("Welcome to the Fairydust Inn!");
-                //fast sleep
+                this.fairyInn();
+
             }
             else if(where_x == 2 & where_y == 2){
                 System.out.println("Welcome to Elida's Cottage!");
+                this.elida();
             }
         }
         return true; 
