@@ -2,21 +2,21 @@ import java.util.Scanner;
 import java.util.Arrays;
 
 public class Chatbot {
-    static String[] Mirabel;
-    Scanner in;
+    static Scanner in;
+    String name;
     
-    public Chatbot(){
-        Mirabel = new String[]{"OOps, my muffins are burning", "I like flowers  :p", "Oh dear :0"};
+    public Chatbot(String name){
         in = new Scanner(System.in);
+        this.name = name;
     }
 
     public void printRes(String[] npc){
         int num = Item.randNum(npc.length);
-        System.out.println(npc[num]);
+        System.out.println(name+": "+npc[num]);
     }
 
     public void play(String[] npc){
-        System.out.println("Hi there! How are you today?");
+        System.out.println(name+": Hi there! How are you today?");
         while(true){
             String og_input = in.nextLine().toUpperCase();
             String[] input_array = og_input.split(" ");
@@ -62,12 +62,13 @@ public class Chatbot {
             }
             else{
                 res = res.toLowerCase();
-                System.out.println(res+"?");
+                System.out.println(name+": "+res+"?");
             }
         }
     }
     public static void main(String[] args) {
-        Chatbot myBot = new Chatbot();
+        Chatbot myBot = new Chatbot("Mirabel");
+        String [] Mirabel = new String[]{"OOps, my muffins are burning", "I like flowers  :p", "Oh dear :0", "You have really shiny hair"};
         myBot.play(Mirabel);
     }
 }

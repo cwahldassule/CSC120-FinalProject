@@ -282,7 +282,9 @@ public class FairyVillage extends Quest{
             }
             else if(where_x == -1 & where_y == 1){
                 System.out.println("Welcome to the Mirabel's Cottage!");
-                //useless chat bot
+                String [] Mirabel = new String[]{"OOps, my muffins are burning", "I like flowers  :p", "Oh dear :0", "You have really shiny hair"};
+                Chatbot myBot = new Chatbot("Mirabel");
+                myBot.play(Mirabel);
             }
             else if(where_x == -2 & where_y == 1){
                 System.out.println("Welcome to the Music Corner!");
