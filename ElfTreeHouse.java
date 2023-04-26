@@ -5,6 +5,7 @@ import javax.lang.model.util.ElementScanner14;
 import java.util.ArrayList;
 import java.util.Random;
 
+//boo
 public class ElfTreeHouse extends Quest{
     Scanner in;
     int where_x;
