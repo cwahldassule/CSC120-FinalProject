@@ -1,6 +1,5 @@
 import java.util.Scanner;
 
-import javax.lang.model.util.ElementScanner14;
 
 import java.util.ArrayList;
 import java.util.Random;
@@ -378,6 +377,7 @@ public class ElfTreeHouse extends Quest{
                 throw new RuntimeException("That's not a valid option :/");
             }
             if(og_x != where_x | og_y != where_y){
+                System.out.println("ENTERED");
                 if(where_x == 0 & where_y ==0){
                     System.out.println("You are at the base of the treehouse.");
                     System.out.println("Would you like to leave the Elf Treehouse?");

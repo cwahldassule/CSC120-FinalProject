@@ -4,6 +4,7 @@ import java.util.ArrayList;
 public class Garden{ //made abstract class so that any child class of character can be used without specifying which
   FairyVillage fairyVillage;
   FireflyPond fireflyPond;
+  ElfTreeHouse treeHouse;
   Character user;
   int upper_bound;
   int right_bound;
@@ -15,6 +16,7 @@ public class Garden{ //made abstract class so that any child class of character 
     this.right_bound = 3;
     this.fairyVillage = new FairyVillage("Fairy Village", 3, user);
     this.fireflyPond = new FireflyPond();
+    this.treeHouse = new ElfTreeHouse("Elf TreeHouse", user);
     boolean temp = true;
     while(temp){
       temp = this.checkLoc();
@@ -23,7 +25,7 @@ public class Garden{ //made abstract class so that any child class of character 
     this.user = user;
     }
 
-  public boolean checkLoc(){
+  public boolean checkLoc(){ //check tree house
     if(fairyVillage.loc_x == fireflyPond.loc_x  &
      fairyVillage.loc_y == fireflyPond.loc_y){
       fireflyPond.loc_x = Item.randNum(4);
@@ -42,6 +44,7 @@ public class Garden{ //made abstract class so that any child class of character 
   public boolean play(Character user){
     System.out.println("Fairy Village "+fairyVillage.loc_x+fairyVillage.loc_y); //testing
     System.out.println("Firefly Pond "+fireflyPond.loc_x+fireflyPond.loc_y); //testing
+    System.out.println("Treehouse: "+ treeHouse.where_x +treeHouse.where_y );
     int og_x = user.pos_x;
     int og_y = user.pos_y;
     System.out.println("\nWhat would you like to do?");
@@ -96,6 +99,18 @@ public class Garden{ //made abstract class so that any child class of character 
               }catch(Exception e){System.out.println(e.getMessage());}
             }
         }
+
+        if(user.pos_x == treeHouse.loc_x & user.pos_y == treeHouse.loc_y){
+          while(true){
+            try{
+              Boolean temp = treeHouse.play();
+                if(!temp){
+                  break;
+                }
+            }catch(Exception e){System.out.println(e.getMessage());}
+          }
+      }
+
         else{
           System.out.println("\nYou've stumbled upon " +Item.randLocation());
           int temp = Item.randNum(3)+1;
@@ -135,6 +150,19 @@ public class Garden{ //made abstract class so that any child class of character 
     }
     else if(input.equals("BUTTERFLY")){
       Character user = new Butterfly(name);
+      Garden myGarden = new Garden(user);
+      while(true){
+        try{
+          myGarden.play(user);
+        }catch(Exception e){
+          System.out.println(e.getMessage());
+        }
+        System.out.println("----------------------------------------------------------");
+        }
+    }
+
+    else if(input.equals("LADYBUG")){
+      Character user = new LadyBug(name);
       Garden myGarden = new Garden(user);
       while(true){
         try{
