@@ -1,40 +1,55 @@
 import java.util.Scanner;
 import java.util.ArrayList;
 
-public class Garden<T extends Character>{ //made abstract class so that any child class of character can be used without specifying which
+public class Garden{ //made abstract class so that any child class of character can be used without specifying which
   FairyVillage fairyVillage;
-  T user;
+  FireflyPond fireflyPond;
+  Character user;
   int upper_bound;
   int right_bound;
   Scanner in = new Scanner(System.in);
   Scanner in2 = new Scanner(System.in);
 
-  public Garden(T user){
+  public Garden(Character user){
     this.upper_bound = 3;
     this.right_bound = 3;
-    this.fairyVillage = new FairyVillage("Fairy Village", user);
+    this.fairyVillage = new FairyVillage("Fairy Village", 3, user);
+    this.fireflyPond = new FireflyPond();
+    boolean temp = true;
+    while(temp){
+      temp = this.checkLoc();
+    }
+    
     this.user = user;
     }
 
-  public void checkLoc(){
-
-    
+  public boolean checkLoc(){
+    if(fairyVillage.loc_x == fireflyPond.loc_x  &
+     fairyVillage.loc_y == fireflyPond.loc_y){
+      fireflyPond.loc_x = Item.randNum(4);
+      fireflyPond.loc_y = Item.randNum(4);
+      return true;
+    }
+    else{
+      return false;
+    }
   }
 
   public void showOptions(){
     //options of input
   }
 
-  public boolean play(T user){
-    System.out.println("Fairy Village "+fairyVillage.loc_x+fairyVillage.loc_y);
+  public boolean play(Character user){
+    System.out.println("Fairy Village "+fairyVillage.loc_x+fairyVillage.loc_y); //testing
+    System.out.println("Firefly Pond "+fireflyPond.loc_x+fireflyPond.loc_y); //testing
     int og_x = user.pos_x;
     int og_y = user.pos_y;
     System.out.println("\nWhat would you like to do?");
     String input = in.nextLine().toUpperCase();
     if(input.equals("FLY")){
-      System.out.println("What x coord would you like to fly to? (int only)");
+      System.out.println("x coord? (int only)");
       int x = in2.nextInt();
-      System.out.println("What y coord would you like to fly to? (int only)");
+      System.out.println("y coord? (int only)");
       int y = in2.nextInt();
       user.fly(x, y);
     }
@@ -42,12 +57,32 @@ public class Garden<T extends Character>{ //made abstract class so that any chil
       user.stats();
     }
     else if(input.equals("OPEN BASKET")){
-      user.openBag();
+      user.openBasket();
+    }
+    else if(input.equals("EMPTY BASKET")){
+      user.empty();
+    }
+    else if(input.equals("RECIPE")){
+      if(fairyVillage.started){
+        fairyVillage.printRecipe();
+      }
+    }
+    else if(input.equals("SNACK")){
+      user.snack();
+    }
+    
+    else if(input.equals("HELP")){
+      user.help();
+    }
+    else if(input.equals("SLEEP")){
+      user.sleep(10000);
     }
 
     if(og_x != user.pos_x | og_y != user.pos_y){
       if(user.pos_x < 0 | user.pos_y <0 | user.pos_x > right_bound | user.pos_y > upper_bound){
         System.out.println("\nThere's nothing here :0 Sending you back... ");
+        user.pos_x = og_x;
+        user.pos_y = og_y;
       }
       else{
         if(user.pos_x == fairyVillage.loc_x & user.pos_y == fairyVillage.loc_y){
@@ -77,14 +112,43 @@ public class Garden<T extends Character>{ //made abstract class so that any chil
   }
 
   public static void main(String[] args) {
-    System.out.println("intro");
-    Bumblebee user = new Bumblebee("Bettie");
-    Garden<Bumblebee> myGarden = new Garden<>(user);
+    System.out.println("\t\tWelcome to the garden!");
+    System.out.println("\t\tFly around to explore and pick up objects!");
+    System.out.println("\t\t(if you are ever confused, type 'help' for options)");
+    System.out.println("\nWhat character would you like to be?");
+    System.out.println("\t+Bumblebee\n\t+Butterfly\n\t+Ladybug");
+    Scanner in2 = new Scanner(System.in);
+    String input = in2.nextLine().toUpperCase();
+    System.out.println("What would you like your name to be?");
+    String name = in2.nextLine();
+    if(input.equals("BUMBLEBEE")){
+      Character user = new Bumblebee(name);
+      Garden myGarden = new Garden(user);
+      while(true){
+        try{
+          myGarden.play(user);
+        }catch(Exception e){
+          System.out.println(e.getMessage());
+        }
+        System.out.println("----------------------------------------------------------");
+        }
+    }
+    else if(input.equals("BUTTERFLY")){
+      Character user = new Butterfly(name);
+      Garden myGarden = new Garden(user);
+      while(true){
+        try{
+          myGarden.play(user);
+        }catch(Exception e){
+          System.out.println(e.getMessage());
+        }
+        System.out.println("----------------------------------------------------------");
+        }
+    }
+    
+    
     //user input for what kind of character
 
-    while(true){
-      myGarden.play(user);
-      System.out.println("----------------------------------------------------------");
-      }
+
     }
 }

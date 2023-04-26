@@ -21,6 +21,11 @@ public class Quest{
         }
       }
     }
+
+    public void help(){
+      throw new RuntimeException("Not a valid option :/");
+    }
+    
     public boolean checkLoc(){
       if(loc_x == 0 & loc_y == 0){
         return false;
