@@ -12,11 +12,21 @@ public class Quest{
       this.name = name;
       Item myItem = new Item();
       this.recipe = myItem.recipe(size);
-      this.loc_x = Item.randNum(2);
-      this.loc_y = Item.randNum(2); 
       this.complete = false;
+      while(true){
+        this.loc_x = Item.randNum(4);
+        this.loc_y = Item.randNum(4); 
+        if(this.checkLoc()){
+          break;
+        }
+      }
     }
-  
+    public boolean checkLoc(){
+      if(loc_x == 0 & loc_y == 0){
+        return false;
+      }
+      return true;
+    }
     public void printRecipe(){
       System.out.println("Quest items:");
       for(int i = 0; i<recipe.size(); i++){
