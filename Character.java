@@ -37,7 +37,11 @@ class Character{
   }
 
   public void grow(){
-    throw new RuntimeException("Not set up yet");
+    this.size += 1;
+  }
+
+  public void empty(){
+    this.basket.clear();
   }
 
   public void shake(){

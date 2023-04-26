@@ -13,7 +13,7 @@ public class Bumblebee extends Character {
 
     }
     public void help(){
-        System.out.println("Fly:");
+        System.out.println("\nFly:");
         System.out.println("\t+Choose the coords of where you want to go\n\t+possibility of loosing 1-4 items or flight power\n\t+loose flight power based on coords");
         System.out.println("Walk:");
         System.out.println("\t+Choose where you want to go\n\t+Lose 1 flight power");
@@ -111,6 +111,12 @@ public class Bumblebee extends Character {
         basket.clear();
         this.print_stats();
     }
+
+    public void grow(){
+        this.basket_cap += 5;
+        this.flight_cap += 5;
+        this.size += 1;
+      }
 
     public void print_stats(){
         System.out.println("\tName: " + this.name);

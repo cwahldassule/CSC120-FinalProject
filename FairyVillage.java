@@ -20,6 +20,23 @@ public class FairyVillage extends Quest{
         this.user = user;
     }
 
+    public void help(){
+        System.out.println("\nOptions: ");
+        System.out.println("Walk directions:");
+        System.out.println("\t+N, E, S, W");
+        System.out.println("Stats:");
+        System.out.println("\t+Character stats");
+        System.out.println("Sleep:");
+        System.out.println("\t+Sleep for 10 seconds and reset flight power");
+        System.out.println("Recipe:");
+        System.out.println("\t+See quest items");
+        System.out.println("\tOpen Basket:");
+        System.out.println("\t+Opens Basket");
+        System.out.println("Empty Basket:");
+        System.out.println("\t+Empties Basket");
+        System.out.println("Snack:");
+        System.out.println("\t+Eat 1 item for 3 flight power");
+    }
     public void elida(){
         System.out.println("\n**Elida is ding a little spring cleaning...**\n");
         Chatbot elida = new Chatbot("Elida");
@@ -217,7 +234,7 @@ public class FairyVillage extends Quest{
         System.out.println("\nThank you for collecting all the items!");
         this.complete = true;
         this.started = false;
-        user.size += 1;
+        user.grow();
         user.quest_complete += 1;
         return true;
         }
@@ -280,6 +297,9 @@ public class FairyVillage extends Quest{
         else if(input.equals("STATS")){
             user.stats();
         }
+        else if(input.equals("HELP")){
+            this.help();
+        }
         else if(input.equals("SLEEP")){
             user.sleep(10000);
         }
@@ -288,6 +308,9 @@ public class FairyVillage extends Quest{
         }
         else if(input.equals("OPEN BASKET")){
             user.openBasket();
+        }
+        else if(input.equals("EMPTY BASKET")){
+            user.empty();
         }
         else if(input.equals("SNACK")){
             user.snack();

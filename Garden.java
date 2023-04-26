@@ -44,6 +44,9 @@ public class Garden{ //made abstract class so that any child class of character 
     else if(input.equals("OPEN BASKET")){
       user.openBasket();
     }
+    else if(input.equals("EMPTY BASKET")){
+      user.empty();
+    }
     else if(input.equals("RECIPE")){
       if(fairyVillage.started){
         fairyVillage.printRecipe();
@@ -96,6 +99,7 @@ public class Garden{ //made abstract class so that any child class of character 
   public static void main(String[] args) {
     System.out.println("\t\tWelcome to the garden!");
     System.out.println("\t\tFly around to explore and pick up objects!");
+    System.out.println("\t\t(if you are ever confused, type 'help' for options)");
     System.out.println("\nWhat character would you like to be?");
     System.out.println("\t+Bumblebee\n\t+Butterfly\n\t+Ladybug");
     Scanner in2 = new Scanner(System.in);
