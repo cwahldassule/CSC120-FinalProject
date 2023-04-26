@@ -44,7 +44,7 @@ public class Garden{ //made abstract class so that any child class of character 
   public boolean play(Character user){
     System.out.println("Fairy Village "+fairyVillage.loc_x+fairyVillage.loc_y); //testing
     System.out.println("Firefly Pond "+fireflyPond.loc_x+fireflyPond.loc_y); //testing
-    System.out.println("Treehouse: "+ treeHouse.where_x +treeHouse.where_y );
+    System.out.println("Treehouse: "+ treeHouse.loc_x +treeHouse.loc_y );
     int og_x = user.pos_x;
     int og_y = user.pos_y;
     System.out.println("\nWhat would you like to do?");
