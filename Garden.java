@@ -103,10 +103,10 @@ public class Garden{ //made abstract class so that any child class of character 
     System.out.println("What would you like your name to be?");
     String name = in2.nextLine();
     if(input.equals("BUMBLEBEE")){
-      Bumblebee user = new Bumblebee(name);
+      Character user = new Bumblebee(name);
+      Garden myGarden = new Garden(user);
       while(true){
         try{
-          Garden myGarden = new Garden(user);
           myGarden.play(user);
         }catch(Exception e){
           System.out.println(e.getMessage());
@@ -114,11 +114,11 @@ public class Garden{ //made abstract class so that any child class of character 
         System.out.println("----------------------------------------------------------");
         }
     }
-    else if(input.equals("BUTTERFLLY")){
-      Butterfly user = new Butterfly(name);
+    else if(input.equals("BUTTERFLY")){
+      Character user = new Butterfly(name);
+      Garden myGarden = new Garden(user);
       while(true){
         try{
-          Garden myGarden = new Garden(user);
           myGarden.play(user);
         }catch(Exception e){
           System.out.println(e.getMessage());
@@ -126,22 +126,10 @@ public class Garden{ //made abstract class so that any child class of character 
         System.out.println("----------------------------------------------------------");
         }
     }
-    else if(input.equals("LADYBUG")){ 
-      Bumblebee user = new Bumblebee(name); //chance to ladybug when ready
-      while(true){
-        try{
-          Garden myGarden = new Garden(user);
-          myGarden.play(user);
-        }catch(Exception e){
-          System.out.println(e.getMessage());
-        }
-        System.out.println("----------------------------------------------------------");
-        }
-    }
-    else{
-      throw new RuntimeException("Not a valid option :/");
-    }
-
     
+    
+    //user input for what kind of character
+
+
     }
 }
