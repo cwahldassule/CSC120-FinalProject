@@ -21,13 +21,12 @@ public class Bumblebee extends Character {
         System.out.println("\t+Eat 1 item to gain 3 flight power");
         System.out.println("Sleep:");
         System.out.println("\t+Sleep for 10 seconds to reset flight power");
-        System.out.println("Grow:");
-        System.out.println("\t+Increase your size when you have completed a quest");
-        System.out.println("\t+for each size up, flight cap increases by 10 and bag size is increased by 5");
         System.out.println("Open basket:");
         System.out.println("\t+Opens basket");
         System.out.println("Empty basket:");
         System.out.println("\t+Empties basaket");
+        System.out.println("Recipe");
+        System.out.println("\t+Shows needed Quest Items");
         System.out.println("Stats:");
         System.out.println("\tDisplays important character info");
     }

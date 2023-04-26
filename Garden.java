@@ -94,19 +94,54 @@ public class Garden{ //made abstract class so that any child class of character 
   }
 
   public static void main(String[] args) {
-    System.out.println("intro");
-    Bumblebee user = new Bumblebee("Bettie");
-    Garden myGarden = new Garden(user);
-    //user input for what kind of character
+    System.out.println("\t\tWelcome to the garden!");
+    System.out.println("\t\tFly around to explore and pick up objects!");
+    System.out.println("\nWhat character would you like to be?");
+    System.out.println("\t+Bumblebee\n\t+Butterfly\n\t+Ladybug");
+    Scanner in2 = new Scanner(System.in);
+    String input = in2.nextLine().toUpperCase();
+    System.out.println("What would you like your name to be?");
+    String name = in2.nextLine();
+    if(input.equals("BUMBLEBEE")){
+      Bumblebee user = new Bumblebee(name);
+      while(true){
+        try{
+          Garden myGarden = new Garden(user);
+          myGarden.play(user);
+        }catch(Exception e){
+          System.out.println(e.getMessage());
+        }
+        System.out.println("----------------------------------------------------------");
+        }
+    }
+    else if(input.equals("BUTTERFLLY")){
+      Butterfly user = new Butterfly(name);
+      while(true){
+        try{
+          Garden myGarden = new Garden(user);
+          myGarden.play(user);
+        }catch(Exception e){
+          System.out.println(e.getMessage());
+        }
+        System.out.println("----------------------------------------------------------");
+        }
+    }
+    else if(input.equals("LADYBUG")){ 
+      Bumblebee user = new Bumblebee(name); //chance to ladybug when ready
+      while(true){
+        try{
+          Garden myGarden = new Garden(user);
+          myGarden.play(user);
+        }catch(Exception e){
+          System.out.println(e.getMessage());
+        }
+        System.out.println("----------------------------------------------------------");
+        }
+    }
+    else{
+      throw new RuntimeException("Not a valid option :/");
+    }
 
-    while(true){
-      try{
-        myGarden.play(user);
-      }catch(Exception e){
-        System.out.println(e.getMessage());
-      }
-      
-      System.out.println("----------------------------------------------------------");
-      }
+    
     }
 }

@@ -283,7 +283,7 @@ public class FairyVillage extends Quest{
         else if(input.equals("SLEEP")){
             user.sleep(10000);
         }
-        else if(input.equals("QUEST")){
+        else if(input.equals("RECIPE")){
             this.printRecipe();
         }
         else if(input.equals("OPEN BASKET")){
