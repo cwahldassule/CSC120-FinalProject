@@ -3,6 +3,7 @@ import java.util.ArrayList;
 
 public class Garden{ //made abstract class so that any child class of character can be used without specifying which
   FairyVillage fairyVillage;
+  FireflyPond fireflyPond;
   Character user;
   int upper_bound;
   int right_bound;
@@ -13,12 +14,25 @@ public class Garden{ //made abstract class so that any child class of character 
     this.upper_bound = 3;
     this.right_bound = 3;
     this.fairyVillage = new FairyVillage("Fairy Village", user);
+    this.fireflyPond = new FireflyPond();
+    boolean temp = true;
+    while(temp){
+      temp = this.checkLoc();
+    }
+    
     this.user = user;
     }
 
-  public void checkLoc(){
-
-    
+  public boolean checkLoc(){
+    if(fairyVillage.loc_x == fireflyPond.loc_x  &
+     fairyVillage.loc_y == fireflyPond.loc_y){
+      fireflyPond.loc_x = Item.randNum(4);
+      fireflyPond.loc_y = Item.randNum(4);
+      return true;
+    }
+    else{
+      return false;
+    }
   }
 
   public void showOptions(){
@@ -27,6 +41,7 @@ public class Garden{ //made abstract class so that any child class of character 
 
   public boolean play(Character user){
     System.out.println("Fairy Village "+fairyVillage.loc_x+fairyVillage.loc_y); //testing
+    System.out.println("Firefly Pond "+fireflyPond.loc_x+fireflyPond.loc_y); //testing
     int og_x = user.pos_x;
     int og_y = user.pos_y;
     System.out.println("\nWhat would you like to do?");

@@ -22,6 +22,6 @@ public class FireflyPond extends Quest {
 
     public static void main(String[] args) {
         FireflyPond myPond = new FireflyPond();
-        System.out.println(butter.flight_power);
+        //System.out.println(butter.flight_power);
      }
 }
