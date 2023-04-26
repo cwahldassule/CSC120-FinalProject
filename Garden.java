@@ -13,7 +13,7 @@ public class Garden{ //made abstract class so that any child class of character 
   public Garden(Character user){
     this.upper_bound = 3;
     this.right_bound = 3;
-    this.fairyVillage = new FairyVillage("Fairy Village", user);
+    this.fairyVillage = new FairyVillage("Fairy Village", 3, user);
     this.fireflyPond = new FireflyPond();
     boolean temp = true;
     while(temp){

@@ -9,8 +9,8 @@ public class FairyVillage extends Quest{
     int upper_bound;
     Character user;
 
-    public FairyVillage(String name, Character user){
-        super("Fairy Village", 3);
+    public FairyVillage(String name, int size, Character user){
+        super(name, size);
         this.in = new Scanner(System.in);
         this.where_x = 0;
         this.where_y = 0;
@@ -397,7 +397,7 @@ public class FairyVillage extends Quest{
     
     public static void main(String[] args) {
         Bumblebee me = new Bumblebee("Chloe");
-        FairyVillage myVillage = new FairyVillage("Fairy Village", me);
+        FairyVillage myVillage = new FairyVillage("Fairy Village", 3, me);
 
         while(true){
             try{myVillage.play();}
