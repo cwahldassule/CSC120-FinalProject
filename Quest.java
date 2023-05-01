@@ -33,10 +33,16 @@ public class Quest{
       return true;
     }
     public void printRecipe(){
-      System.out.println("Quest items:");
-      for(int i = 0; i<recipe.size(); i++){
-        System.out.println("\t+"+recipe.get(i));
+      if(this.started){
+        System.out.println("Quest items:");
+        for(int i = 0; i<recipe.size(); i++){
+          System.out.println("\t+"+recipe.get(i));
+        }
       }
+      else{
+        throw new RuntimeException("You're already working on another quest...");
+      }
+      
     }
     public static void main(String[] args) {
       Quest myQuest = new Quest("wow!", 3);

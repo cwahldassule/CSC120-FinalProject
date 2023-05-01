@@ -262,8 +262,8 @@ public class FairyVillage extends Quest{
             String input = in.nextLine().toUpperCase();
             if(input.equals("YES")){
                 System.out.println("\nWonderful! Heres the list of items they need:");
-                this.printRecipe();
                 this.started = true;
+                this.printRecipe();  
             }
             else if(input.equals("NO")){
                 System.out.println("\nOkay :(");

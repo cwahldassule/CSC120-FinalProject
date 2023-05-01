@@ -52,10 +52,10 @@ public class ElfTreeHouse extends Quest{
                 System.out.println("In the ElfTreehouse you will find: \n\t Gem: Emerald \n\t Flower: Peony \n\t Fruit: Blackberry ");
                 //Chloe added the next few lines - pls check
                 if(!this.complete & !user.busy){
-                    System.out.println("Here is your treehouse quest:");
-                    this.printRecipe();
                     this.started = true;
                     user.busy = true;
+                    System.out.println("Here is your treehouse quest:");
+                    this.printRecipe();
                 }
             }
             else if (open_close ==1){
@@ -407,7 +407,8 @@ public class ElfTreeHouse extends Quest{
                 this.printRecipe();
             }
             else if(input.equals("OPEN BASKET")){
-                user.examine("FIXME");
+                user.openBasket();
+                //user.examine("FIXME");
             }
             else{
                 throw new RuntimeException("That's not a valid option :/");
@@ -419,6 +420,7 @@ public class ElfTreeHouse extends Quest{
                 if(where_x == 0 & where_y ==0){
                     System.out.println("You are at the base of the treehouse.");
                     System.out.println("Would you like to enter the Elf Treehouse? Yes or No");
+                    this.treehouseBase();
                     input = in.nextLine().toUpperCase();
                     if(input.equals("YES")){
                         return false;
