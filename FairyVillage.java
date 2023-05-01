@@ -234,6 +234,7 @@ public class FairyVillage extends Quest{
         System.out.println("\nThank you for collecting all the items!");
         this.complete = true;
         this.started = false;
+        user.busy = false;
         user.grow();
         user.quest_complete += 1;
         return true;
@@ -255,7 +256,7 @@ public class FairyVillage extends Quest{
                 System.out.println("\nThank you for all your help! The festival is in full swing!");
             }
         }
-        else if(!this.complete & !this.started){
+        else if(!this.complete & !this.started & !user.busy){
             System.out.println("\nIt looks like the village is preparing for a festival and needs your help!");
             System.out.println("Will you help them by collecting a few items?");
             String input = in.nextLine().toUpperCase();

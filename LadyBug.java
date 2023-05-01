@@ -40,11 +40,13 @@ public class LadyBug extends Character{
    */
 
    //WHY THIS RED BRUH
+   /* 
     public String drop(String item) {
         this.basket.remove(item);
         System.out.println("you have dropped "+item+ " from your collection");
         return item;
     }
+    */
 /*
  * prints list of insects
  */

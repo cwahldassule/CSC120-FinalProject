@@ -11,6 +11,7 @@ class Character{
   int quest_complete;
   int flight_power;
   int flight_cap;
+  boolean busy;
   
   public Character(String name){
     this.name = name;
@@ -21,6 +22,7 @@ class Character{
     this.pos_x = 0;
     this.pos_y = 0;
     this.quest_complete = 0;
+    this.busy = false;
   }
 
   public void sleep(int num) { //normal time is 10000

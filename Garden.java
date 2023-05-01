@@ -1,7 +1,7 @@
 import java.util.Scanner;
 import java.util.ArrayList;
 
-public class Garden{ //made abstract class so that any child class of character can be used without specifying which
+public class Garden{
   FairyVillage fairyVillage;
   FireflyPond fireflyPond;
   ElfTreeHouse treeHouse;
@@ -105,6 +105,12 @@ public class Garden{ //made abstract class so that any child class of character 
     else if(input.equals("RECIPE")){
       if(fairyVillage.started){
         fairyVillage.printRecipe();
+      }
+      else if(treeHouse.started){
+        treeHouse.printRecipe();
+      }
+      else if(fireflyPond.started){
+        fireflyPond.printRecipe();
       }
     }
     else if(input.equals("SNACK")){
