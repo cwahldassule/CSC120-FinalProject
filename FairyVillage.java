@@ -272,6 +272,11 @@ public class FairyVillage extends Quest{
                 throw new RuntimeException("\nNot a valid option >_<");
             }
         }
+        else if(user.busy){
+            System.out.println("Welcome to the Village Square!");
+            System.out.println("Come back when you've finished your current quest");
+            System.out.println("Feel free to explore the rest of the village...");
+        }
     
     }
     
