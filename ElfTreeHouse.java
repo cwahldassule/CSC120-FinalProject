@@ -1,6 +1,4 @@
 import java.util.Scanner;
-
-
 import java.util.ArrayList;
 import java.util.Random;
 
@@ -16,6 +14,7 @@ public class ElfTreeHouse extends Quest{
     String option1;
     String option2;
     String option3;
+    
 
     public ElfTreeHouse(String name, Character user){
         super("ElfTreeHouse", 3);
@@ -23,9 +22,14 @@ public class ElfTreeHouse extends Quest{
         this.where_x=0;
         this.where_y=0;
         this.left_bound= 0;
-        this.right_bound=1;
-        this.upper_bound=3;
+        this.right_bound=2;
+        this.upper_bound=4;
         this.user=user;
+        this.option1 = "null";
+        this.option2 = "null";
+        this.option3 = "null";
+
+
     }
 
     public void intro(){
@@ -39,15 +43,16 @@ public class ElfTreeHouse extends Quest{
         System.out.println("You have found the mailbox!");
         System.out.println("Enter YES to open the mailbox, but risk losing an item, OR enter NO to keep moving");
         System.out.println("Hint: the mailbox lists the items you can find in the ElfTreeHouse");
-        String input= in.nextLine().toUpperCase(null);
+        String input= in.nextLine().toUpperCase();
         if (input.equals("YES")){
-            int open_close= Item.randNum(1);
+            System.out.println("YAY");
+            int open_close= Item.randNum(2);
             if (open_close==0){//CHECK that its a random thing between 0 and 1
                 System.out.println("Congrats! you have opend the mailbox!");
                 System.out.println("In the ElfTreehouse you will find: \n\t Gem: Emerald \n\t Flower: Peony \n\t Fruit: Blackberry ");
             }
             else if (open_close ==1){
-                System.out.println("Whoops, you have lost the odds, and will now lose an item");
+                System.out.println("You have lost the odds, and will now lose an item");
                 if(user.basket.size() >= 1){            
                     Integer temp1 = Item.randNum(user.basket.size());
                     System.out.println("You dropped "+ user.basket.get(temp1));
@@ -68,65 +73,72 @@ public class ElfTreeHouse extends Quest{
 
     public void oakDoor(){//This whole thing needs some serious testing babe but the foundation is here
         System.out.println("Welcome to the Oak Leaf Door");
-        System.out.println("Unscramble the message to gain a reward:");
-        System.out.println("lcokun ofr rerblacybk");
-        String input= in.nextLine().toUpperCase(null);
-        if (input.equals("UNLOCK FOR BLACKBERRY")){
-            System.out.println("Congrats! You cracked the code!");
-            System.out.println("You have recieved one Blackberry");
-            user.basket.add("Blackberry");
-        }
-        else{
-            
-            Boolean riddle=true;
-            while (riddle){
-                System.out.println("Whoops, that is incorrect, would you like to try again or recieve a Hint? Try or Hint:");
-                input= in.nextLine().toUpperCase(null);
-                if (input.equals("TRY")){
-                    input= in.nextLine().toUpperCase(null);
+        System.out.println("Would you like to unscramble the message to gain a reward? YES or NO:");
+        String input= in.nextLine().toUpperCase();
+        
+        if (input.equals("YES")){
+            System.out.println("lcokun ofr rerblacybk");
+            input= in.nextLine().toUpperCase();
+            if (input.equals("UNLOCK FOR BLACKBERRY")){
+                System.out.println("Congrats! You cracked the code!");
+                System.out.println("You have recieved one Blackberry");
+                user.basket.add("Blackberry");
+            }
+            else{
+                
+                Boolean riddle=true;
+                while (riddle){
+                    System.out.println("Whoops, that is incorrect, would you like to try again or recieve a Hint? Try or Hint:");
+                    input= in.nextLine().toUpperCase();
+                    if (input.equals("TRY")){
+                        input= in.nextLine().toUpperCase();
 
-                    if (input.equals("UNLOCK FOR BLACKBERRY")){
-                        System.out.println("Congrats! You cracked the code!");
-                        System.out.println("You have recieved one Blackberry");
-                        user.basket.add("Blackberry");
-                        riddle=false;
-                    }
-                    else{
-                        System.out.println("Whoops that is incorrect");
-                        // maybe add input here to try again
+                        if (input.equals("UNLOCK FOR BLACKBERRY")){
+                            System.out.println("Congrats! You cracked the code!");
+                            System.out.println("You have recieved one Blackberry");
+                            user.basket.add("Blackberry");
+                            riddle=false;
+                        }
+                
+                        }   
+                    else if(input.equals("HINT")){
+                        System.out.println("You have chosen to recieve a hint, read the clue below and try again:");
+                        ArrayList<String> hints = new ArrayList<String>();
+                        hints.add("The first word usually needs a key");
+                        hints.add("This fruit has a color in its name");
+                        hints.add("This fruit is two seperate words out together");
+                        
+                        Random randHint = new Random();
+                        int index = randHint.nextInt(hints.size());
+                        String hint = hints.get(index);
+                        System.out.println(hint);
+                        input= in.nextLine().toUpperCase();
+
+                        if (input.equals("UNLOCK FOR BLACKBERRY")){
+                            System.out.println("Congrats! You cracked the code!");
+                            System.out.println("You have recieved one Blackberry");
+                            user.basket.add("Blackberry");
+                            riddle=false;
                         }
                     }
-                else if(input.equals("HINT")){
-                    System.out.println("You have chosen to recieve a hint, read the clue below and try again:");
-                    ArrayList<String> hints = new ArrayList<String>();
-                    hints.add("The first word usually needs a key");
-                    hints.add("This fruit has a color in its name");
-                    hints.add("This fruit is two seperate words out together");
-                    
-                    Random randHint = new Random();
-                    int index = randHint.nextInt(hints.size());
-                    String hint = hints.get(index);
-                    System.out.println(hint);
-                    input= in.nextLine().toUpperCase(null);
-
-                    if (input.equals("UNLOCK FOR BLACKBERRY")){
-                        System.out.println("Congrats! You cracked the code!");
-                        System.out.println("You have recieved one Blackberry");
-                        user.basket.add("Blackberry");
-                        riddle=false;
-                    }
                 }
-                else{
-                    throw new RuntimeException("Invalid input");
-                }
+            }
         }
-    }
-    }
+        if(input.equals("NO")){
+            System.out.println("Keep moving then!");
+        }
+        else{
+            throw new RuntimeException("Invalid input!!");
+        }
+        }
+    
+
+    
     public void flimsyFloorboardGain(){
         System.out.println("Uh-oh you have bumped into a flimsy Floorboard, would you like the lift it and see whats underneath?");
-        System.out.println("If you choose to lift, you risk a 50/50 chance of either losing or gaining at item!");
-        System.out.println("Would you like to take the risk and lift? Yes or No");
-        String input= in.nextLine().toUpperCase(null);
+        System.out.println("When you chose, you have a 50/50 chance of either losing or gaining at item!");
+        System.out.println("Would you like to lift? Yes or No");
+        String input= in.nextLine().toUpperCase();
 
         if (input.equals("YES")){
 
@@ -156,9 +168,9 @@ public class ElfTreeHouse extends Quest{
 
     public void flimsyFloorboardDrop(){
         System.out.println("Uh-oh you have bumped into a flimsy Floorboard, would you like the lift it and see whats underneath?");
-        System.out.println("If you choose to lift, you risk a 50/50 chance of either losing or gaining at item!");
-        System.out.println("Would you like to take the risk and lift? Yes or No");
-        String input= in.nextLine().toUpperCase(null);
+        System.out.println("When you chose, you have a 50/50 chance of either losing or gaining at item!");
+        System.out.println("Would you like to lift? Yes or No");
+        String input= in.nextLine().toUpperCase();
 
         if (input.equals("NO")){
 
@@ -195,11 +207,11 @@ public class ElfTreeHouse extends Quest{
         System.out.println("Choose the correct jewelery piece and win a gem, choose wrong and drop an item");
         System.out.println("Would you like to play? Yes or No");
 
-        String input= in.nextLine().toUpperCase(null);
+        String input= in.nextLine().toUpperCase();
 
         if (input.equals("YES")){
             System.out.println("Place you guess below");
-            input= in.nextLine().toUpperCase(null);
+            input= in.nextLine().toUpperCase();
 
             //rand picking of jewelery
             ArrayList<String> jewels = new ArrayList<String>();
@@ -210,6 +222,7 @@ public class ElfTreeHouse extends Quest{
             Random randJewel = new Random();
             int index = randJewel.nextInt(jewels.size());
             String jewel = jewels.get(index);
+            System.out.println(jewel);
             if(input.equals(jewel)){
                 System.out.println("Congrats! You guessed right, and have won an Emerald");
                 user.basket.add("Emerald");
@@ -244,47 +257,61 @@ public class ElfTreeHouse extends Quest{
             System.out.println("But be warned if you choose wrong three times, you will lose all the items in your basket");
             System.out.println("Are you willing to take that risk? Yes or No?");
 
-            String input= in.nextLine().toUpperCase(null);
+            String input= in.nextLine().toUpperCase();
 
             if (input.equals("YES")){
                 for(int i=0; i<3; i++){
-                    System.out.println("Your ingredient options for the potion are: \n\t A. snails \n\t B. fairy toes \n\t C. maple \n\t  D. rosehips \n\t E. glitter \n\t F. bird eggs");
+                    System.out.println("Your ingredient options for the potion are: \n\t A. snails \n\t B. fairy toes \n\t C. maple \n\t D. rosehips \n\t E. glitter \n\t F. bird eggs");
                     System.out.println("Enter the letter for the indregients for the potion, remember, choose wisely, there is a right answer");
                     System.out.println("Option 1: ");
                     
-                    String input1= in.nextLine().toUpperCase(null);
+                    String input1= in.nextLine().toUpperCase();
                     if(input1.equals("B")|| input1.equals("D")||input1.equals("E")){
                         System.out.println("Correct!");
-                        option1= "yay";
+                        option1="yay";
+                    }
+                    else{
+                        System.out.println("wrong answer");
+                        option1="null";
                     }
 
                     System.out.println("Option 2: ");
-                    String input2= in.nextLine().toUpperCase(null);
+                    String input2= in.nextLine().toUpperCase();
 
                     if(input2.equals("B")|| input2.equals("D")||input2.equals("E")){
                         System.out.println("Correct!");
-                        option2= "yay";
+                        option2="ye";
+                    }
+                    else{
+                        System.out.println("wrong answer");
+                        option2="null";
                     }
 
                     System.out.println("Option 3: ");
-                    String input3= in.nextLine().toUpperCase(null);
+                    String input3= in.nextLine().toUpperCase();
 
                     if(input3.equals("B")|| input3.equals("D")||input3.equals("E")){
                         System.out.println("Correct!");
-                        option3= "yay";
-                    }
-                    if(option1.equals("yay")&& option2.equals("yay")&& option3.equals("yay")){
-                        System.out.println("Congrats! You guessed all three potions correctly!!! You get a Peony");
-                        user.basket.add("Peony");
-                        break;
+                        option3="y";
                     }
                     else{
+                        System.out.println("wrong answer");
+                        option3="null";
+                    }
+                    
+                    
+                    if(!option1.equals("yay")|| !option2.equals("ye")|| !option3.equals("y")){
                         System.out.println("Whoops wrong answer, try again!");
+                    }
+                    if (option1.equals("yay")&& option2.equals("ye")&& option3.equals("y")){
+                        System.out.println("Congrats! You guessed all three potions correctly!!! You get a Peony");
+                        user.basket.add("Peony");
+                        break;    
                     }
                 }           
             }
             else if (input.equals("NO")){
-                System.out.println("Way to play to safe, keep moving");
+                System.out.println("Way to play it safe, keep moving");
             }
             else{
                 throw new RuntimeException("Invalid input");
@@ -350,6 +377,7 @@ public class ElfTreeHouse extends Quest{
             int og_x = where_x;
             int og_y = where_y;
             System.out.println("Where would you like to go/do?");
+            System.out.println("N, E, S, W, Stats, Quest, Open Basket");
             //print out help?
             String input = in.nextLine().toUpperCase();
             if(input.equals("N")){
@@ -378,13 +406,15 @@ public class ElfTreeHouse extends Quest{
             }
             if(og_x != where_x | og_y != where_y){
                 System.out.println("ENTERED");
+                System.out.println("x: "+ where_x+ "y: "+ where_y);
+                
                 if(where_x == 0 & where_y ==0){
                     System.out.println("You are at the base of the treehouse.");
-                    System.out.println("Would you like to leave the Elf Treehouse?");
+                    System.out.println("Would you like to enter the Elf Treehouse? Yes or No");
                     input = in.nextLine().toUpperCase();
                     if(input.equals("YES")){
                         return false;
-                    }
+                    }//figure out how to leave!!!!                
                 }
                 else if(where_y <0 | where_x < left_bound | where_x > right_bound | where_y > upper_bound){
                     System.out.println("There's nothing here :0");
@@ -393,6 +423,13 @@ public class ElfTreeHouse extends Quest{
                     if(input.equals("YES")){
                         return false;
                     }
+
+                }
+                else if (where_x==0 && where_y==1){
+                    System.out.println("You are at the moss staircase");
+                }
+                else if (where_x==0 && where_y==2){
+                    System.out.println("You have reached the Crystal lookout");
                 }
                 else if (where_x==1 && where_y==0){
                     this.mailbox();
