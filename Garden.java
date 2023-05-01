@@ -5,6 +5,7 @@ public class Garden{ //made abstract class so that any child class of character 
   FairyVillage fairyVillage;
   FireflyPond fireflyPond;
   ElfTreeHouse treeHouse;
+  //MushroomCastle mushroomCastle;
   Character user;
   int upper_bound;
   int right_bound;
@@ -17,6 +18,7 @@ public class Garden{ //made abstract class so that any child class of character 
     this.fairyVillage = new FairyVillage("Fairy Village", 3, user);
     this.fireflyPond = new FireflyPond();
     this.treeHouse = new ElfTreeHouse("Elf TreeHouse", user);
+    //this.mushroomCastle = new MushroomCastle("Mushroom Castle", 6, user);
     boolean temp = true;
     while(temp){
       temp = this.checkLoc();
@@ -26,14 +28,48 @@ public class Garden{ //made abstract class so that any child class of character 
     }
 
   public boolean checkLoc(){ //check tree house
+    int temp = 0;
     if(fairyVillage.loc_x == fireflyPond.loc_x  &
      fairyVillage.loc_y == fireflyPond.loc_y){
       fireflyPond.loc_x = Item.randNum(4);
       fireflyPond.loc_y = Item.randNum(4);
-      return true;
+      temp += 1;
+    }
+    if(fairyVillage.loc_x == treeHouse.loc_x&
+    fairyVillage.loc_y == treeHouse.loc_y){
+      treeHouse.loc_x = Item.randNum(4);
+      treeHouse.loc_y = Item.randNum(4);
+      temp += 1;
+    }
+    //if(fairyVillage.loc_x == mushroomCastle.loc_x&
+    //fairyVillage.loc_y == mushroomCastle.loc_y){
+    //  mushroomCastle.loc_x = Item.randNum(4);
+    //  mushroomCastle.loc_y = Item.randNum(4);
+    //  temp += 1;
+    //}
+    if(fireflyPond.loc_x == treeHouse.loc_x&
+    fireflyPond.loc_y == treeHouse.loc_y){
+      treeHouse.loc_x = Item.randNum(4);
+      treeHouse.loc_y = Item.randNum(4);
+      temp += 1;
+    }
+    //if(fireflyPond.loc_x == mushroomCastle.loc_x&
+    //fireflyPond.loc_y == mushroomCastle.loc_y){
+    //  fireflyPond.loc_x = Item.randNum(4);
+    //  fireflyPond.loc_y = Item.randNum(4);
+    //  temp += 1;
+    //}
+    //if(treeHouse.loc_x == mushroomCastle.loc_x&
+    //treeHouse.loc_y == mushroomCastle.loc_y){
+    //  mushroomCastle.loc_x = Item.randNum(4);
+    //  mushroomCastle.loc_y = Item.randNum(4);
+    //  temp += 1;
+    //}
+    if(temp==0){
+      return false;
     }
     else{
-      return false;
+      return true;
     }
   }
 
@@ -44,7 +80,8 @@ public class Garden{ //made abstract class so that any child class of character 
   public boolean play(Character user){
     System.out.println("Fairy Village "+fairyVillage.loc_x+fairyVillage.loc_y); //testing
     System.out.println("Firefly Pond "+fireflyPond.loc_x+fireflyPond.loc_y); //testing
-    System.out.println("Treehouse: "+ treeHouse.loc_x +treeHouse.loc_y );
+    System.out.println("Treehouse: "+ treeHouse.loc_x +treeHouse.loc_y ); //testing
+    //System.out.println("Mushroom Castle: "+ mushroomCastle.loc_x +mushroomCastle.loc_y ); //testing
     int og_x = user.pos_x;
     int og_y = user.pos_y;
     System.out.println("\nWhat would you like to do?");
