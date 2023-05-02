@@ -30,6 +30,24 @@ public class FireflyClearing extends Quest {
         System.out.println("**(Walking in the Firefly Clearing does not use flight power)**");
     }
 
+    public void help(){
+        System.out.println("\nOptions: ");
+        System.out.println("MOVE (North, South, East, or West)");
+        System.out.println("\t+Enter 'n', 'e', 's', or 'w'");
+        System.out.println("SEE CHARACTER STATS:");
+        System.out.println("\t+Enter 'stats'");
+        System.out.println("SLEEP for 10 seconds to reset flight power");
+        System.out.println("\t+Enter 'sleep'");
+        System.out.println("PRINT RECIPE to see needed quest items:");
+        System.out.println("\t+Enter 'recipe'");
+        System.out.println("\tOPEN BASKET to see your items:");
+        System.out.println("\t+Enter 'open basket'");
+        System.out.println("EMPTY BASKET of all items:");
+        System.out.println("\t+Enter 'empty basket''");
+        System.out.println("Snack:");
+        System.out.println("\t+Eat 1 item for 3 flight power");
+    }
+
     public Boolean finishQuest(Character user){
         for(int i = 0; i<this.recipe.size(); i++){
             String item = this.recipe.get(i);
@@ -268,8 +286,7 @@ public class FireflyClearing extends Quest {
                 user.flight_power -= 4;
                 System.out.println("Who doesn't like a pretty " +flower+ "? Turns out whoever this shrine is to doesn't!");
             }
-        
-            
+             
         }
         else if(input.equals("NO")){
             System.out.println("\nThat's not very respectful...");
@@ -288,10 +305,10 @@ public class FireflyClearing extends Quest {
         System.out.println("birch bridge test");
     }
     public void desertedBurrow() {
-        System.out.println("birch bridge test");
+        System.out.println("burrow test");
     }
     public void leafHammock() {
-        System.out.println("birch bridge test");
+        System.out.println("hammock test");
     }
 
 
@@ -299,6 +316,7 @@ public class FireflyClearing extends Quest {
     public static void main(String[] args) {
         Bumblebee me = new Bumblebee("Matilda");
         FireflyClearing myClearing = new FireflyClearing("Firefly Clearing", 2, me);
+        
 
         while(true){
             try{myClearing.play();}
