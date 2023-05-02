@@ -39,6 +39,7 @@ public class FairyVillage extends Quest{
     }
     public void elida(){
         System.out.println("\n**Elida is ding a little spring cleaning...**\n");
+        System.out.println("\t(Elida is a bit of a chatterbox, type 'leave' to leave the conversation)");
         Chatbot elida = new Chatbot("Elida");
         String[] elida_talk = new String[]{"I have to clean up this mess!", "So many pots and pans everywhere", 
         "I can't remember where I put my teapot", "It's spring cleaning time", "ahh I lost my crystal ball again",
@@ -263,6 +264,7 @@ public class FairyVillage extends Quest{
             if(input.equals("YES")){
                 System.out.println("\nWonderful! Heres the list of items they need:");
                 this.started = true;
+                user.busy = true;
                 this.printRecipe();  
             }
             else if(input.equals("NO")){
@@ -365,6 +367,7 @@ public class FairyVillage extends Quest{
             }
             else if(where_x == -1 & where_y == 1){
                 System.out.println("\nWelcome to the Mirabel's Cottage!\n");
+                System.out.println("\t(Elida is a bit of a chatterbox, type 'leave' to leave the conversation)");
                 String [] Mirabel = new String[]{"OOps, my muffins are burning", "I like flowers  :p", "Oh dear :0", "You have really shiny hair", "thats...interesting..."};
                 Chatbot myBot = new Chatbot("Mirabel");
                 myBot.play(Mirabel);

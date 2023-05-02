@@ -55,6 +55,9 @@ public class Garden{
 
   public boolean win(){
     if(user.quest_complete == 3){
+      System.out.println("\t\t~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~");
+      System.out.println("\t\tCongratulations! You've completed all the quests!");
+      System.out.println("\t\t~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~");
       return true;
     }
     else{
@@ -63,6 +66,9 @@ public class Garden{
   }
 
   public boolean play(Character user){
+    if(this.win()){
+      return false;
+    }
     System.out.println("Fairy Village "+fairyVillage.loc_x+fairyVillage.loc_y); //testing
     System.out.println("Firefly Clearing "+fireflyClearing.loc_x+fireflyClearing.loc_y); //testing
     System.out.println("Treehouse: "+ treeHouse.loc_x +treeHouse.loc_y ); //testing
@@ -96,6 +102,9 @@ public class Garden{
       else if(fireflyClearing.started){
         fireflyClearing.printRecipe();
       }
+      else{
+        throw new RuntimeException("You haven't started any quests...");
+      }
     }
     else if(input.equals("SNACK")){
       user.snack();
@@ -106,6 +115,9 @@ public class Garden{
     }
     else if(input.equals("SLEEP")){
       user.sleep(10000);
+    }
+    else if(input.equals("LEAVE")){
+      return false;
     }
 
     if(og_x != user.pos_x | og_y != user.pos_y){
@@ -167,8 +179,10 @@ public class Garden{
 
   public static void main(String[] args) {
     System.out.println("\t\tWelcome to the garden!");
-    System.out.println("\t\tFly around to explore and pick up objects!");
+    System.out.println("Your goal is to complete the three quests of the three hidden locations");
+    System.out.println("Fly to different coords in the garden to search for the locations and pick up items");
     System.out.println("\t\t(if you are ever confused, type 'help' for options)");
+    
     System.out.println("\nWhat character would you like to be?");
     System.out.println("\t+Bumblebee\n\t+Butterfly\n\t+Ladybug");
     Scanner in2 = new Scanner(System.in);
@@ -180,7 +194,11 @@ public class Garden{
       Garden myGarden = new Garden(user);
       while(true){
         try{
-          myGarden.play(user);
+          boolean temp = myGarden.play(user);
+          if(!temp){
+            System.out.println("Exiting game...");
+            break;
+          }
         }catch(Exception e){
           System.out.println(e.getMessage());
         }
@@ -192,7 +210,11 @@ public class Garden{
       Garden myGarden = new Garden(user);
       while(true){
         try{
-          myGarden.play(user); //be able to leave
+          boolean temp = myGarden.play(user);
+          if(!temp){
+            System.out.println("Exiting game...");
+            break;
+          }
         }catch(Exception e){
           System.out.println(e.getMessage());
         }
@@ -205,7 +227,11 @@ public class Garden{
       Garden myGarden = new Garden(user);
       while(true){
         try{
-          myGarden.play(user);
+          boolean temp = myGarden.play(user);
+          if(!temp){
+            System.out.println("Exiting game...");
+            break;
+          }
         }catch(Exception e){
           System.out.println(e.getMessage());
         }

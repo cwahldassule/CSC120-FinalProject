@@ -43,7 +43,9 @@ class Character{
   }
 
   public void empty(){
-    this.basket.clear();
+    System.out.println("\nEmptying basket...");
+    basket.clear();
+    this.stats();
   }
 
   public void shake(){

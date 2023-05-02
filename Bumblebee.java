@@ -15,8 +15,6 @@ public class Bumblebee extends Character {
     public void help(){
         System.out.println("\nFly:");
         System.out.println("\t+Choose the coords of where you want to go\n\t+possibility of loosing 1-4 items or flight power\n\t+loose flight power based on coords");
-        System.out.println("Walk:");
-        System.out.println("\t+Choose where you want to go\n\t+Lose 1 flight power");
         System.out.println("Snack:");
         System.out.println("\t+Eat 1 item to gain 3 flight power");
         System.out.println("Sleep:");
@@ -28,7 +26,7 @@ public class Bumblebee extends Character {
         System.out.println("Recipe");
         System.out.println("\t+Shows needed Quest Items");
         System.out.println("Stats:");
-        System.out.println("\tDisplays important character info");
+        System.out.println("\t+Displays important character info");
     }
 
     public void fly(int x, int y) {
@@ -106,12 +104,6 @@ public class Bumblebee extends Character {
 
     }
 
-    public void empty() {
-        System.out.println("\nEmptying bag...");
-        basket.clear();
-        this.print_stats();
-    }
-
     public void grow(){
         this.basket_cap += 5;
         this.flight_cap += 5;
@@ -123,8 +115,8 @@ public class Bumblebee extends Character {
         System.out.println("\tFlight cap: "+this.flight_cap);
         System.out.println("\tFlight power: "+this.flight_power);
         System.out.println("\tSize: "+this.size);
-        System.out.println("\tFlower bag size: "+basket_cap);
-        System.out.println("\tNumber of flowers: "+basket.size());
+        System.out.println("\tBasket size: "+basket_cap);
+        System.out.println("\tNumber of items: "+basket.size());
         System.out.println("\tPosition: ("+pos_x+","+pos_y+")");
         System.out.println("\tNumber of Quests complete: "+quest_complete+"/3");
     }
