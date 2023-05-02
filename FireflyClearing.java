@@ -64,7 +64,7 @@ public class FireflyClearing extends Quest {
             this.finishQuest(user);
         
             if(this.complete){
-                System.out.println("\nThank you for all your help! The fireflies swarm around you in gratitude and then beginning making their potion.");
+                System.out.println("\nThank you for all your help! The fireflies swarm around you in gratitude and then begin making their potion.");
             }
         }
         else if(!this.complete & !this.started){
@@ -75,6 +75,7 @@ public class FireflyClearing extends Quest {
                 System.out.println("\nWonderful! You will need to collect the following items:");
                 this.printRecipe();
                 this.started = true;
+                user.busy = true;
             }
             else if(input.equals("NO")){
                 System.out.println("\nOkay :(");
@@ -218,9 +219,9 @@ public class FireflyClearing extends Quest {
             System.out.println("Parsnip: When I am young, I am tall. As I age, I become shorter and shorter. I only become useful to you when you begin my process of dying. What am I?");
             String input3 = in.nextLine().toUpperCase();
             if(input3.equals("A PENCIL") | input3.equals("PENCIL") | input3.equals("A CANDLE") | input3.equals("CANDLE")){
-                System.out.println("Parsnip: Wow, you're smart! Here, have this blueberry as a token of my admiration");
-                user.basket.add("blueberry");
-                System.out.println("\t+blueberry");
+                System.out.println("Parsnip: Wow, you're smart! Here, have this Blueberry as a token of my admiration");
+                user.basket.add("Blueberry");
+                System.out.println("\t+Blueberry");
             }
             else {
                 System.out.println("Hmmm... That's not the answer I was thinking of...");
@@ -246,20 +247,36 @@ public class FireflyClearing extends Quest {
         System.out.println("You don't know who the shrine is to. Do you want to give an offering?");
         String input = in.nextLine().toUpperCase();
         if(input.equals("YES")){
+            String flower = Item.randFlower();
             while (true){
-                String flower = Item.randFlower();
+                flower = Item.randFlower();
                 if (flower.equals("Lavender")) {
                     continue;
                 }else{
                     break;}
                 }
-            //System.out.println("You look around for something to give and find a " + flower); <<<error on flower
-            // if flower is certain type, deity rewards you with item
-            //if flower is different type, deity punishes you with item
+            System.out.println("You look around for something to give and find a " + flower);
+            if (flower.equals("Peony") | (flower.equals("Tulip"))) {
+                System.out.println("When you lay the " + flower + " at the shrine, the air around it begins to shimmer, and the " +flower+ "dissapears");
+                System.out.println("A small gold key appears where the " +flower+ " once was. Whoever the shrine is to must be pleased with your offering!");
+                user.basket.add("gold key");
+                System.out.println("\t+gold key"); 
+            }
+            else {
+                System.out.println("When you lay the " + flower + " at the shrine, it instantly bursts into flames, singing one of your wings.");
+                System.out.println("\t-4 flight power");
+                user.flight_power -= 4;
+                System.out.println("Who doesn't like a pretty " +flower+ "? Turns out whoever this shrine is to doesn't!");
+            }
+        
             
         }
         else if(input.equals("NO")){
-            System.out.println("\nYou can try your luck another time");
+            System.out.println("\nThat's not very respectful...");
+            user.flight_power -= 3;
+            System.out.println("\t-3 flight power");
+                
+            
         }
         else{
             throw new RuntimeException("\nNot a valid option >_<");
