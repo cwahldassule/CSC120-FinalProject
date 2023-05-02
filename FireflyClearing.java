@@ -85,7 +85,7 @@ public class FireflyClearing extends Quest {
                 System.out.println("\nThank you for all your help! The fireflies swarm around you in gratitude and then begin making their potion.");
             }
         }
-        else if(!this.complete & !this.started){
+        else if(!this.complete & !this.started & !user.busy){
             System.out.println("\nTonight is the full moon, so all the fireflies will be gathering to make a special potion.");
             System.out.println("Will you help them by collecting a few items for the potion?");
             String input = in.nextLine().toUpperCase();
@@ -161,7 +161,8 @@ public class FireflyClearing extends Quest {
         if(og_x != where_x | og_y != where_y){
             System.out.println("ENTERED");
             if(where_x == 0 & where_y ==0){
-                System.out.println("You are at the Starlight Pond.");
+                System.out.println("You are at the Starlight Pond");
+                fireflyPond();
                 System.out.println("Would you like to leave the Firefly Clearing?");
                 input = in.nextLine().toUpperCase();
                 if(input.equals("YES")){
@@ -170,7 +171,7 @@ public class FireflyClearing extends Quest {
             }
             else if(where_y <0 | where_x < left_bound | where_x > right_bound | where_y > upper_bound){
                 System.out.println("There's nothing here :0");
-                System.out.println("Would you like to leave the Firefly Clearing");
+                System.out.println("Would you like to leave the Firefly Clearing?");
                 input = in.nextLine().toUpperCase();
                 if(input.equals("YES")){
                     return false;
