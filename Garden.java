@@ -84,7 +84,7 @@ public class Garden{
     //System.out.println("Mushroom Castle: "+ mushroomCastle.loc_x +mushroomCastle.loc_y ); //testing
     int og_x = user.pos_x;
     int og_y = user.pos_y;
-    System.out.println("\nWhat would you like to do?");
+    System.out.println("\nWhat would you like to do? Enter HELP for options");
     String input = in.nextLine().toUpperCase();
     if(input.equals("FLY")){
       System.out.println("x coord? (int only)");

@@ -39,26 +39,25 @@ public class LadyBug extends Character{
    * @return insect removed
    */
 
-   //WHY THIS RED BRUH
-   /* 
-    public String drop(String item) {
+    
+    public String removeItem(String item) {
         this.basket.remove(item);
         System.out.println("you have dropped "+item+ " from your collection");
         return item;
     }
-    */
+
 /*
  * prints list of insects
  */
-    public void examine() {
-        if (basket.size()>1){
-        System.out.println("Below is your list of items: ");
-        System.out.println(basket);
-        }
-        else{
-            throw new RuntimeException("Sorry, you currently do not have any items in your collection");
-        }
-        }
+    // public void examine() {
+    //     if (basket.size()>1){
+    //     System.out.println("Below is your list of items: ");
+    //     System.out.println(basket);
+    //     }
+    //     else{
+    //         throw new RuntimeException("Sorry, you currently do not have any items in your collection");
+    //     }
+    //     }
 
     public void empty() {
         this.basket.clear();
