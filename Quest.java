@@ -30,7 +30,9 @@ public class Quest{
       if(loc_x == 0 & loc_y == 0){
         return false;
       }
-      return true;
+      else{
+        return true;
+      }
     }
     public void printRecipe(){
       if(this.started){
