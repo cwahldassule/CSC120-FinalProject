@@ -32,20 +32,20 @@ public class FireflyClearing extends Quest {
 
     public void help(){
         System.out.println("\nOptions: ");
-        System.out.println("MOVE (North, South, East, or West)");
-        System.out.println("\t+Enter 'n', 'e', 's', or 'w'");
+        System.out.println("MOVE North, South, East, or West");
+        System.out.println("\t-> Enter 'n', 'e', 's', or 'w'");
         System.out.println("SEE CHARACTER STATS:");
-        System.out.println("\t+Enter 'stats'");
+        System.out.println("\t-> Enter 'stats'");
         System.out.println("SLEEP for 10 seconds to reset flight power");
-        System.out.println("\t+Enter 'sleep'");
+        System.out.println("\t-> Enter 'sleep'");
         System.out.println("PRINT RECIPE to see needed quest items:");
-        System.out.println("\t+Enter 'recipe'");
+        System.out.println("\t-> Enter 'recipe'");
         System.out.println("\tOPEN BASKET to see your items:");
-        System.out.println("\t+Enter 'open basket'");
+        System.out.println("\t-> Enter 'open basket'");
         System.out.println("EMPTY BASKET of all items:");
-        System.out.println("\t+Enter 'empty basket''");
-        System.out.println("Snack:");
-        System.out.println("\t+Eat 1 item for 3 flight power");
+        System.out.println("\t-> Enter 'empty basket'");
+        System.out.println("EAT A SNACK for +3 flight power:");
+        System.out.println("\t-> Enter 'snack'");
     }
 
     public Boolean finishQuest(Character user){
@@ -316,7 +316,7 @@ public class FireflyClearing extends Quest {
     public static void main(String[] args) {
         Bumblebee me = new Bumblebee("Matilda");
         FireflyClearing myClearing = new FireflyClearing("Firefly Clearing", 2, me);
-        
+
 
         while(true){
             try{myClearing.play();}
