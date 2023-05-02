@@ -42,7 +42,7 @@ public class ElfTreeHouse extends Quest{
     public void mailbox(){
         System.out.println("You have found the mailbox!");
         System.out.println("Enter YES to open the mailbox, but risk losing an item, OR enter NO to keep moving");
-        System.out.println("Hint: the mailbox lists the items you can find in the ElfTreeHouse");
+        System.out.println("Hint: the mailbox lists the items you can find in the ElfTreeHouse, and recieve your quest recipe!");
         String input= in.nextLine().toUpperCase();
         if (input.equals("YES")){
             System.out.println("YAY");
@@ -52,9 +52,10 @@ public class ElfTreeHouse extends Quest{
                 System.out.println("In the ElfTreehouse you will find: \n\t Gem: Emerald \n\t Flower: Peony \n\t Fruit: Blackberry ");
                 //Chloe added the next few lines - pls check
                 if(!this.complete & !user.busy){
+                    System.out.println("Here is your treehouse quest:");
+                    //this.printRecipe();
                     this.started = true;
                     user.busy = true;
-                    System.out.println("Here is your treehouse quest:");
                     this.printRecipe();
                 }
             }
@@ -79,7 +80,7 @@ public class ElfTreeHouse extends Quest{
     }
 
     public void oakDoor(){//This whole thing needs some serious testing babe but the foundation is here
-        System.out.println("Welcome to the Oak Leaf Door");
+        System.out.println("Welc to the Oak Leaf Door");
         System.out.println("Would you like to unscramble the message to gain a reward? YES or NO:");
         String input= in.nextLine().toUpperCase();
         
@@ -158,6 +159,7 @@ public class ElfTreeHouse extends Quest{
                 int index = randItem.nextInt(items.size());
                 String item = items.get(index);
                 System.out.println("Congrats! you have gained an: "+ item);
+                this.user.basket.add(item);
                
             }
         else if (input.equals("NO")){
@@ -190,6 +192,7 @@ public class ElfTreeHouse extends Quest{
                 int index = randItem.nextInt(items.size());
                 String item = items.get(index);
                 System.out.println("Congrats! you have gained an: "+ item);
+                this.user.basket.add(item);
                
             }
         else if (input.equals("YES")){
@@ -353,29 +356,42 @@ public class ElfTreeHouse extends Quest{
         }
         
           public void treehouseBase(){
-            if(this.started){
+            if(this.started | this.complete){
                 System.out.println("\nWelcome back to the ElfTreehouse entrance");
                 this.finishQuest(user);
             
                 if(this.complete){
                     System.out.println("\nGreat work, you have successfully collected your items Quest complete!");
                 }
+            else if(!this.started){
+                System.out.println("Looks like you have not recieved you quest yet!");
             }
-            else if(!this.complete & !this.started){
-                System.out.println("\nThe treehouse is looking to renovate, its need your help!");
-                System.out.println("Will you help them by collecting a few items?");
-                String input = in.nextLine().toUpperCase();
-                if(input.equals("YES")){
-                    System.out.println("\nWonderful! Heres the list of items they need:");
-                    this.printRecipe();
-                    this.started = true;
-                }
-                else if(input.equals("NO")){
-                    System.out.println("\nOkay :(");
-                }
-                else{
-                    throw new RuntimeException("\nNot a valid option >_<");
-                }
+            
+            // }
+            // else if(!this.complete & !this.started){
+            //     System.out.println("Would you like to enter, YES or NO: ");
+            //     String input = in.nextLine().toUpperCase();
+            //     if (input.equals("YES")){
+            //         return true;
+            //     else if (input.equals("NO")){
+            //         return false;
+            //     }
+            //     }
+                // System.out.println("\nThe treehouse is looking to renovate, its need your help!");
+                // System.out.println("Will you help them by collecting a few items?");
+                // String input = in.nextLine().toUpperCase();
+                // if(input.equals("YES")){
+                //     System.out.println("\nWonderful! Heres the list of items they need:");
+                //     this.printRecipe();
+                //     this.started = true;
+                // }
+                // else if(input.equals("NO")){
+                //     System.out.println("\nOkay :(");
+                // }
+
+                // else{
+                //     throw new RuntimeException("\nNot a valid option >_<");
+                // }
             }
         
         }
@@ -407,8 +423,7 @@ public class ElfTreeHouse extends Quest{
                 this.printRecipe();
             }
             else if(input.equals("OPEN BASKET")){
-                user.openBasket();
-                //user.examine("FIXME");
+                user.examine("FIXME");
             }
             else{
                 throw new RuntimeException("That's not a valid option :/");
@@ -418,22 +433,21 @@ public class ElfTreeHouse extends Quest{
                 System.out.println("x: "+ where_x+ "y: "+ where_y);
                 
                 if(where_x == 0 & where_y ==0){
-                    System.out.println("You are at the base of the treehouse.");
-                    System.out.println("Would you like to enter the Elf Treehouse? Yes or No");
+                    //System.out.println("You are at the base of the treehouse.");
                     this.treehouseBase();
+                    System.out.println("You have reached the entrance of the Elf Treehouseould you like to enter? Yes or No");
+                    
                     input = in.nextLine().toUpperCase();
-                    if(input.equals("YES")){
+                    if(input.equals("NO")){
                         return false;
                     }//figure out how to leave!!!!                
                 }
                 else if(where_y <0 | where_x < left_bound | where_x > right_bound | where_y > upper_bound){
-                    System.out.println("There's nothing here :0");
-                    System.out.println("Would you like to leave the Elf TreeHouse");
-                    input = in.nextLine().toUpperCase();
-                    if(input.equals("YES")){
-                        return false;
-                    }
 
+                    System.out.println("There's nothing here :0");
+                    System.out.println("Sending you to the Treehouse Base");
+                    where_x= og_x;
+                    where_y=og_y;
                 }
                 else if (where_x==0 && where_y==1){
                     System.out.println("You are at the moss staircase");
@@ -469,6 +483,7 @@ public static void main(String[] args) {
     myTreehouse.intro();
 
     while(true){
+        myTreehouse.intro();
         try{myTreehouse.play();}
         catch(Exception e){
             System.out.println(e.getMessage());

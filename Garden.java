@@ -144,6 +144,7 @@ public class Garden{
         }
 
         if(user.pos_x == treeHouse.loc_x & user.pos_y == treeHouse.loc_y){
+          treeHouse.intro();
           while(true){
             try{
               Boolean temp = treeHouse.play();

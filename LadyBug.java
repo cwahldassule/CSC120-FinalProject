@@ -6,9 +6,9 @@ public class LadyBug extends Character{
 
     public LadyBug (String name){
         super(name);
-        this.flight_power = 20;
-        this.flight_cap = 20;
-        this.basket_cap = 15;
+        this.flight_power = 20000000;
+        this.flight_cap = 200000;
+        this.basket_cap = 10000005;
     }
     public void help(){
         System.out.println("Fly: ");
