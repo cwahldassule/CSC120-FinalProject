@@ -10,6 +10,7 @@ public class LadyBug extends Character{
         this.flight_cap = 200000;
         this.basket_cap = 10000005;
     }
+    //should make uniform one so prob can delete this soon
     public void help(){
         System.out.println("Fly: ");
         System.out.println("Choose the coordinates of where you want to go ");
