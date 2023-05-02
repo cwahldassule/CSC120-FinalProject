@@ -14,7 +14,6 @@ public class ElfTreeHouse extends Quest{
     String option1;
     String option2;
     String option3;
-    
 
     public ElfTreeHouse(String name, Character user){
         super("ElfTreeHouse", 3);
@@ -23,13 +22,11 @@ public class ElfTreeHouse extends Quest{
         this.where_y=0;
         this.left_bound= 0;
         this.right_bound=2;
-        this.upper_bound=4;
+        this.upper_bound=3;
         this.user=user;
         this.option1 = "null";
         this.option2 = "null";
         this.option3 = "null";
-
-
     }
 
     public void intro(){
@@ -38,14 +35,12 @@ public class ElfTreeHouse extends Quest{
         System.out.println("Flying around the Treehouse will not affect flight power, make sure to check upwards");
     }
 
-
     public void mailbox(){
         System.out.println("You have found the mailbox!");
         System.out.println("Enter YES to open the mailbox, but risk losing an item, OR enter NO to keep moving");
         System.out.println("Hint: the mailbox lists the items you can find in the ElfTreeHouse, and recieve your quest recipe!");
         String input= in.nextLine().toUpperCase();
         if (input.equals("YES")){
-            System.out.println("YAY");
             int open_close= Item.randNum(2);
             if (open_close==0){//CHECK that its a random thing between 0 and 1
                 System.out.println("Congrats! you have opend the mailbox!");
@@ -63,8 +58,8 @@ public class ElfTreeHouse extends Quest{
                 System.out.println("You have lost the odds, and will now lose an item");
                 if(user.basket.size() >= 1){            
                     Integer temp1 = Item.randNum(user.basket.size());
-                    System.out.println("You dropped "+ user.basket.get(temp1));
-                    this.user.basket.remove(user.basket.get(temp1));
+                     System.out.println("You dropped "+ user.basket.get(temp1));
+                     this.user.basket.remove(user.basket.get(temp1));
                 }
                 else{
                     System.out.println("Whoops you don't have any items to drop, keep on moving!");
@@ -139,8 +134,6 @@ public class ElfTreeHouse extends Quest{
             throw new RuntimeException("Invalid input!!");
         }
         }
-    
-
     
     public void flimsyFloorboardGain(){
         System.out.println("Uh-oh you have bumped into a flimsy Floorboard, would you like the lift it and see whats underneath?");
@@ -366,34 +359,7 @@ public class ElfTreeHouse extends Quest{
             else if(!this.started){
                 System.out.println("Looks like you have not recieved you quest yet!");
             }
-            
-            // }
-            // else if(!this.complete & !this.started){
-            //     System.out.println("Would you like to enter, YES or NO: ");
-            //     String input = in.nextLine().toUpperCase();
-            //     if (input.equals("YES")){
-            //         return true;
-            //     else if (input.equals("NO")){
-            //         return false;
-            //     }
-            //     }
-                // System.out.println("\nThe treehouse is looking to renovate, its need your help!");
-                // System.out.println("Will you help them by collecting a few items?");
-                // String input = in.nextLine().toUpperCase();
-                // if(input.equals("YES")){
-                //     System.out.println("\nWonderful! Heres the list of items they need:");
-                //     this.printRecipe();
-                //     this.started = true;
-                // }
-                // else if(input.equals("NO")){
-                //     System.out.println("\nOkay :(");
-                // }
-
-                // else{
-                //     throw new RuntimeException("\nNot a valid option >_<");
-                // }
-            }
-        
+            }       
         }
         
         //PLAY METHOD
@@ -423,7 +389,7 @@ public class ElfTreeHouse extends Quest{
                 this.printRecipe();
             }
             else if(input.equals("OPEN BASKET")){
-                user.examine("FIXME");
+                user.openBasket();;
             }
             else{
                 throw new RuntimeException("That's not a valid option :/");
