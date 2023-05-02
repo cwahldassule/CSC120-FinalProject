@@ -25,7 +25,7 @@ public class Garden{
     this.user = user;
     }
 
-  public boolean checkLoc(){ //check tree house
+  public boolean checkLoc(){
     int temp = 0;
     if(fairyVillage.loc_x == fireflyClearing.loc_x  &
      fairyVillage.loc_y == fireflyClearing.loc_y){
@@ -39,30 +39,12 @@ public class Garden{
       treeHouse.loc_y = Item.randNum(4);
       temp += 1;
     }
-    //if(fairyVillage.loc_x == mushroomCastle.loc_x&
-    //fairyVillage.loc_y == mushroomCastle.loc_y){
-    //  mushroomCastle.loc_x = Item.randNum(4);
-    //  mushroomCastle.loc_y = Item.randNum(4);
-    //  temp += 1;
-    //}
     if(fireflyClearing.loc_x == treeHouse.loc_x&
     fireflyClearing.loc_y == treeHouse.loc_y){
       treeHouse.loc_x = Item.randNum(4);
       treeHouse.loc_y = Item.randNum(4);
       temp += 1;
     }
-    //if(fireflyClearing.loc_x == mushroomCastle.loc_x&
-    //fireflyClearing.loc_y == mushroomCastle.loc_y){
-    //  fireflyClearing.loc_x = Item.randNum(4);
-    //  fireflyClearing.loc_y = Item.randNum(4);
-    //  temp += 1;
-    //}
-    //if(treeHouse.loc_x == mushroomCastle.loc_x&
-    //treeHouse.loc_y == mushroomCastle.loc_y){
-    //  mushroomCastle.loc_x = Item.randNum(4);
-    //  mushroomCastle.loc_y = Item.randNum(4);
-    //  temp += 1;
-    //}
     if(temp==0){
       return false;
     }
@@ -145,7 +127,7 @@ public class Garden{
             }
         }
 
-        if(user.pos_x == treeHouse.loc_x & user.pos_y == treeHouse.loc_y){
+        else if(user.pos_x == treeHouse.loc_x & user.pos_y == treeHouse.loc_y){
           treeHouse.intro();
           while(true){
             try{
@@ -155,7 +137,19 @@ public class Garden{
                 }
             }catch(Exception e){System.out.println(e.getMessage());}
           }
-      }
+        }
+
+        else if(user.pos_x == fireflyClearing.loc_x & user.pos_y == fireflyClearing.loc_y){
+          treeHouse.intro();
+          while(true){
+            try{
+              Boolean temp = fireflyClearing.play();
+                if(!temp){
+                  break;
+                }
+            }catch(Exception e){System.out.println(e.getMessage());}
+          }
+        }
 
         else{
           System.out.println("\nYou've stumbled upon " +Item.randLocation());
@@ -166,7 +160,6 @@ public class Garden{
             user.examine(found.get(i));
           }
         }
-    //create if else statement for each user option
       } 
     }
     return true;
