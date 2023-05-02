@@ -75,13 +75,13 @@ public class ElfTreeHouse extends Quest{
     }
 
     public void oakDoor(){//This whole thing needs some serious testing babe but the foundation is here
-        System.out.println("Welc to the Oak Leaf Door");
+        System.out.println("Welcome to the Oak Leaf Door");
         System.out.println("Would you like to unscramble the message to gain a reward? YES or NO:");
         String input= in.nextLine().toUpperCase();
         
         if (input.equals("YES")){
             System.out.println("lcokun ofr rerblacybk");
-            input= in.nextLine().toUpperCase();
+             input= in.nextLine().toUpperCase();
             if (input.equals("UNLOCK FOR BLACKBERRY")){
                 System.out.println("Congrats! You cracked the code!");
                 System.out.println("You have recieved one Blackberry");
@@ -127,7 +127,7 @@ public class ElfTreeHouse extends Quest{
                 }
             }
         }
-        if(input.equals("NO")){
+        else if(input.equals("NO")){
             System.out.println("Keep moving then!");
         }
         else{
@@ -366,6 +366,7 @@ public class ElfTreeHouse extends Quest{
         public boolean play(){
             int og_x = where_x;
             int og_y = where_y;
+            System.out.println(" ");
             System.out.println("Where would you like to go/do?");
             System.out.println("N, E, S, W, Stats, Quest, Open Basket");
             //print out help?
@@ -395,9 +396,7 @@ public class ElfTreeHouse extends Quest{
                 throw new RuntimeException("That's not a valid option :/");
             }
             if(og_x != where_x | og_y != where_y){
-                System.out.println("ENTERED");
-                System.out.println("x: "+ where_x+ "y: "+ where_y);
-                
+                           
                 if(where_x == 0 & where_y ==0){
                     //System.out.println("You are at the base of the treehouse.");
                     this.treehouseBase();
@@ -449,7 +448,7 @@ public static void main(String[] args) {
     myTreehouse.intro();
 
     while(true){
-        myTreehouse.intro();
+        
         try{myTreehouse.play();}
         catch(Exception e){
             System.out.println(e.getMessage());
