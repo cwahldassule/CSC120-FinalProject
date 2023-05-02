@@ -3,7 +3,7 @@ import java.util.ArrayList;
 
 public class Garden{
   FairyVillage fairyVillage;
-  FireflyPond fireflyPond;
+  FireflyClearing fireflyClearing;
   ElfTreeHouse treeHouse;
   //MushroomCastle mushroomCastle;
   Character user;
@@ -16,7 +16,7 @@ public class Garden{
     this.upper_bound = 3;
     this.right_bound = 3;
     this.fairyVillage = new FairyVillage("Fairy Village", 3, user);
-    this.fireflyPond = new FireflyPond();
+    this.fireflyClearing = new FireflyClearing("Firefly Clearing", 2, user);
     this.treeHouse = new ElfTreeHouse("Elf TreeHouse", user);
     //this.mushroomCastle = new MushroomCastle("Mushroom Castle", 6, user);
     boolean temp = true;
@@ -29,10 +29,10 @@ public class Garden{
 
   public boolean checkLoc(){ //check tree house
     int temp = 0;
-    if(fairyVillage.loc_x == fireflyPond.loc_x  &
-     fairyVillage.loc_y == fireflyPond.loc_y){
-      fireflyPond.loc_x = Item.randNum(4);
-      fireflyPond.loc_y = Item.randNum(4);
+    if(fairyVillage.loc_x == fireflyClearing.loc_x  &
+     fairyVillage.loc_y == fireflyClearing.loc_y){
+      fireflyClearing.loc_x = Item.randNum(4);
+      fireflyClearing.loc_y = Item.randNum(4);
       temp += 1;
     }
     if(fairyVillage.loc_x == treeHouse.loc_x&
@@ -47,16 +47,16 @@ public class Garden{
     //  mushroomCastle.loc_y = Item.randNum(4);
     //  temp += 1;
     //}
-    if(fireflyPond.loc_x == treeHouse.loc_x&
-    fireflyPond.loc_y == treeHouse.loc_y){
+    if(fireflyClearing.loc_x == treeHouse.loc_x&
+    fireflyClearing.loc_y == treeHouse.loc_y){
       treeHouse.loc_x = Item.randNum(4);
       treeHouse.loc_y = Item.randNum(4);
       temp += 1;
     }
-    //if(fireflyPond.loc_x == mushroomCastle.loc_x&
-    //fireflyPond.loc_y == mushroomCastle.loc_y){
-    //  fireflyPond.loc_x = Item.randNum(4);
-    //  fireflyPond.loc_y = Item.randNum(4);
+    //if(fireflyClearing.loc_x == mushroomCastle.loc_x&
+    //fireflyClearing.loc_y == mushroomCastle.loc_y){
+    //  fireflyClearing.loc_x = Item.randNum(4);
+    //  fireflyClearing.loc_y = Item.randNum(4);
     //  temp += 1;
     //}
     //if(treeHouse.loc_x == mushroomCastle.loc_x&
@@ -79,7 +79,7 @@ public class Garden{
 
   public boolean play(Character user){
     System.out.println("Fairy Village "+fairyVillage.loc_x+fairyVillage.loc_y); //testing
-    System.out.println("Firefly Pond "+fireflyPond.loc_x+fireflyPond.loc_y); //testing
+    System.out.println("Firefly Clearing "+fireflyClearing.loc_x+fireflyClearing.loc_y); //testing
     System.out.println("Treehouse: "+ treeHouse.loc_x +treeHouse.loc_y ); //testing
     //System.out.println("Mushroom Castle: "+ mushroomCastle.loc_x +mushroomCastle.loc_y ); //testing
     int og_x = user.pos_x;
@@ -109,8 +109,8 @@ public class Garden{
       else if(treeHouse.started){
         treeHouse.printRecipe();
       }
-      else if(fireflyPond.started){
-        fireflyPond.printRecipe();
+      else if(fireflyClearing.started){
+        fireflyClearing.printRecipe();
       }
     }
     else if(input.equals("SNACK")){
