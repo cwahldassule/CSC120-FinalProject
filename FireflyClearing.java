@@ -94,7 +94,7 @@ public class FireflyClearing extends Quest {
                 this.started = true;
                 user.busy = true;
                 this.printRecipe();
-                System.out.println("\nReturn to the walnut tree when you have collected all of the items:");
+                System.out.println("\nReturn to the walnut tree when you have collected all of the items");
                 
             }
             else if(input.equals("NO")){
@@ -178,6 +178,7 @@ public class FireflyClearing extends Quest {
                     return false;
                 }
                 else {
+                    System.out.println("\nSending you back...");
                     if (where_y < lower_bound) {
                         where_y += 1;
                     }
@@ -301,7 +302,7 @@ public class FireflyClearing extends Quest {
                 System.out.println("\t+gold key"); 
             }
             else {
-                System.out.println("When you lay the " + flower + " at the shrine, it instantly bursts into flames, singing one of your wings.");
+                System.out.println("When you lay the " + flower + " at the shrine, it instantly bursts into flames, singeing one of your wings.");
                 System.out.println("\t-4 flight power");
                 user.flight_power -= 4;
                 System.out.println("Who doesn't like a pretty " +flower+ "? Turns out whoever this shrine is to doesn't!");
@@ -334,7 +335,7 @@ public class FireflyClearing extends Quest {
 
     
     public static void main(String[] args) {
-        Bumblebee me = new Bumblebee("Matilda");
+        Character me = new Character("Matilda", 40, 30);
         FireflyClearing myClearing = new FireflyClearing("Firefly Clearing", 2, me);
 
 
