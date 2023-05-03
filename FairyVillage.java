@@ -38,8 +38,8 @@ public class FairyVillage extends Quest{
         System.out.println("\t+Eat 1 item for 3 flight power");
     }
     public void elida(){
-        System.out.println("\n**Elida is ding a little spring cleaning...**\n");
-        System.out.println("\t(Elida is a bit of a chatterbox, type 'leave' to leave the conversation)");
+        System.out.println("\n**Elida is doing a little spring cleaning...**\n");
+        System.out.println("\t(Elida is a bit of a chatterbox, type 'leave' to leave the conversation)\n");
         Chatbot elida = new Chatbot("Elida");
         String[] elida_talk = new String[]{"I have to clean up this mess!", "So many pots and pans everywhere", 
         "I can't remember where I put my teapot", "It's spring cleaning time", "ahh I lost my crystal ball again",
@@ -75,11 +75,11 @@ public class FairyVillage extends Quest{
         "I heard they found him three days later...", "I wonder what they're going to do now...", "Well I think he deserved it...",
         "Crazy that something like that would happen here!", "I wonder how long it had been going on...", "Did they ever find it?", 
         "Well life is certainly going to be different now..."};
-        int num = Item.randNum(4);
-        int num2 = Item.randNum(gossip.length);
+        int num = Item.randNum(gossip.length);
+        int num2;
         while(true){
-            int num3 = Item.randNum(gossip.length);
-            if(num3 != num2){
+            num2 = Item.randNum(gossip.length);
+            if(num2 != num){
                 break;
             }
         }
@@ -129,6 +129,12 @@ public class FairyVillage extends Quest{
             else{
                 System.out.println("\nBard:Nooooooo that doesn't sound right");
                 System.out.println("\n**The bard smashes their guitar and scrambles away**");
+                System.out.println("**you are so frightened you drop an item**");
+                int num = Item.randNum(user.basket.size());
+                String item = user.basket.get(num);
+                user.basket.remove(item);
+                System.out.println("\t-"+item);
+
             }
         }
         else if(input.equals("NO")){
@@ -369,7 +375,7 @@ public class FairyVillage extends Quest{
             }
             else if(where_x == -1 & where_y == 1){
                 System.out.println("\nWelcome to the Mirabel's Cottage!\n");
-                System.out.println("\t(Elida is a bit of a chatterbox, type 'leave' to leave the conversation)");
+                System.out.println("\t(Mirabel is a bit of a chatterbox, type 'leave' to leave the conversation)\n");
                 String [] Mirabel = new String[]{"OOps, my muffins are burning", "I like flowers  :p", "Oh dear :0", "You have really shiny hair", "thats...interesting..."};
                 Chatbot myBot = new Chatbot("Mirabel");
                 myBot.play(Mirabel);
