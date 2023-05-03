@@ -224,10 +224,11 @@ public class FairyVillage extends Quest{
         for(int i = 0; i<this.recipe.size(); i++){
             String item = this.recipe.get(i);
             for(int j = 0; j<user.basket.size(); j++){
-                if(item.equals(user.basket.get(j))){
+                if(user.basket.get(j).equals(item)){
                     this.recipe.remove(item);
                     user.basket.remove(item);
                     System.out.println("\t-"+item);
+                    break;
                 }
             }
         }
