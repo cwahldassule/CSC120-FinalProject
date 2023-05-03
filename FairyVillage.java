@@ -244,7 +244,6 @@ public class FairyVillage extends Quest{
         this.complete = true;
         this.started = false;
         user.busy = false;
-        user.grow();
         user.quest_complete += 1;
         return true;
         }

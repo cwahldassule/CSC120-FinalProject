@@ -63,7 +63,7 @@ public class FireflyClearing extends Quest {
         this.complete = true;
         this.started = false;
         user.busy = false;
-        user.grow();
+        user.grow(); //delete
         user.quest_complete += 1;
         return true;
         }

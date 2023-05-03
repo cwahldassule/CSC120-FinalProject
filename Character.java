@@ -43,10 +43,6 @@ class Character{
     this.stats();
   }
 
-  public void grow(){
-    this.size += 1;
-  }
-
   public void empty(){
     System.out.println("\nEmptying basket...");
     basket.clear();
