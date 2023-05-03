@@ -327,6 +327,7 @@ public class ElfTreeHouse extends Quest{
                         this.recipe.remove(item);
                         user.basket.remove(item);
                         System.out.println("\t-"+item);
+                        break;
                     }
                 }
             }
