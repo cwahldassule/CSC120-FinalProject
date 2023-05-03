@@ -161,7 +161,7 @@ public class FireflyClearing extends Quest {
         }
         if(og_x != where_x | og_y != where_y){
             System.out.println("ENTERED");
-            if(where_x == 1 & where_y ==1){
+            if(where_x == 0 & where_y == 0){
                 System.out.println("You are at the Starlight Pond");
                 System.out.println("Would you like to leave the Firefly Clearing?");
                 input = in.nextLine().toUpperCase();
@@ -189,13 +189,13 @@ public class FireflyClearing extends Quest {
             else if (where_x==2 && where_y==1){
                 this.pineconeShrine();
             }
-            else if (where_x==0 && where_y==1){
+            else if (where_x==1 && where_y==2){
                 this.birchBridge();
             }
             else if (where_x==0 && where_y==0){
                 this.desertedBurrow();
             }
-            else if (where_x==1 && where_y==2){
+            else if (where_x==0 && where_y==1){
                 this.fireflyPond();
             }    
             else if (where_x==2 && where_y==2){
