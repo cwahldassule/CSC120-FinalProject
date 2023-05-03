@@ -77,7 +77,7 @@ public class FireflyClearing extends Quest {
 
     public void fireflyPond(){
         if(this.started | this.complete){
-            System.out.println("\nWelcome back to the Starlight Pond!");
+            System.out.println("\nWelcome back to the walnut tree!");
             this.finishQuest(user);
         
             if(this.complete){
