@@ -365,12 +365,14 @@ public class ElfTreeHouse extends Quest{
         
         //PLAY METHOD
         public boolean play(){
+            System.out.println("\n\t\t\tPress enter to continue");
+            in.nextLine();
+            System.out.println("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~");
             int og_x = where_x;
             int og_y = where_y;
             System.out.println(" ");
-            System.out.println("Where would you like to go/do?");
-            System.out.println("N, E, S, W, Stats, Recipe, Open Basket");
-            //print out help?
+            System.out.println("Where would you like to go/do? (N, E, S, W, HELP)");
+            
             String input = in.nextLine().toUpperCase();
             if(input.equals("N")){
                 where_y += 1;
