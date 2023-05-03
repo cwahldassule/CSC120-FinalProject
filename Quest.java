@@ -1,5 +1,7 @@
 import java.util.ArrayList;
-
+/**
+ * creates class Quest, with recipe of items needed to be collected
+ */
 public class Quest{
     String name;
     ArrayList<String> recipe;
@@ -8,6 +10,11 @@ public class Quest{
     boolean complete;
     boolean started;
   
+    /**
+     * Constructor of Quest
+     * @param name of quest
+     * @param size of quest
+     */
     public Quest(String name, int size){
       this.name = name;
       Item myItem = new Item();
@@ -22,10 +29,17 @@ public class Quest{
       }
     }
 
+    /*
+     * default method help, each individual location can override and create its own help method.
+     */
     public void help(){
       throw new RuntimeException("Not a valid option :/");
     }
     
+    /**
+     * checks user location, 
+     * @return true or false, false if locatoin is 0,0
+     */
     public boolean checkLoc(){
       if(loc_x == 0 & loc_y == 0){
         return false;
@@ -34,6 +48,10 @@ public class Quest{
         return true;
       }
     }
+
+    /**
+     * if quest has been started, prints out items in quest
+     */
     public void printRecipe(){
       if(this.started){
         System.out.println("Quest items:");
