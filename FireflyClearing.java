@@ -25,14 +25,13 @@ public class FireflyClearing extends Quest {
     }
     
     public void intro(){
-        System.out.println("\n**Welcome to the Firefly Clearing!**");
-        System.out.println("**Walk around to explore the clearing**");
-        System.out.println("**(Walking in the Firefly Clearing does not use flight power)**");
+        System.out.println("\nWelcome to the Firefly Clearing! You are currently at the Starlight Pond");
+        System.out.println("Walk around to explore the clearing (walking does not use flight power)");
     }
 
     public void help(){
         System.out.println("\nOptions: ");
-        System.out.println("MOVE North, South, East, or West");
+        System.out.println("WALK North, South, East, or West");
         System.out.println("\t-> Enter 'n', 'e', 's', or 'w'");
         System.out.println("SEE CHARACTER STATS:");
         System.out.println("\t-> Enter 'stats'");
@@ -86,7 +85,8 @@ public class FireflyClearing extends Quest {
             }
         }
         else if(!this.complete & !this.started & !user.busy){
-            System.out.println("\nTonight is the full moon, so all the fireflies will be gathering to make a special potion.");
+            System.out.println("\nYou come across a majestic walnut tree.");
+            System.out.println("Tonight is the full moon, so all the fireflies will be gathering to make a special potion in an empty walnut shell.");
             System.out.println("Will you help them by collecting a few items for the potion?");
             String input = in.nextLine().toUpperCase();
             if(input.equals("YES")){
@@ -94,6 +94,7 @@ public class FireflyClearing extends Quest {
                 this.started = true;
                 user.busy = true;
                 this.printRecipe();
+                System.out.println("\nReturn to the walnut tree when you have collected all of the items:");
                 
             }
             else if(input.equals("NO")){
