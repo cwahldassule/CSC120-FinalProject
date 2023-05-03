@@ -152,7 +152,7 @@ public class Garden{
         }
 
         else if(user.pos_x == fireflyClearing.loc_x & user.pos_y == fireflyClearing.loc_y){
-          treeHouse.intro();
+          fireflyClearing.intro();
           while(true){
             try{
               Boolean temp = fireflyClearing.play();
