@@ -445,7 +445,7 @@ public class ElfTreeHouse extends Quest{
 }
 
 public static void main(String[] args) {
-    LadyBug me = new LadyBug("Ashby");
+    Character me = new Character("Ashby", 100, 100);
     ElfTreeHouse myTreehouse = new ElfTreeHouse("ElfTreehouse", me);
     myTreehouse.intro();
 

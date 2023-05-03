@@ -184,13 +184,13 @@ public class Garden{
     System.out.println("\t\t(if you are ever confused, type 'help' for options)");
     
     System.out.println("\nWhat character would you like to be?");
-    System.out.println("\t+Bumblebee\n\t+Butterfly\n\t+Ladybug");
+    System.out.println("\t+Ladybug (easy)\n\t+Butterfly (Medium) \n\t+Bumblebee (Hard)");
     Scanner in2 = new Scanner(System.in);
     String input = in2.nextLine().toUpperCase();
     System.out.println("What would you like your name to be?");
     String name = in2.nextLine();
     if(input.equals("BUMBLEBEE")){
-      Character user = new Bumblebee(name);
+      Character user = new Character(name, 20, 15);
       Garden myGarden = new Garden(user);
       while(true){
         try{
@@ -206,7 +206,7 @@ public class Garden{
         }
     }
     else if(input.equals("BUTTERFLY")){
-      Character user = new Butterfly(name);
+      Character user = new Character(name, 40, 30);
       Garden myGarden = new Garden(user);
       while(true){
         try{
@@ -223,7 +223,7 @@ public class Garden{
     }
 
     else if(input.equals("LADYBUG")){
-      Character user = new LadyBug(name);
+      Character user = new Character(name, 100, 100);
       Garden myGarden = new Garden(user);
       while(true){
         try{

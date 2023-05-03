@@ -405,7 +405,7 @@ public class FairyVillage extends Quest{
     }
     
     public static void main(String[] args) {
-        Bumblebee me = new Bumblebee("Chloe");
+        Character me = new Character("Chloe", 100, 100);
         FairyVillage myVillage = new FairyVillage("Fairy Village", 3, me);
 
         while(true){
