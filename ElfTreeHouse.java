@@ -225,7 +225,6 @@ public class ElfTreeHouse extends Quest{
             Random randJewel = new Random();
             int index = randJewel.nextInt(jewels.size());
             String jewel = jewels.get(index);
-            System.out.println(jewel);
             if(input.equals(jewel)){
                 System.out.println("Congrats! You guessed right, and have won an Emerald");
                 user.basket.add("Emerald");
@@ -368,7 +367,7 @@ public class ElfTreeHouse extends Quest{
             int og_y = where_y;
             System.out.println(" ");
             System.out.println("Where would you like to go/do?");
-            System.out.println("N, E, S, W, Stats, Quest, Open Basket");
+            System.out.println("N, E, S, W, Stats, Recipe, Open Basket");
             //print out help?
             String input = in.nextLine().toUpperCase();
             if(input.equals("N")){
@@ -391,6 +390,9 @@ public class ElfTreeHouse extends Quest{
             }
             else if(input.equals("OPEN BASKET")){
                 user.openBasket();;
+            }
+            else if(input.equals("HELP")){
+                user.help();
             }
             else{
                 throw new RuntimeException("That's not a valid option :/");
