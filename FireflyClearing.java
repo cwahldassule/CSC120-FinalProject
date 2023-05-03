@@ -121,7 +121,7 @@ public class FireflyClearing extends Quest {
         System.out.println("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~");
         int og_x = where_x;
         int og_y = where_y;
-        System.out.println("\nWhere would you like to go/do?");
+        System.out.println("\nWhere would you like to go/do? (n, e, s, w, help)");
         String input = in.nextLine().toUpperCase();
         if(input.equals("N")){
             where_y += 1;
@@ -161,9 +161,8 @@ public class FireflyClearing extends Quest {
         }
         if(og_x != where_x | og_y != where_y){
             System.out.println("ENTERED");
-            if(where_x == 0 & where_y ==0){
+            if(where_x == 1 & where_y ==1){
                 System.out.println("You are at the Starlight Pond");
-                fireflyPond();
                 System.out.println("Would you like to leave the Firefly Clearing?");
                 input = in.nextLine().toUpperCase();
                 if(input.equals("YES")){
@@ -184,7 +183,7 @@ public class FireflyClearing extends Quest {
             else if (where_x==2 && where_y==0){
                 this.cozyKnothole();
             }
-            else if (where_x==1 && where_y==1){
+            else if (where_x==0 && where_y==2){
                 this.ornateMirror();
             }
             else if (where_x==2 && where_y==1){
@@ -193,12 +192,16 @@ public class FireflyClearing extends Quest {
             else if (where_x==0 && where_y==1){
                 this.birchBridge();
             }
-            else if (where_x==1 && where_y==2){
+            else if (where_x==0 && where_y==0){
                 this.desertedBurrow();
             }
+            else if (where_x==1 && where_y==2){
+                this.fireflyPond();
+            }    
             else if (where_x==2 && where_y==2){
                 this.leafHammock();
-            }             
+            }               
+
     }
 
     return true;
