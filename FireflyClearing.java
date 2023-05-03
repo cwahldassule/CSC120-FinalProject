@@ -77,7 +77,7 @@ public class FireflyClearing extends Quest {
 
     public void fireflyPond(){
         if(this.started | this.complete){
-            System.out.println("\nWelcome back to the Starlight Pond!");
+            System.out.println("\nWelcome back to the walnut tree!");
             this.finishQuest(user);
         
             if(this.complete){
@@ -105,7 +105,7 @@ public class FireflyClearing extends Quest {
             }
         }        
         else if(user.busy){
-            System.out.println("Welcome to the Starlight Pond!");
+            System.out.println("Welcome to the walnut tree!");
             System.out.println("Come back when you've finished your current quest");
             System.out.println("Feel free to explore the rest of the clearing...");
         }
@@ -170,7 +170,7 @@ public class FireflyClearing extends Quest {
                     return false;
                 }
             }
-            else if(where_y <0 | where_x < left_bound | where_x > right_bound | where_y > upper_bound){
+            else if(where_y <lower_bound | where_x < left_bound | where_x > right_bound | where_y > upper_bound){
                 System.out.println("There's nothing here :0");
                 System.out.println("Would you like to leave the Firefly Clearing?");
                 input = in.nextLine().toUpperCase();
@@ -193,7 +193,7 @@ public class FireflyClearing extends Quest {
             else if (where_x==1 && where_y==2){
                 this.birchBridge();
             }
-            else if (where_x==0 && where_y==0){
+            else if (where_x==1 && where_y==1){
                 this.desertedBurrow();
             }
             else if (where_x==0 && where_y==1){
