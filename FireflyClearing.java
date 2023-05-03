@@ -85,7 +85,7 @@ public class FireflyClearing extends Quest {
             }
         }
         else if(!this.complete & !this.started & !user.busy){
-            System.out.println("\nYou come across a majestic walnut tree.");
+            System.out.println("You come across a majestic walnut tree.");
             System.out.println("Tonight is the full moon, so all the fireflies will be gathering to make a special potion in an empty walnut shell.");
             System.out.println("Will you help them by collecting a few items for the potion?");
             String input = in.nextLine().toUpperCase();
@@ -176,6 +176,20 @@ public class FireflyClearing extends Quest {
                 input = in.nextLine().toUpperCase();
                 if(input.equals("YES")){
                     return false;
+                }
+                else {
+                    if (where_y < lower_bound) {
+                        where_y += 1;
+                    }
+                    if (where_y > upper_bound) {
+                        where_y -= 1;
+                    }
+                    if (where_x < left_bound) {
+                        where_x += 1;
+                    }
+                    if (where_x > right_bound) {
+                        where_x -= 1;
+                    }
                 }
             }
             else if (where_x==1 && where_y==0){
