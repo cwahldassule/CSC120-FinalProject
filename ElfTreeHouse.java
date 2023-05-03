@@ -320,10 +320,11 @@ public class ElfTreeHouse extends Quest{
             }
         }
         public Boolean finishQuest(Character user){
-            for(int i = 0; i<this.recipe.size(); i++){
-                String item = this.recipe.get(i);
-                for(int j = 0; j<user.basket.size(); j++){
-                    if(item.equals(user.basket.get(j))){
+            for(int i = 0; i <user.basket.size(); i++){
+                String item = user.basket.get(i);
+                for(int j = 0; j<this.recipe.size(); j++){
+                    String same = recipe.get(j);
+                    if(item.equals(same)){
                         this.recipe.remove(item);
                         user.basket.remove(item);
                         System.out.println("\t-"+item);
