@@ -20,8 +20,8 @@ class Character{
     this.in = new Scanner(System.in);
     this.basket = new ArrayList<String>();
     this.size = 1;
-    this.flight_power = -1;
-    this.flight_cap = -1;
+    this.flight_power = flight_cap;
+    this.flight_cap = flight_cap;
     this.pos_x = 0;
     this.pos_y = 0;
     this.quest_complete = 0;
