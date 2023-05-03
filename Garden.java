@@ -15,7 +15,7 @@ public class Garden{
     this.upper_bound = 3;
     this.right_bound = 3;
     this.fairyVillage = new FairyVillage("Fairy Village", 3, user);
-    this.fireflyClearing = new FireflyClearing("Firefly Clearing", 2, user);
+    this.fireflyClearing = new FireflyClearing("Firefly Clearing", 3, user);
     this.treeHouse = new ElfTreeHouse("Elf TreeHouse", user);
     boolean temp = true;
     while(temp){

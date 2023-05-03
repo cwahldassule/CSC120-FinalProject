@@ -91,9 +91,10 @@ public class FireflyClearing extends Quest {
             String input = in.nextLine().toUpperCase();
             if(input.equals("YES")){
                 System.out.println("\nWonderful! You will need to collect the following items:");
-                this.printRecipe();
                 this.started = true;
                 user.busy = true;
+                this.printRecipe();
+                
             }
             else if(input.equals("NO")){
                 System.out.println("\nOkay :(");
