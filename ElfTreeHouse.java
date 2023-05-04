@@ -30,7 +30,7 @@ public class ElfTreeHouse extends Quest {
     this.where_y = 0;
     this.left_bound = 0;
     this.right_bound = 2;
-    this.upper_bound = 3;
+    this.upper_bound = 2;
     this.user = user;
     this.option1 = "null";
     this.option2 = "null";
@@ -43,7 +43,7 @@ public class ElfTreeHouse extends Quest {
   public void intro() {
     System.out.println("Welcome to the ElfTreeHouse");
     System.out.println("Fly around to explore and look for items!");
-    System.out.println("Flying around the Treehouse will not affect flight power, make sure to check North!");
+    System.out.println("Flying around the Treehouse will not affect flight power, make sure to check North and East!");
   }
 
   /**
@@ -422,11 +422,16 @@ public class ElfTreeHouse extends Quest {
           return false;
         }                
       } else if (where_y < 0 | where_x < left_bound | where_x > right_bound | where_y > upper_bound) {
-
+        where_x = 0;
+        where_y = 0;
         System.out.println("There's nothing here :0");
         System.out.println("Sending you to the Treehouse Base");
-        where_x = og_x;
-        where_y = og_y;
+        System.out.println(" ");
+        System.out.println("Would you like to exit the Elf Treehouse? YES or NO");
+        input = in.nextLine().toUpperCase();
+        if (input.equals("YES")) {
+          return false;
+        }  
       } else if (where_x == 0 && where_y == 1) {
         System.out.println("You are at the moss staircase");
       } else if (where_x == 0 && where_y == 2) {
