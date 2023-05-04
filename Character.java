@@ -104,7 +104,7 @@ public void grab(String item) {
       System.out.println("\t+"+basket.get(i));
         }}
     else{
-      throw new RuntimeException("You don't have any flowers lol");
+      throw new RuntimeException("You don't have any items");
         }
     System.out.println("");}
 
@@ -127,7 +127,7 @@ public void grab(String item) {
           }
 
           public void shake(){
-            System.out.println("\nYou bumped into a tree and dropped a few items...");
+            System.out.println("\nYou bumped into a tree!"); 
                 Integer temp = Item.randNum(4) +1 ;
                 if(basket.size() >= (temp)){
                     for(int i = 0; i < temp; i++){

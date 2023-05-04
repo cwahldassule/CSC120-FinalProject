@@ -287,7 +287,7 @@ public class FireflyClearing extends Quest {
             String flower = Item.randFlower();
             System.out.println("You look around for something to give and find a " + flower);
             if (flower.equals("Peony") | (flower.equals("Tulip"))) {
-                System.out.println("When you lay the " + flower + " at the shrine, the air around it begins to shimmer, and the " +flower+ "dissapears");
+                System.out.println("When you lay the " + flower + " at the shrine, the air around it begins to shimmer, and the " +flower+ " dissapears");
                 System.out.println("A small Gold Key appears where the " +flower+ " once was. Whoever the shrine is to must be pleased with your offering!");
                 user.grab("Gold Key"); 
             }
@@ -325,7 +325,6 @@ public class FireflyClearing extends Quest {
             if (user.basket.contains("Gold Key")) {
             System.out.println("\nYou use your Gold Key to unlock and open the chest");
             user.basket.remove("Gold Key");
-            System.out.println("\t-Gold Key");
             System.out.println("\nInside, you find a pile of Sapphires!");
             user.grab("Sapphire");
             }
