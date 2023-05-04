@@ -63,7 +63,6 @@ public class FireflyClearing extends Quest {
         this.complete = true;
         this.started = false;
         user.busy = false;
-        user.grow(); //delete
         user.quest_complete += 1;
         return true;
         }
@@ -259,8 +258,7 @@ public class FireflyClearing extends Quest {
             String input3 = in.nextLine().toUpperCase();
             if(input3.equals("A PENCIL") | input3.equals("PENCIL") | input3.equals("A CANDLE") | input3.equals("CANDLE")){
                 System.out.println("Parsnip: Wow, you're smart! Here, have this Blueberry as a token of my admiration");
-                user.basket.add("Blueberry");
-                System.out.println("\t+Blueberry");
+                user.grab("Blueberry");
             }
             else {
                 System.out.println("Hmmm... That's not the answer I was thinking of...");
@@ -297,9 +295,8 @@ public class FireflyClearing extends Quest {
             System.out.println("You look around for something to give and find a " + flower);
             if (flower.equals("Peony") | (flower.equals("Tulip"))) {
                 System.out.println("When you lay the " + flower + " at the shrine, the air around it begins to shimmer, and the " +flower+ "dissapears");
-                System.out.println("A small gold key appears where the " +flower+ " once was. Whoever the shrine is to must be pleased with your offering!");
-                user.basket.add("gold key");
-                System.out.println("\t+gold key"); 
+                System.out.println("A small Gold Key appears where the " +flower+ " once was. Whoever the shrine is to must be pleased with your offering!");
+                user.grab("Gold Key"); 
             }
             else {
                 System.out.println("When you lay the " + flower + " at the shrine, it instantly bursts into flames, singeing one of your wings.");
@@ -323,20 +320,57 @@ public class FireflyClearing extends Quest {
     }
 
     public void birchBridge() {
-        System.out.println("birch bridge test");
+        System.out.println("You find yourself standing on a bridge made from the fallen limb of a birch tree");
+        System.out.println("The view is beautiful from here!");
+
     }
     public void desertedBurrow() {
-        System.out.println("burrow test");
+        System.out.println("You discover a deserted burrow, maybe used by a bunny family once upon a time.");
+        System.out.println("Looking around, you spot an intricately painted treasure chest. Do you want to open it?");
+        String input = in.nextLine().toUpperCase();
+        if(input.equals("YES")){    
+            if (user.basket.contains("Gold Key")) {
+            System.out.println("\nYou use your Gold Key to unlock and open the chest");
+            user.basket.remove("Gold Key");
+            System.out.println("\t-Gold Key");
+            System.out.println("\nInside, you find a pile of Sapphires!");
+            user.grab("Sapphire");
+            }
+            else {
+                System.out.println("The chest is locked! You need a key to open it...");
+            }
+        }
+        else if(input.equals("NO")){
+            System.out.println("\nYou do you, I guess :I");
+        }
+        else{
+            throw new RuntimeException("\nNot a valid option >_<");
+        }       
+
     }
+
+    
     public void leafHammock() {
-        System.out.println("hammock test");
+        System.out.println("You come across a patch of tall Lavender stalks with tree leaves tied between to make little hammocks");
+        System.out.println("There is plenty of Lavender here, and only a small section of it holds the hammocks. Would you like to take a little bit of Lavender?");
+        String input = in.nextLine().toUpperCase();
+        if(input.equals("YES")){
+            user.grab("Lavender");
+            
+        }
+        else if(input.equals("NO")){
+            System.out.println("\nNo problem :]");   
+        }
+        else{
+            throw new RuntimeException("\nNot a valid option >_<");
+        }   
     }
 
 
     
     public static void main(String[] args) {
         Character me = new Character("Matilda", 40, 30);
-        FireflyClearing myClearing = new FireflyClearing("Firefly Clearing", 2, me);
+        FireflyClearing myClearing = new FireflyClearing("Firefly Clearing", 3, me);
 
 
         while(true){
