@@ -50,19 +50,19 @@ class Character{
   }
 
   public void help(){
-    System.out.println("\nFly:");
+    System.out.println("\n'Fly':");
     System.out.println("\t+Choose the coords of where you want to go\n\t+possibility of loosing 1-4 items or flight power\n\t+loose flight power based on coords");
-    System.out.println("Snack:");
+    System.out.println("'Snack':");
     System.out.println("\t+Eat 1 item to gain 3 flight power");
-    System.out.println("Sleep:");
+    System.out.println("'Sleep':");
     System.out.println("\t+Sleep for 10 seconds to reset flight power");
-    System.out.println("Open basket:");
+    System.out.println("'Open basket':");
     System.out.println("\t+Opens basket");
-    System.out.println("Empty basket:");
+    System.out.println("'Empty basket':");
     System.out.println("\t+Empties basaket");
-    System.out.println("Recipe");
+    System.out.println("'Recipe':");
     System.out.println("\t+Shows needed Quest Items");
-    System.out.println("Stats:");
+    System.out.println("'Stats':");
     System.out.println("\t+Displays important character info");
 }
 
