@@ -74,7 +74,7 @@ public class FireflyClearing extends Quest {
         }
     }
 
-    public void fireflyPond(){
+    public void walnutTree(){
         if(this.started | this.complete){
             System.out.println("\nWelcome back to the walnut tree!");
             this.finishQuest(user);
@@ -192,26 +192,26 @@ public class FireflyClearing extends Quest {
                     }
                 }
             }
-            else if (where_x==1 && where_y==0){
+            else if (where_x==2 && where_y==0){
                 this.cloverPatch();
             }
-            else if (where_x==2 && where_y==0){
+            else if (where_x==0 && where_y==2){
                 this.cozyKnothole();
             }
-            else if (where_x==0 && where_y==2){
+            else if (where_x==1 && where_y==2){
                 this.ornateMirror();
             }
             else if (where_x==2 && where_y==1){
                 this.pineconeShrine();
             }
-            else if (where_x==1 && where_y==2){
+            else if (where_x==1 && where_y==0){
                 this.birchBridge();
             }
             else if (where_x==1 && where_y==1){
                 this.desertedBurrow();
             }
             else if (where_x==0 && where_y==1){
-                this.fireflyPond();
+                this.walnutTree();
             }    
             else if (where_x==2 && where_y==2){
                 this.leafHammock();
