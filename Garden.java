@@ -1,6 +1,9 @@
 import java.util.Scanner;
 import java.util.ArrayList;
 
+/*
+ * creates Garden location, where other three locations are found within
+ */
 public class Garden{
   FairyVillage fairyVillage;
   FireflyClearing fireflyClearing;
@@ -11,6 +14,10 @@ public class Garden{
   Scanner in = new Scanner(System.in);
   Scanner in2 = new Scanner(System.in);
 
+  /**
+   * Creates Garden constructor
+   * @param user character choosen
+   */
   public Garden(Character user){
     this.upper_bound = 3;
     this.right_bound = 3;
@@ -25,6 +32,10 @@ public class Garden{
     this.user = user;
     }
 
+    /**
+     * Randomizes location of Fairy Village, Elf Treehouse and Firefly Clearing
+     * @return false if all three locations are at different points, returns true if locaitons are at same point.
+     */
   public boolean checkLoc(){
     int temp = 0;
     if(fairyVillage.loc_x == fireflyClearing.loc_x  &
@@ -53,6 +64,10 @@ public class Garden{
     }
   }
 
+  /**
+   * Boolean to check if three quests are complete, if so, prints statement
+   * @return true if three quests complete, false if not.
+   */
   public boolean win(){
     if(user.quest_complete == 3){
       System.out.println("\t\t~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~");
@@ -65,6 +80,11 @@ public class Garden{
     }
   }
 
+  /**
+   * play funciton, takes user input and calls according methods
+   * @param user character selected
+   * @return true to keep running the function, false to end the funciton, when user wins the game.
+   */
   public boolean play(Character user){
     if(this.win()){
       return false;
@@ -259,7 +279,5 @@ public class Garden{
     }catch(Exception e){
       System.out.println(e.getMessage());
     }
-
-
   }
 }
