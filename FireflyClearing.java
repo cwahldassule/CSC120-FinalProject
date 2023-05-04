@@ -227,8 +227,8 @@ public class FireflyClearing extends Quest {
         System.out.println("You know that four leaf clovers are lucky. Do you want to look for one?");
         String input = in.nextLine().toUpperCase();
         if(input.equals("YES")){
-            int num = Item.randNum(1);
-            if (num == 3){
+            int num = Item.randNum(3);
+            if (num == 1){
                 System.out.println("You found a lucky four leaf clover! You feel energized");
                 System.out.println("\t+2 flight power");
                 user.flight_power += 2;
