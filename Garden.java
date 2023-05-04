@@ -178,7 +178,7 @@ public class Garden{
   }
 
   public static void main(String[] args) {
-    System.out.println("\t\tWelcome to the garden!");
+    System.out.println("\t\tWelcome to the Garden!");
     System.out.println("Your goal is to complete the three quests of the three hidden locations");
     System.out.println("Fly to different coords in the garden to search for the locations and pick up items");
     System.out.println("\t\t(if you are ever confused, type 'help' for options)");
