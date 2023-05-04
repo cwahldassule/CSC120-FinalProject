@@ -8,7 +8,12 @@ public class FairyVillage extends Quest{
     int right_bound;
     int upper_bound;
     Character user;
-
+    /**
+     * Constructor for fairy village
+     * @param name name of the village
+     * @param size number of items for the quest
+     * @param user the user
+     */
     public FairyVillage(String name, int size, Character user){
         super(name, size);
         this.in = new Scanner(System.in);
@@ -20,6 +25,9 @@ public class FairyVillage extends Quest{
         this.user = user;
     }
 
+    /**
+     * prints out all of the commands
+     */
     public void help(){
         System.out.println("\n'N': ");
         System.out.println("\t-> Walk north");
@@ -42,6 +50,10 @@ public class FairyVillage extends Quest{
         System.out.println("'Snack':");
         System.out.println("\t->Eat 1 item for 3 flight power");
     }
+
+    /*
+     * A chatbot that gives +1 flight power when leaving the conversation 
+     */
     public void elida(){
         System.out.println("\n**Elida is doing a little spring cleaning...**\n");
         System.out.println("\t(Elida is a bit of a chatterbox, type 'leave' to leave the conversation)\n");
@@ -58,6 +70,9 @@ public class FairyVillage extends Quest{
         }
     }
 
+    /**
+     * allows user to sleep for less time and gain more flight power
+     */
     public void fairyInn(){
         System.out.println("\nIf you're feeling tired you can sleep here in our cozy rooms");
         System.out.println("Would you like to sleep?\n\t+Yes\n\t+No");
@@ -74,6 +89,9 @@ public class FairyVillage extends Quest{
         }
     }
 
+    /**
+     * prints a few statements and may give flight power
+     */
     public void angelfountain(){
         System.out.println("\n**You see a few fairies washing laundry \nand overhear them chatting...**");
         String[] gossip = new String[]{"Did you hear about Nadia??",
@@ -94,13 +112,16 @@ public class FairyVillage extends Quest{
         if(num == 0){
             System.out.println("\nFountain fairies: Hello! You seem like a nice young bug, have some caramels for energy");
             System.out.println("\t+1 Flight power");
-            user.flight_power += 1;
+            user.flight_power += 4;
         }
         else{
             System.out.println("\nFountain fairies: Shoo it's not nice to eavesdrop");
         }
     }
 
+    /**
+     * challenges user to unbeatable game and makes them drop an item
+     */
     public void blaze(){
         System.out.println("\n**Blaze invites you in...**");
         System.out.println("\nBlaze: Hey! Do you want to play a game?");
@@ -118,6 +139,9 @@ public class FairyVillage extends Quest{
         System.out.println("\t-"+item);
     }
 
+    /**
+     * challenges user to guessing game and either makes them drop an item or win +10 flight power
+     */
     public void musicCorner(){
         String[] notes = new String[]{"A", "B", "C", "D", "E", "F", "G"};
         String note = notes[Item.randNum(7)];
@@ -153,6 +177,9 @@ public class FairyVillage extends Quest{
         }
     }
 
+    /**
+     * allows user to trade random flower for a strawberry
+     */
     public void dressShop(){
         String flower = Item.randFlower();
         System.out.println("\n**The dress maker needs your help...**");
@@ -175,6 +202,9 @@ public class FairyVillage extends Quest{
         }
     }
 
+    /**
+     * allows user to trade random fruit for pearls
+     */
     public void bakery(){
         String fruit = Item.randFruit();
         System.out.println("\n**The baker needs your help making cakes...**");
@@ -200,6 +230,9 @@ public class FairyVillage extends Quest{
         }
     }
 
+    /**
+     * allows user to trade random gem for sunflower
+     */
     public void potionsShop(){
         String gem = Item.randGem();
         System.out.println("\n**The potion master needs help brewing potions...**");
@@ -227,14 +260,21 @@ public class FairyVillage extends Quest{
             throw new RuntimeException("Not a valid option >_<");
         }
     }
-
+    
+    /**
+     * prints a few intro statements
+     */
     public void intro(){
         System.out.println("\n**Welcome to the Fairy Village!**");
         System.out.println("**Walk around to explore the village**");
         System.out.println("**(Walking in the fairy village does not use flight power)**");
     }
 
-    public Boolean finishQuest(Character user){
+    /**
+     * checks to see if critera for finishing quest has been met
+     * @return t or f for if conditions are met
+     */
+    public Boolean finishQuest(){
         for(int i = 0; i <user.basket.size(); i++){
             String item = user.basket.get(i);
             for(int j = 0; j<this.recipe.size(); j++){
@@ -263,10 +303,13 @@ public class FairyVillage extends Quest{
         }
     }
     
+    /**
+     * place where user accepts and completes quest
+     */
       public void villageSquare(){
         if(this.started | this.complete){
             System.out.println("\nWelcome back to the Village Square!");
-            this.finishQuest(user);
+            this.finishQuest();
         
             if(this.complete){
                 System.out.println("\nThank you for all your help! The festival is in full swing!");
@@ -297,6 +340,10 @@ public class FairyVillage extends Quest{
     
     }
     
+    /**
+     * takes user input and calls appropriate function(s)
+     * @return t or f to keep playing
+     */
     public boolean play(){
         System.out.println("\n\t\t\tPress enter to continue");
         in.nextLine();
