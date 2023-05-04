@@ -51,7 +51,7 @@ class Character{
 
   public void help(){
     System.out.println("\n'Fly':");
-    System.out.println("\t->Choose the coords of where you want to go\n\t->possibility of losing 1-4 items or flight power\n\t->lose flight power based on coords");
+    System.out.println("\t->Choose the coords of where you want to go (0-3) \n\t->possibility of losing 1-4 items or flight power\n\t->lose flight power based on coords");
     System.out.println("'Snack':");
     System.out.println("\t->Eat 1 item to gain 3 flight power");
     System.out.println("'Sleep':");
@@ -85,7 +85,7 @@ class Character{
         }
     }
     else{
-        throw new RuntimeException("You are too tired to do that...");
+        throw new RuntimeException("You are too tired to do that...take a nap or eat a snack...");
     }
 }
 

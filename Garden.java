@@ -69,19 +69,34 @@ public class Garden{
     if(this.win()){
       return false;
     }
-    System.out.println("Fairy Village "+fairyVillage.loc_x+fairyVillage.loc_y); //testing
-    System.out.println("Firefly Clearing "+fireflyClearing.loc_x+fireflyClearing.loc_y); //testing
-    System.out.println("Treehouse: "+ treeHouse.loc_x +treeHouse.loc_y ); //testing
+    //System.out.println("Fairy Village "+fairyVillage.loc_x+fairyVillage.loc_y); //testing
+    //System.out.println("Firefly Clearing "+fireflyClearing.loc_x+fireflyClearing.loc_y); //testing
+    //System.out.println("Treehouse: "+ treeHouse.loc_x +treeHouse.loc_y ); //testing
     int og_x = user.pos_x;
     int og_y = user.pos_y;
     System.out.println("\nWhat would you like to do? Enter HELP for options");
     String input = in.nextLine().toUpperCase();
     if(input.equals("FLY")){
+      int x = -1983;
+      int y = -2874;
       System.out.println("x coord? (int only)");
-      int x = in2.nextInt();
+      try{x = in2.nextInt();}catch(Exception e){
+        System.out.println("That's not an int -_-");
+        return true;
+      }
+
       System.out.println("y coord? (int only)");
-      int y = in2.nextInt();
-      user.fly(x, y);
+      try{y = in2.nextInt();}catch(Exception e){
+        System.out.println("That's not an int -_-");
+        return true;
+      }
+      if(x != -198 & y != -2874){
+        user.fly(x, y);
+      }
+      else{
+        throw new RuntimeException("Game makers: I don't know how you messed it up this badly so we starting over...");
+      }
+      
     }
     else if(input.equals("STATS")){
       user.stats();
@@ -183,7 +198,7 @@ public class Garden{
     System.out.println("Fly to different coords in the garden to search for the locations and pick up items");
     System.out.println("\t\t(if you are ever confused, type 'help' for options)");
     
-    System.out.println("\nWhat character would you like to be?");
+    try{System.out.println("\nWhat character would you like to be?");
     System.out.println("\t+Ladybug (easy)\n\t+Butterfly (Medium) \n\t+Bumblebee (Hard)");
     Scanner in2 = new Scanner(System.in);
     String input = in2.nextLine().toUpperCase();
@@ -238,7 +253,13 @@ public class Garden{
         System.out.println("----------------------------------------------------------");
         }
     }
-
-
+    else{
+      throw new RuntimeException("You did not choose any valid options... try again...");
     }
+    }catch(Exception e){
+      System.out.println(e.getMessage());
+    }
+
+
+  }
 }

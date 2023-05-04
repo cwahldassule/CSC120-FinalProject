@@ -21,21 +21,26 @@ public class FairyVillage extends Quest{
     }
 
     public void help(){
-        System.out.println("\nOptions: ");
-        System.out.println("Walk directions:");
-        System.out.println("\t+N, E, S, W");
-        System.out.println("Stats:");
-        System.out.println("\t+Character stats");
-        System.out.println("Sleep:");
-        System.out.println("\t+Sleep for 10 seconds and reset flight power");
-        System.out.println("Recipe:");
-        System.out.println("\t+See quest items");
-        System.out.println("\tOpen Basket:");
-        System.out.println("\t+Opens Basket");
-        System.out.println("Empty Basket:");
-        System.out.println("\t+Empties Basket");
-        System.out.println("Snack:");
-        System.out.println("\t+Eat 1 item for 3 flight power");
+        System.out.println("\n'N': ");
+        System.out.println("\t-> Walk north");
+        System.out.println("\n'S': ");
+        System.out.println("\t-> Walk south");
+        System.out.println("\n'E': ");
+        System.out.println("\t-> Walk east");
+        System.out.println("\n'W': ");
+        System.out.println("\t-> Walk west");
+        System.out.println("'Stats':");
+        System.out.println("\t->Character stats");
+        System.out.println("'Sleep':");
+        System.out.println("\t->Sleep for 10 seconds and reset flight power");
+        System.out.println("'Recipe':");
+        System.out.println("\t->See quest items");
+        System.out.println("\t'Open Basket':");
+        System.out.println("\t->Opens Basket");
+        System.out.println("'Empty Basket':");
+        System.out.println("\t->Empties Basket");
+        System.out.println("'Snack':");
+        System.out.println("\t->Eat 1 item for 3 flight power");
     }
     public void elida(){
         System.out.println("\n**Elida is doing a little spring cleaning...**\n");
@@ -106,8 +111,11 @@ public class FairyVillage extends Quest{
         System.out.println("Blaze: If you have 82 diced watermelons\n and are moving at a velocity of 12.3 bluebirds per week, \nwhat is the circumfrence of the sun? ");
         String input1 = in.nextLine().toUpperCase();
         System.out.println("Blaze: Sorry '"+input1+"' wrong :(");
-        user.flight_power -= 2;
-        System.out.println("\t-2 Flight power");
+        System.out.println("\n**You are so ashamed you drop an item...**");
+        int num = Item.randNum(user.basket.size());
+        String item = user.basket.get(num);
+        user.basket.remove(item);
+        System.out.println("\t-"+item);
     }
 
     public void musicCorner(){
@@ -129,7 +137,7 @@ public class FairyVillage extends Quest{
             else{
                 System.out.println("\nBard:Nooooooo that doesn't sound right");
                 System.out.println("\n**The bard smashes their guitar and scrambles away**");
-                System.out.println("**you are so frightened you drop an item**");
+                System.out.println("\n**you are so frightened you drop an item**");
                 int num = Item.randNum(user.basket.size());
                 String item = user.basket.get(num);
                 user.basket.remove(item);
@@ -295,7 +303,7 @@ public class FairyVillage extends Quest{
         System.out.println("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~");
         int og_x = where_x;
         int og_y = where_y;
-        System.out.println("\nWhere would you like to go/do?");
+        System.out.println("\nWhere would you like to go/do? (N, S, E, W, HELP)");
         String input = in.nextLine().toUpperCase();
         if(input.equals("N")){
             where_y += 1;
@@ -374,7 +382,7 @@ public class FairyVillage extends Quest{
             }
             else if(where_x == -1 & where_y == 1){
                 System.out.println("\nWelcome to the Mirabel's Cottage!\n");
-                System.out.println("\t(Mirabel is a bit of a chatterbox, type 'leave' to leave the conversation)\n");
+                System.out.println("\t(Mirabel is a bit of a chatterbox, type 'leave' to end the conversation)\n");
                 String [] Mirabel = new String[]{"OOps, my muffins are burning", "I like flowers  :p", "Oh dear :0", "You have really shiny hair", "thats...interesting..."};
                 Chatbot myBot = new Chatbot("Mirabel");
                 myBot.play(Mirabel);
