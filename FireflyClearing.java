@@ -227,7 +227,7 @@ public class FireflyClearing extends Quest {
         System.out.println("You know that four leaf clovers are lucky. Do you want to look for one?");
         String input = in.nextLine().toUpperCase();
         if(input.equals("YES")){
-            int num = Item.randNum(3);
+            int num = Item.randNum(1);
             if (num == 3){
                 System.out.println("You found a lucky four leaf clover! You feel energized");
                 System.out.println("\t+2 flight power");
@@ -264,7 +264,7 @@ public class FireflyClearing extends Quest {
                 System.out.println("Hmmm... That's not the answer I was thinking of...");
             }
         }
-        else if(input.equals("NO")){
+        else if(input2.equals("NO")){
             System.out.println("\nParsnip sighs sadly and retreats to a shadowy corner of the knothole");
         }
         else{
@@ -285,13 +285,6 @@ public class FireflyClearing extends Quest {
         String input = in.nextLine().toUpperCase();
         if(input.equals("YES")){
             String flower = Item.randFlower();
-            while (true){
-                flower = Item.randFlower();
-                if (flower.equals("Lavender")) {
-                    continue;
-                }else{
-                    break;}
-                }
             System.out.println("You look around for something to give and find a " + flower);
             if (flower.equals("Peony") | (flower.equals("Tulip"))) {
                 System.out.println("When you lay the " + flower + " at the shrine, the air around it begins to shimmer, and the " +flower+ "dissapears");
