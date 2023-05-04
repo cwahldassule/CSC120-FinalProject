@@ -51,19 +51,25 @@ class Character{
 
   public void help(){
     System.out.println("\n'Fly':");
-    System.out.println("\t+Choose the coords of where you want to go\n\t+possibility of loosing 1-4 items or flight power\n\t+loose flight power based on coords");
+    System.out.println("\t->Choose the coords of where you want to go\n\t->possibility of losing 1-4 items or flight power\n\t->lose flight power based on coords");
     System.out.println("'Snack':");
-    System.out.println("\t+Eat 1 item to gain 3 flight power");
+    System.out.println("\t->Eat 1 item to gain 3 flight power");
     System.out.println("'Sleep':");
-    System.out.println("\t+Sleep for 10 seconds to reset flight power");
+    System.out.println("\t->Sleep for 10 seconds to reset flight power");
     System.out.println("'Open basket':");
-    System.out.println("\t+Opens basket");
+    System.out.println("\t->Opens basket");
     System.out.println("'Empty basket':");
-    System.out.println("\t+Empties basaket");
+    System.out.println("\t->Empties basaket");
     System.out.println("'Recipe':");
-    System.out.println("\t+Shows needed Quest Items");
+    System.out.println("\t->Shows needed Quest Items");
     System.out.println("'Stats':");
-    System.out.println("\t+Displays important character info");
+    System.out.println("\t->Displays important character info");
+    System.out.println("\nStruggling to find a particular item? Here's a key:");
+    System.out.println("\t->Fairy Village has: Sunflower, Strawberry, Pearl");
+    System.out.println("\t->Fairy Village has: Lavender, Blueberry, Sapphire");
+    System.out.println("\t->Fairy Village has: Peony, Blackberry, Emerald");
+    System.out.println("\t->All items can be found in the Garden");
+
 }
 
   public void fly(int x, int y) {
