@@ -34,7 +34,18 @@ Elf Treehouse:
         -If user guesses incorrectly, they can try again or recieve a hint
     (0,1) Nothing here
     (0,2) Nothing here
-    ()
+    (1,1) Flimsy Floorboard gain
+        -if user enters yes to play the game, they gain a random item, if they enter no they lost an item
+    (2,1) Flimsy Floorboard gain
+        -if user enters NO to play the game, they gain a random item, if they enter YES they lost an item
+    (1,2) Amber SunRoom
+        -Asks user to pick a item of jewelry, jewelery is randomly selected as correct answer each time user plays
+        -If user guesses the randomly choosen jewerly correctly, they gain an emerald
+        -if they guess incorrectly, they lose an item.
+    (2,2) Chestnut Goblet
+        -Asks user to pick three indgreidents from list of six items. 
+        -User recieves three attempts to guess all three correct items, and are told when a guess is correct
+        -If user guesses correctly, they recieve a peony, if incorrect, they lose all items in their basket 
 
 Firefly CLearing:
 

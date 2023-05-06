@@ -320,6 +320,12 @@ public class ElfTreeHouse extends Quest {
           break;
         }
       }
+      if(!option1.equals("yay") || !option2.equals("ye") || !option3.equals("y")) {
+        System.out.println("You have been wrong three times now... you are droping all item in your basket...");
+        this.user.basket.clear();
+
+        
+        }
     } else if (input.equals("NO")) {
       System.out.println("Way to play it safe, keep moving");
     } else {

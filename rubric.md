@@ -2,7 +2,7 @@
 
 YES 2 pts: Game has a **robust, understandable text-based interface** that allows the player to control their movement through the game.  Player should be able to enter any command at any time, and if it makes sense in the current context it will be carried out.
 
-_____ 2 pts: Submission includes a **cheat sheet** (`cheatsheet.md`) documenting all of the available commands, as well as a **description of the layout** of your game world's underlying physical layout; this can be described in words, or included as a separate image file if you prefer to sketch a map by hand.  If your game includes **challenges** that must be overcome to win, also describe them here.
+___ 2 pts: Submission includes a **cheat sheet** (`cheatsheet.md`) documenting all of the available commands, as well as a **description of the layout** of your game world's underlying physical layout; this can be described in words, or included as a separate image file if you prefer to sketch a map by hand.  If your game includes **challenges** that must be overcome to win, also describe them here.
 
 YES 2 pts: Storyline driving the game is **engaging**, and individual elements of play make sense within the context of the story.
 
@@ -23,13 +23,13 @@ YES 2 pts: The project makes effective use of **Java built-in classes** whenever
 
 YES 2 pts: The project's design is **extensible** (i.e. someone else could pick up where you left off, adding on or modifying the game without requiring a total rewrite).
 
-_____ 2 pts: Submission includes an **architecture diagram** describing the relationships between all classes.
+__yes___ 2 pts: Submission includes an **architecture diagram** describing the relationships between all classes.
 
 
 ## General Items (10 pts):
-_____ 4 pts: Program compiles without errors or warnings.
+_yes____ 4 pts: Program compiles without errors or warnings.
 
-_____ 2 pts: Executes fully & consistently without crashing (exception/freeze).
+___yes__ 2 pts: Executes fully & consistently without crashing (exception/freeze).
 
 _____ 2 pt: Complies with style guidelines (missing items 1 pt each):
 
@@ -37,12 +37,12 @@ _____ 2 pt: Complies with style guidelines (missing items 1 pt each):
 
       _____ Clear and consistent indentation of bracketed sections.
 
-      _____ Adheres to Java conventions on naming & capitalization.
+      _yes____ Adheres to Java conventions on naming & capitalization.
 
-      _____ Methods & variables all have clear and accurate names.
+      _yes____ Methods & variables all have clear and accurate names.
 
-      _____ Methods avoid confusing side effects.
+      _yes____ Methods avoid confusing side effects.
 
-_____ 1 pt: All required files included with submission (including completed checklist file).
+__yes___ 1 pt: All required files included with submission (including completed checklist file).
 
-_____ 1 pt: `readme.md` contains your reflection on the project and responses to all prompts .
+___yes__ 1 pt: `readme.md` contains your reflection on the project and responses to all prompts .
