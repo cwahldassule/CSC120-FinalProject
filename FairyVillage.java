@@ -444,7 +444,7 @@ public class FairyVillage extends Quest{
             else if(where_x == 2 & where_y == 1){
                 System.out.println("\nWelcome to the Angel Fountain");
                 this.angelfountain();
-                //randomly gives 0.5 flight power
+                //randomly gives 4 flight power
             }
             else if(where_x == -1 & where_y == 2){
                 System.out.println("\nA soft breeze is making some nearby windchimes play a beautiful melody!");
