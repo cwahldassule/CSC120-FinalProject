@@ -99,14 +99,18 @@ public class Garden{
     if(input.equals("FLY")){
       int x = -1983;
       int y = -2874;
-      System.out.println("x coord? (int only)");
-      try{x = in2.nextInt();}catch(Exception e){
+      try{
+        System.out.println("x coord? (int only)");
+        Scanner in_x = new Scanner(System.in);
+        x = in_x.nextInt();}
+        catch(Exception e){
         System.out.println("That's not an int -_-");
         return true;
       }
-
-      System.out.println("y coord? (int only)");
-      try{y = in2.nextInt();}catch(Exception e){
+      try{
+        System.out.println("y coord? (int only)");
+        Scanner in_y = new Scanner(System.in);
+        y = in_y.nextInt();}catch(Exception e){
         System.out.println("That's not an int -_-");
         return true;
       }

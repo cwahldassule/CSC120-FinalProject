@@ -399,7 +399,7 @@ public class FairyVillage extends Quest{
             }
             else if(where_y <0 | where_x < left_bound | where_x > right_bound | where_y > upper_bound){
                 System.out.println("\nThere's nothing here :0");
-                System.out.println("Sending you back...");
+                System.out.println("Sending you back to last location...");
                 where_x = og_x;
                 where_y = og_y;
             }
