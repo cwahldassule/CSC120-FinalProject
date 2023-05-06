@@ -21,6 +21,20 @@ Overall:
     FLY, SLEEP, OPEN BASKET, EMPTY BASKET, SNACK, HELP, RECIPE, STATS
 
 Elf Treehouse:
+    (0,0) Entrance to Elftreehouse
+        -user returns here to finish quest
+        -Where user gets sent when they go out of bounds
+        -Where  user can enter and exit treehouse
+    (1,0) Mailbox
+        -User can take 50/50 chance to get quest, and see items found in elftreehouse
+        -If they lose game, they lose a random item in basket
+    (2,0) Oak Leaf Door
+        -user given a code to unscramble
+        -If they unscramble code within three tries they recieve a blackberry
+        -If user guesses incorrectly, they can try again or recieve a hint
+    (0,1) Nothing here
+    (0,2) Nothing here
+    ()
 
 Firefly CLearing:
 
