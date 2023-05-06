@@ -14,7 +14,6 @@ public class ElfTreeHouse extends Quest {
   int upper_bound;
   Character user;
   String option1;
-
   String option2;
   String option3;
 
