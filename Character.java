@@ -164,7 +164,6 @@ class Character{
       }
     }
     catch(Exception e){
-      in.close();
       System.out.println(e.getMessage());
     }
   }

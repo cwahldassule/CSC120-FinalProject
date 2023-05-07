@@ -236,7 +236,6 @@ public class Garden{
           boolean temp = myGarden.play(user);
           if(!temp){
             System.out.println("Exiting game...");
-            in2.close();
             break;
           }
         }catch(Exception e){
@@ -253,7 +252,6 @@ public class Garden{
           boolean temp = myGarden.play(user);
           if(!temp){
             System.out.println("Exiting game...");
-            in2.close();
             break;
           }
         }catch(Exception e){
@@ -271,7 +269,6 @@ public class Garden{
           boolean temp = myGarden.play(user);
           if(!temp){
             System.out.println("Exiting game...");
-            in2.close();
             break;
           }
         }catch(Exception e){
@@ -281,7 +278,6 @@ public class Garden{
         }
     }
     else{
-      in2.close();
       throw new RuntimeException("You did not choose any valid options... try again...");
     }
     }catch(Exception e){
