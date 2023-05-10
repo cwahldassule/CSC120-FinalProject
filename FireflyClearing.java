@@ -1,5 +1,6 @@
 import java.util.Scanner;
 
+
 public class FireflyClearing extends Quest {
     Scanner in;
     int where_x;

@@ -12,42 +12,86 @@ public class Item{
   private static Random index = new Random();
   static String[] location;
 
+   /**
+   * Constructor for Item
+   * @param flowers, string array
+   * @param fruits, string array
+   * @param gems, string array
+   * @param location, string array
+   */
+
   public Item(){
     flowers = new String[]{"Sunflower", "Peony", "Lavender", "Orchid", "Tulip"};
     fruits= new String [] {"Strawberry", "Blueberry", "Blackberry", "Raspberry", "Elderberry"};
     gems = new String[] {"Amethyst", "Pearl", "Emerald", "Sapphire", "Ruby"};
-    toxic_flowers = new String[]{"Deadly Nightshade", "Foxglove","The Devil's Lettuce", "Angel's Trumpet", "Wolf’s Bane"};
-    rusty_object = new String []{"thing 1", "thing 2", "thing 3", "thing 4", "thing 5"};
-    poison_shroom = new String[]{"Death Cap", "False Parasol", "Fool's Mushroom", "Webcap", "Destroying Angel"};
+    // toxic_flowers = new String[]{"Deadly Nightshade", "Foxglove","The Devil's Lettuce", "Angel's Trumpet", "Wolf’s Bane"};
+    // rusty_object = new String []{"thing 1", "thing 2", "thing 3", "thing 4", "thing 5"};
+    // poison_shroom = new String[]{"Death Cap", "False Parasol", "Fool's Mushroom", "Webcap", "Destroying Angel"};
     location = new String[]{"a toadstool circle", "a mossy stump", "an acorn stash", "a berry bush", "a lilypad cluster"};
       }
+
+   /**
+   * Returns a random integer
+   * @param num, Integer
+   * @return num
+   */  
 
   public static int randNum(int num1){
     Integer num = index.nextInt(num1);
     return num;
   }
+
+   /**
+   * Returns a random flower name from the flowers array
+   * @return flowers[randNum(4)], String
+   */  
+
   public static String randFlower(){
     return flowers[randNum(4)];
   }
-  public static String randShroom(){
-    return poison_shroom[randNum(4)];
-  }
   
-  public static String randRust(){
-    return rusty_object[randNum(4)];
-  }
+  // public static String randShroom(){
+  //   return poison_shroom[randNum(4)];
+  // }
+  
+  // public static String randRust(){
+  //   return rusty_object[randNum(4)];
+  // }
+
+  /**
+   * Returns a random fruit name from the fruits array
+   * @return fruits[randNum(4)], String
+   */ 
+
   public static String randFruit(){
     return fruits[randNum(4)];
   }
+
+  /**
+   * Returns a random gem name from the gems array
+   * @return gems[randNum(4)], String
+   */ 
+
   public static String randGem(){
     return gems[randNum(4)];
   }
-    public static String randToxicFlower(){
-    return toxic_flowers[randNum(4)];
-  }
+  // public static String randToxicFlower(){
+  //   return toxic_flowers[randNum(4)];
+  // }
+
+  /**
+   * Returns a random location name from the location array
+   * @return location[randNum(4)], String
+   */ 
+
     public static String randLocation(){
     return location[randNum(4)];
   }
+
+  /**
+   * FILL OUT
+   * 
+   */ 
 
    public ArrayList<String> recipe(int size){
      ArrayList<String> recipe = new ArrayList<>();
