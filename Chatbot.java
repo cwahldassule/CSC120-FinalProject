@@ -5,16 +5,28 @@ public class Chatbot {
     static Scanner in;
     String name;
     
+    /**
+     * constructor for chatbot
+     * @param name name of chatbot
+     */
     public Chatbot(String name){
         in = new Scanner(System.in);
         this.name = name;
     }
 
+    /**
+     * prints out randomly selected response in proper format
+     * @param npc list of responses
+     */
     public void printRes(String[] npc){
         int num = Item.randNum(npc.length);
         System.out.println(name+": "+npc[num]);
     }
 
+    /**
+     * function that returns a response based on what the user said
+     * @param npc list of canned responses
+     */
     public void play(String[] npc){
         System.out.println(name+": Hi there! How are you today?");
         while(true){
