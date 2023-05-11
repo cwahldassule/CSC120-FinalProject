@@ -8,9 +8,9 @@ Note:  It's a good idea to also make this list available inside the game, in res
 If your game includes challenges that must be overcome to win, also list them below.
 
 Overall:
-    The goal of the game is for the user to complete the three quests at the three hidden location. The garden map is randomly generated each time so the three hidden locations are at different coordinates each time the game is played. the user will FLY to coordinates (0-3) and pick up items or enter a hidden location. Each hidden location contains it's own map and challenges. Movement in the hidden location has no impact on position in the garden.
+    The goal of the game is for the user to complete the three quests at the three hidden locations. The garden map is randomly generated each time so the three hidden locations are at different coordinates each time the game is played. The user will FLY to coordinates (0-3) and pick up items or enter a hidden location. Each hidden location contains it's own map and challenges. Movement in each hidden location has no impact on position in the garden.
     
-    If the user "gets tired" after flying a lot the will have to sleep or snack. at any point in the garden the user can call stats and open basket to see important progress information. Any of the commands can be called at any time. 
+    If the user "gets tired" after flying a lot, they will have to SLEEP or SNACK. At any point in the garden the user can call STATS and OPEN BASKET to see important progress information. Any of the commands can be called at any time. 
 
     The three game "modes", easy, medium and hard, correspond to how much flight power and basket size the user has.
     Ladybug: 100 flight power, 100 basket size
@@ -48,6 +48,31 @@ Elf Treehouse:
         -If user guesses correctly, they recieve a peony, if incorrect, they lose all items in their basket 
 
 Firefly CLearing:
+    (0,0) Starlight Pond
+        -Automatic starting location
+        -Gives the option to leave the Firefly Clearing
+    (0,1) Walnut Tree
+        -
+        -
+    (0,2) Cozy Knothole
+        -
+        -
+    (2,2) Leaf Hammocks
+        -
+        -
+    (1,2) Ornate Mirror
+        - 
+    (1,1) Deserted Burrow
+        -
+        -
+    (1,0) Birch Bridge
+        -
+    (2,0) Clover Patch
+        -Asks the user if they would like to look for a 4 leaf clover
+        -If yes, there is a 1 in 3 chance that they will .......
+    (2,1) Pinecone Shrine
+        -
+        -
 
 Fairy Village:
     (-2, 0) Nothing here
