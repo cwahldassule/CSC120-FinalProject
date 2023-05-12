@@ -2,6 +2,10 @@ import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.Scanner;
 
+/**
+ * Class Character is in charge of all characters, their attributes, and their methods
+ */
+
 class Character{
   String name;
   ArrayList<String> basket;

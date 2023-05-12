@@ -52,27 +52,32 @@ Firefly CLearing:
         -Automatic starting location
         -Gives the option to leave the Firefly Clearing
     (0,1) Walnut Tree
-        -
-        -
+        -Asks the user to help the fireflies make a potion by collecting items
+        -If yes, quest begins and doesn't end until user returns to the Walnut Tree with all required items
     (0,2) Cozy Knothole
-        -
-        -
+        -An owlet asks if the user would like to hear a riddle
+        -If yes, owlet asks riddle
+        -If user answers correctly, they are given a blueberry
     (2,2) Leaf Hammocks
-        -
-        -
+        -User finds leaf hammocks in a lavender patch and is asked if they would like to take some lavender
+        -If yes, they receive a lavender
     (1,2) Ornate Mirror
-        - 
+        -User receives a nice message
     (1,1) Deserted Burrow
-        -
-        -
+        -User finds a chest and is asked if they want to open it
+        -If yes, program checks whether a gold key is in their basket
+        -If no, they are told they cannot open the chest without a key
+        -If yes, they find sapphires inside the chest and are given a sapphire
     (1,0) Birch Bridge
-        -
+        -User enjoys a nice view
     (2,0) Clover Patch
         -Asks the user if they would like to look for a 4 leaf clover
-        -If yes, there is a 1 in 3 chance that they will .......
+        -If yes, there is a 1 in 3 chance that they will find a 4 leaf clover which gives +2 flight power
     (2,1) Pinecone Shrine
-        -
-        -
+        -Shrine asks if user wants to give an offering
+        -If no, user loses 3 flight power for disrespect
+        -If yes, user finds a randomized flower and puts it on the shrine
+        -If the flower is a peony or tulip, user loses 4 flight power, otherwise, they receive a gold key
 
 Fairy Village:
     (-2, 0) Nothing here

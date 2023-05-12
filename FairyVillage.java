@@ -1,5 +1,9 @@
 import java.util.Scanner;
 
+/**
+ * Class FairyVillage is in charge of a quest with specific locations and challenges
+ */
+
 public class FairyVillage extends Quest{
     Scanner in;
     int where_x;

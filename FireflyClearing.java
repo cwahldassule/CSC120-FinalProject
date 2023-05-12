@@ -1,5 +1,8 @@
 import java.util.Scanner;
 
+/**
+ * Class FireflyClearing is in charge of a quest with specific locations and challenges
+ */
 
 public class FireflyClearing extends Quest {
     Scanner in;
@@ -11,6 +14,12 @@ public class FireflyClearing extends Quest {
     int lower_bound;
     Character user;
   
+   /**
+   * Constructor for FireflyClearing
+   * @param name, String
+   * @param size, int
+   * @param user, Character
+   */
 
     public FireflyClearing(String name, int size, Character user) {
         super(name, size);
@@ -24,12 +33,20 @@ public class FireflyClearing extends Quest {
         this.user = user;
 
     }
+
+   /**
+   * Prints introductory welcome message
+   */  
     
     public void intro(){
         System.out.println("\nWelcome to the Firefly Clearing! You are currently at the Starlight Pond");
         System.out.println("Walk around to explore the clearing (walking does not use flight power)");
     }
 
+    /**
+   * Explains user command options
+   */  
+    
     public void help(){
         System.out.println("\nOptions: ");
         System.out.println("WALK North, South, East, or West");
@@ -47,6 +64,12 @@ public class FireflyClearing extends Quest {
         System.out.println("EAT A SNACK for +3 flight power:");
         System.out.println("\t-> Enter 'snack'");
     }
+
+    /**
+   * Returns false if the quest is not complete, true if it is
+   * @param user, Character
+   * @return Boolean
+   */  
 
     public Boolean finishQuest(Character user){
         for(int i = 0; i<this.recipe.size(); i++){
@@ -74,6 +97,10 @@ public class FireflyClearing extends Quest {
         return false;
         }
     }
+
+    /**
+   * Gives user option to begin quest, starts quest, and gives user recipe
+   */  
 
     public void walnutTree(){
         if(this.started | this.complete){
@@ -114,7 +141,10 @@ public class FireflyClearing extends Quest {
 
 
 
-
+    /**
+   * Takes in user's commands and calls appropriate functions/moves user's position accordingly, including controling specific locations and outer boundaries, all within the Firefly Clearing
+   * @return boolean
+   */  
     
     public boolean play(){
         System.out.println("\n\t\t\tPress enter to continue");
@@ -223,6 +253,10 @@ public class FireflyClearing extends Quest {
     return true;
 }
 
+    /**
+   * Clover Patch location, possibility of +2 flight power
+   */  
+
     public void cloverPatch() {
         System.out.println("You find yourself in the middle of a large patch of clover");
         System.out.println("You know that four leaf clovers are lucky. Do you want to look for one?");
@@ -246,6 +280,10 @@ public class FireflyClearing extends Quest {
         }       
 
     }
+
+    /**
+   * Cozy Knothole location, possibility of +Blueberry
+   */  
 
     public void cozyKnothole() {
         System.out.println("You enter a cozy knothole in one of the clearing's trees");
@@ -274,11 +312,19 @@ public class FireflyClearing extends Quest {
 
     }
 
+    /**
+   * Ornate Mirror location, gives user a message
+   */  
+
     public void ornateMirror() {
         System.out.println("You stumble upon an ornate mirror lying in the grass...");
         System.out.println("Wow, what a beautiful mirror! And an even more beautiful bug reflected in it!");
         System.out.println("Oh wait, that's you :)");
     }
+
+    /**
+   * Pinecone Shrine location, possibility of -3 flight power, -4 flight power, or +Gold Key
+   */  
 
     public void pineconeShrine() {
         System.out.println("You've discovered a shrine built from pinecones and willow branches");
@@ -313,11 +359,20 @@ public class FireflyClearing extends Quest {
 
     }
 
+    /**
+   * Birch Bridge location, gives user a message
+   */ 
+
     public void birchBridge() {
         System.out.println("You find yourself standing on a bridge made from the fallen limb of a birch tree");
         System.out.println("The view is beautiful from here!");
 
     }
+
+    /**
+   * Deserted Burrow location, possibility of +Sapphire
+   */ 
+
     public void desertedBurrow() {
         System.out.println("You discover a deserted burrow, maybe used by a bunny family once upon a time.");
         System.out.println("Looking around, you spot an intricately painted treasure chest. Do you want to open it?");
@@ -342,6 +397,9 @@ public class FireflyClearing extends Quest {
 
     }
 
+    /**
+   * Leaf Hammock location, possibility of +Lavender
+   */ 
     
     public void leafHammock() {
         System.out.println("You come across a patch of tall Lavender stalks with tree leaves tied between to make little hammocks");

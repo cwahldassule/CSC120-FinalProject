@@ -1,6 +1,10 @@
 import java.util.Scanner;
 import java.util.Arrays;
 
+/**
+ * Class Chatbot is in charge of an NPC that responds to player in conversation
+ */
+
 public class Chatbot {
     static Scanner in;
     String name;

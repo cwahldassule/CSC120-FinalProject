@@ -2,6 +2,10 @@
 import java.util.Random;
 import java.util.ArrayList;
 
+/**
+ * Class Item is in charge of randomization, collectible items, and random location descriptions
+ */
+
 public class Item{
   static String[] flowers;
   static String[] fruits;
@@ -32,8 +36,8 @@ public class Item{
 
    /**
    * Returns a random integer
-   * @param num, Integer
-   * @return num
+   * @param num1, int
+   * @return num, int
    */  
 
   public static int randNum(int num1){
@@ -89,8 +93,9 @@ public class Item{
   }
 
   /**
-   * FILL OUT
-   * 
+   * Creates a recipe array list with the designated number of randomized items
+   * @param size, int
+   * @return recipe, ArrayList<String>
    */ 
 
    public ArrayList<String> recipe(int size){

@@ -3,7 +3,7 @@ import java.util.ArrayList;
 import java.util.Random;
 
 /**
- * creates quest class Elf Treehouse
+ * Class ElfTreeHouse is in charge of a quest with specific locations and challenges
  */
 public class ElfTreeHouse extends Quest {
   Scanner in ;
